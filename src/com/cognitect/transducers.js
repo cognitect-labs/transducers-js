@@ -62,6 +62,18 @@ transducers.wrap = function(f) {
 // =============================================================================
 // Main Functions
 
+transducers.Reduced = function(value) {
+    this.value = value;
+};
+
+transducers.reduced = function(x) {
+    return new transducers.Reduced(x);
+};
+
+transducers.isReduced = function(x) {
+    return x instanceof transducer.Reduced;
+};
+    
 transducers.comp = function(varArgs) {
     var arglen = arguments.length;
     if(arglen == 2) {
@@ -121,16 +133,21 @@ transducers.filter = function(pred) {
 };
 
 transducers.cat = function(f) {
+    
 };
 
-transduces.mapcat = transducers.comp(map, cat);
+transducers.mapcat = transducers.comp(map, cat);
 
-tranducers.stringReduce = function(xf, f, init, string) {
+transducers.stringReduce = function(xf, f, init, string) {
     var acc = init,
         f   = typeof f == "function" ? transducers.wrap(f) : f,
         xf  = xf(f);
     for(var i = 0; i < string.length; i++) {
         acc = xf.step(acc, string.charAt(i));
+        if(transducers.isReduced(acc)) {
+            acc = acc.value;
+            break;
+        }
     }
     return xf(acc);
 };
@@ -141,6 +158,10 @@ transducers.arrayReduce = function(xf, f, init, array) {
         xf  = xf(f);
     for(var i = 0; i < array.length; i++) {
         acc = xf.step(acc, array[i]);
+        if(transducers.isReduced(acc)) {
+            acc = acc.value;
+            break;
+        }
     }
     return xf(acc);
 };
