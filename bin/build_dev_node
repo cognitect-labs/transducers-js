@@ -16,7 +16,6 @@ java -jar deps/closure-compiler/compiler.jar -O SIMPLE --formatting PRETTY_PRINT
 --externs=resources/node_externs.js \
 --js deps/closure-library/closure/goog/base.js \
 --js deps/closure-library/closure/goog/object/object.js \
---js deps/closure-library/closure/goog/math/long.js \
 --js src/com/cognitect/transit/util.js \
 --js src/com/cognitect/transit/delimiters.js \
 --js src/com/cognitect/transit/eq.js \
