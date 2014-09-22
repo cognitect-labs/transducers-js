@@ -1,0 +1,43 @@
+{
+    "name": "transducers-js",
+    "version": "0.1.0",
+    "homepage": "https://github.com/cognitect/tranducers-js",
+    "description": "A high performance transducer implementation for JavaScript",
+    "keywords": [
+        "functional",
+        "underscore",
+        "lodash",
+        "collections"
+    ],
+    "author": "Cognitect",
+    "license": "APL",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/cognitect/transducers-js.git"
+    },
+    "main": "target/transducers.js",
+    "bugs": {
+        "url": "https://github.com/cognitect/transducers-js/issues"
+    },
+    "contributors": [
+        "David Nolen (https://github.com/swannodette)"
+    ],
+    "engines": {
+        "node": ">= 0.10.0"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-cli": "~0.1.13",
+        "grunt-contrib-jshint": "~0.7.2",
+        "grunt-contrib-watch": "~0.5.3",
+        "grunt-contrib-nodeunit": "~0.2.2",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-uglify": "~0.2.7",
+        "yuidocjs": "~0.3.50",
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+cd `dirname $0`/..
+
+npm install
+npm install grunt-cli
+mkdir -p deps/closure-compiler
+cd deps/closure-compiler
+curl -O -s http://dl.google.com/closure-compiler/compiler-latest.zip
+unzip -qu compiler-latest.zip
+rm compiler-latest.zip
+cd ../..
+
+git clone https://github.com/google/closure-library.git deps/closure-library
