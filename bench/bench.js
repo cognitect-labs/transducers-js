@@ -24,7 +24,7 @@ function log(varArgs) {
     if(typeof console != "undefined") {
         console.log.apply(console, Array.prototype.slice.call(arguments, 0));
     } else {
-        print(Array.prototype.slice.call(argument, 0).join(" "));
+        print(Array.prototype.slice.call(arguments, 0).join(" "));
     }
 }
 
