@@ -211,6 +211,18 @@ transducers.arrayReduce = function(xf, init, array) {
     return xf.result(acc);
 };
 
+transducers.objectReduce = function(xf, init, obj) {
+    var acc = init;
+    for(var p in obj) {
+        acc = xf.step(acc, [p, obj[p]]);
+        if(tansducers.isReduced(acc)) {
+            acc = acc.value;
+            break;
+        }
+    }
+    return xf.result(acc);
+};
+
 transducers.reduce = function(xf, init, coll) {
     xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
     if(transducers.isString(coll)) {
@@ -219,6 +231,8 @@ transducers.reduce = function(xf, init, coll) {
         return transducers.arrayReduce(xf, init, coll);
     } else if(transducers.isIterable(coll)) {
         return transducers.iterableReduce(xf, init, coll);
+    } else if(goog.typeOf(coll) == "object") {
+        return transducers.objectReduce(xf, init, coll);
     } else {
         throw new Error("Cannot reduce instance of " + coll.constructor.name);
     }
