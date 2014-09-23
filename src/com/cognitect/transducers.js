@@ -16,6 +16,15 @@
 
 goog.provide("com.cognitect.transducers");
 
+/** @define {boolean} */
+var TRANSDUCERS_NODE_TARGET = false;
+
+/** @define {boolean} */
+var TRANSDUCERS_BROWSER_TARGET = false;
+
+/** @define {boolean} */
+var TRANSDUCERS_BROWSER_AMD_TARGET = false;
+
 goog.scope(function() {
     
 var transducers = com.cognitect.transducers;
@@ -167,9 +176,9 @@ transducers.arrayReduce = function(xf, f, init, array) {
 };
 
 transducers.reduce = function(xf, f, init, coll) {
-    if(transducers.isString(coll) {
+    if(transducers.isString(coll)) {
         return transducers.stringReduce(xf, f, init, coll);
-    } else if(transducers.isArray(coll) {
+    } else if(transducers.isArray(coll)) {
         return transducers.arrayReduce(xf, f, init, coll);
     } else if(transducers.isIterable(coll)) {
         return transducers.iterableReduce(xf, f, init, coll);
