@@ -225,6 +225,8 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.comp", transducers.comp);
     goog.exportSymbol("transducers.map", transducers.map);
     goog.exportSymbol("transducers.filter", transducers.filter);
+    goog.exportSymbol("transducers.cat", transducers.cat);
+    goog.exportSymbol("transducers.mapcat", transducers.mapcat);
     goog.exportSymbol("transducers.reduce", transducers.reduce);
 }
 
@@ -235,6 +237,8 @@ if(TRANSDUCERS_NODE_TARGET) {
         comp: transducers.comp,
         map: transducers.map,
         filter: transducers.filter,
+        cat: transducers.cat,
+        mapcat: transducers.mapcat,
         reduce: transducers.reduce
     };
 }
