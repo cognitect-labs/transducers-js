@@ -61,18 +61,24 @@ transducers.slice = function(arrayLike, start, n) {
     }
 };
 
+/**
+ * @constructor
+ */
+transducers.Wrap = function(f) {
+    this.f = f;
+};
+transducers.Wrap.prototype.init = function() {
+    throw new Error("init not implemented");
+};
+transducers.Wrap.prototype.result = function(result) {
+    return result;
+};
+transducers.Wrap.prototype.step = function(result, input) {
+    return this.f(result, input);
+};
+
 transducers.wrap = function(f) {
-    return {
-        init: function() {
-            throw new Error("init not implemented");
-        },
-        result: function(result) {
-            return result;
-        },
-        step: function(result, next) {
-            return f(result, next);
-        }
-    };
+    return new transducers.Wrap(f);
 };
 
 // =============================================================================
@@ -108,23 +114,51 @@ transducers.comp = function(varArgs) {
     }
 };
 
+/**
+ * @constructor
+ */
+transducers.Map = function(f, xf) {
+    this.f = f;
+    this.xf = xf;
+};
+transducers.Map.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.Map.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.Map.prototype.step = function(result, input) {
+    return this.xf.step(result, this.f(input));
+};
+
 transducers.map = function(f) {
     if(f == null) {
         throw new Error("At least one argument must be supplied to map");
     } else {
         return function(xf) {
-            return {
-                init: function() {
-                    return xf.init();
-                },
-                result: function(result) {
-                    return xf.result(result);
-                },
-                step: function(result, next) {
-                    return xf.step(result, f(next));
-                }
-            };
+            return new transducers.Map(f, xf);
         };
+    }
+};
+
+/**
+ * @constructor
+ */
+transducers.Filter = function(pred, xf) {
+    this.pred = pred;
+    this.xf = xf;
+};
+transducers.Filter.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.Filter.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.Filter.prototype.step = function(result, input) {
+    if(this.pred(input)) {
+        return this.xf.step(result, input);
+    } else {
+        return result;
     }
 };
 
@@ -133,22 +167,8 @@ transducers.filter = function(pred) {
         throw new Error("At least one argument must be supplied to filter");
     } else {
         return function(xf) {
-            return {
-                init: function() {
-                    return xf.init();
-                },
-                result: function(result) {
-                    return xf.result(result);
-                },
-                step: function(result, next) {
-                    if(pred(next)) {
-                        return xf.step(result, next);
-                    } else {
-                        return result;
-                    }
-                }
-            };
-        }
+            return new transducers.Filter(pred, xf);
+        };
     }
 };
 
