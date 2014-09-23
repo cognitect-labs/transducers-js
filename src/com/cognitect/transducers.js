@@ -42,7 +42,7 @@ if(typeof Array.isArray != "undefined") {
     }
 } else {
     transducers.isArray = function(x) {
-        return typeof x == "array";
+        return goog.typeOf(x) == "array";
     }
 }
 
@@ -151,6 +151,9 @@ transducers.filter = function(pred) {
 
 transducers.preservingReduced = function(xf) {
     return {
+        init: function() {
+            return xf.init();
+        },
         result: function(result) {
             return result;
         },
@@ -208,30 +211,25 @@ transducers.arrayReduce = function(xf, init, array) {
     return xf.result(acc);
 };
 
-transducers.transduce = function(xf, f, init, coll) {
-    f = typeof f == "function" ? transducers.wrap(f) : f;
-    xf = xf(f);
-    if(transducers.isString(coll)) {
-        return transducers.stringReduce(xf, init, coll);
-    } else if(transducers.isArray(coll)) {
-        return transducers.arrayReduce(xf, init, coll);
-    } else if(transducers.isIterable(coll)) {
-        return transducers.iterableReduce(xf, init, coll);
-    } else {
-        throw new Error("Cannot transduce instance of " + coll.constructor.name);
-    }
-};
-
 transducers.reduce = function(xf, init, coll) {
+    xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
     if(transducers.isString(coll)) {
         return transducers.stringReduce(xf, init, coll);
     } else if(transducers.isArray(coll)) {
         return transducers.arrayReduce(xf, init, coll);
     } else if(transducers.isIterable(coll)) {
         return transducers.iterableReduce(xf, init, coll);
+    } else if(coll.forEeach) {
+        return transducers.forEachReduce(xf, init, coll);
     } else {
         throw new Error("Cannot reduce instance of " + coll.constructor.name);
     }
+};
+
+transducers.transduce = function(xf, f, init, coll) {
+    f = typeof f == "function" ? transducers.wrap(f) : f;
+    xf = xf(f);
+    return transducers.reduce(xf, init, coll);
 };
 
 // =============================================================================
