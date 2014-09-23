@@ -67,6 +67,10 @@ log(_.chain({foo: 1, bar: 2})
      .map(ucKeys)
      .value());
 
+var xf = _.comp(_.map(inc), _.map(inc), _.map(inc));
+
+console.log(_.transduce(xf, apush, [], [1,2,3]));
+
 var largeArray = [];
 for(var i = 0; i < 1000000; i++) {
     largeArray.push(i);

@@ -99,7 +99,7 @@ transducers.comp = function(varArgs) {
             return f(g.apply(null, transducers.slice(arguments, 0)));
         };
     } if(arglen > 2) {
-        // TODO
+        return transducers.reduce(transducers.comp, arguments[0], transducers.slice(arguments, 1));
     } else {
         throw new Error("comp must given at least 2 arguments");
     }
