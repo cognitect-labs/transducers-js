@@ -110,7 +110,7 @@ transducers.map = function(f) {
                     return xf.result(result);
                 },
                 step: function(result, next) {
-                    return xf.step(result, next);
+                    return xf.step(result, f(next));
                 }
             };
         };
