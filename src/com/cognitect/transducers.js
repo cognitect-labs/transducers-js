@@ -50,8 +50,12 @@ transducers.isIterable = function(x) {
     return x["@@iterator"] != null;
 };
 
-transducers.slice = function(array, start, n) {
-    return Array.prototype.slice(array, start, n);
+transducers.slice = function(arrayLike, start, n) {
+    if(n == null) {
+        return Array.prototype.slice.call(arrayLike, start);
+    } else {
+        return Array.prototype.slice.call(arrayLike, start, n);
+    }
 };
 
 transducers.wrap = function(f) {
@@ -92,6 +96,7 @@ transducers.comp = function(varArgs) {
             return f(g.apply(null, transducers.slice(arguments, 0)));
         };
     } if(arglen > 2) {
+        
     } else {
         throw new Error("comp must given at least 2 arguments");
     }
