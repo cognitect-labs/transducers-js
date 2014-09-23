@@ -158,7 +158,7 @@ transducers.stringReduce = function(xf, f, init, string) {
             break;
         }
     }
-    return xf(acc);
+    return xf.result(acc);
 };
 
 transducers.arrayReduce = function(xf, f, init, array) {
@@ -172,7 +172,7 @@ transducers.arrayReduce = function(xf, f, init, array) {
             break;
         }
     }
-    return xf(acc);
+    return xf.result(acc);
 };
 
 transducers.reduce = function(xf, f, init, coll) {
