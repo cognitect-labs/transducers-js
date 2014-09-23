@@ -80,7 +80,7 @@ transducers.reduced = function(x) {
 };
 
 transducers.isReduced = function(x) {
-    return x instanceof transducer.Reduced;
+    return x instanceof transducers.Reduced;
 };
     
 transducers.comp = function(varArgs) {
@@ -145,7 +145,7 @@ transducers.cat = function(f) {
     
 };
 
-transducers.mapcat = transducers.comp(map, cat);
+transducers.mapcat = transducers.comp(transducers.map, transducers.cat);
 
 transducers.stringReduce = function(xf, f, init, string) {
     var acc = init,
