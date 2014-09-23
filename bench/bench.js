@@ -45,9 +45,9 @@ function doubleN(n) { return n + n; };
 function squareN(n) { return n * n; };
 
 log(_.comp(doubleN,squareN)(3));
-log(_.reduce(_.map(inc), apush, [], [0,1,2,3,4,5,6,7,8,9]));
-log(_.reduce(_.filter(isEven), apush, [], [0,1,2,3,4,5,6,7,8,9]));
-log(_.reduce(_.comp(_.map(inc), _.filter(isEven)), apush, [], [0,1,2,3,4,5,6,7,8,9]));
+log(_.transduce(_.map(inc), apush, [], [0,1,2,3,4,5,6,7,8,9]));
+log(_.transduce(_.filter(isEven), apush, [], [0,1,2,3,4,5,6,7,8,9]));
+log(_.transduce(_.comp(_.map(inc), _.filter(isEven)), apush, [], [0,1,2,3,4,5,6,7,8,9]));
 
 var largeArray = [];
 for(var i = 0; i < 1000000; i++) {
@@ -70,7 +70,7 @@ time(function() {
 
 log("transduce map large array, 1 op")
 time(function() {
-    return _.reduce(_.map(inc), apush, [], largeArray).length;
+    return _.transduce(_.map(inc), apush, [], largeArray).length;
 });
 
 log("for loop, 2 ops")
@@ -83,7 +83,7 @@ time(function() {
         }
     }
     return ret.length;
-});
+}, 10);
 
 log("native map/filter array, 2 ops")
 time(function() {
@@ -92,5 +92,5 @@ time(function() {
 
 log("transduce map large array, 2 ops")
 time(function() {
-    return _.reduce(_.comp(_.map(inc),_.filter(isEven)), apush, [], largeArray).length;
-});
+    return _.transduce(_.comp(_.map(inc),_.filter(isEven)), apush, [], largeArray).length;
+}, 10);
