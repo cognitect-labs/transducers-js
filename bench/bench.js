@@ -61,11 +61,11 @@ log(_.transduce(_.map(ucKeys), addEntry, {}, {foo: 1, bar:2}));
 log(_.chain([1,2,3])
      .map(inc)
      .map(inc)
-     .reduce(apush, []));
+     .value());
 
 log(_.chain({foo: 1, bar: 2})
      .map(ucKeys)
-     .reduce(addEntry, {}));
+     .value());
 
 var largeArray = [];
 for(var i = 0; i < 1000000; i++) {

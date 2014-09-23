@@ -267,6 +267,25 @@ transducers.Chain.prototype.reduce = function(f, init) {
     return transducers.transduce(this.xf, f, init, this.coll);
 };
 
+transducers.Chain.prototype.value = function() {
+    var f    = null,
+        init = null; 
+    if(transducers.isArray(this.coll)) {
+        f = function(arr, x) {
+            arr.push(x);
+            return arr;
+        }
+        init = [];
+    } else if(goog.typeOf(this.coll) == "object") {
+        f = function(obj, entry) {
+            obj[entry[0]] = entry[1];
+            return obj;
+        }
+        init = {};
+    }
+    return transducers.transduce(this.xf, f, init, this.coll);
+};
+
 transducers.isChain = function(x) {
     return x instanceof transducers.Chain;
 };
