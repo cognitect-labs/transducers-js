@@ -150,12 +150,17 @@ transducers.filter = function(pred) {
 };
 
 transducers.preservingReduced = function(xf) {
-    return function(result, input) {
-        var ret = xf.step(result, input);
-        if(transducers.isReduced(ret)) {
-            return transducers.reduced(ret);
-        } else {
-            return ret;
+    return {
+        result: function(result) {
+            return result;
+        },
+        step: function(result, input) {
+            var ret = xf.step(result, input);
+            if(transducers.isReduced(ret)) {
+                return transducers.reduced(ret);
+            } else {
+                return ret;
+            }
         }
     };
 };
@@ -170,7 +175,7 @@ transducers.cat = function(xf) {
             return xf.result(result);
         },
         step: function(result, input) {
-            transducers.reduce(rxf, result, input);
+            return transducers.reduce(rxf, result, input);
         }
     };
 };

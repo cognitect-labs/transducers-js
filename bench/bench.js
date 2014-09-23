@@ -43,11 +43,17 @@ function isEven(n) { return n % 2 == 0; };
 function apush(arr, x) { arr.push(x); return arr; };
 function doubleN(n) { return n + n; };
 function squareN(n) { return n * n; };
+function reverse(arr) {
+    var clone = Array.prototype.slice.call(arr, 0);
+    clone.reverse();
+    return clone;
+};
 
 log(_.comp(doubleN,squareN)(3));
 log(_.transduce(_.map(inc), apush, [], [0,1,2,3,4,5,6,7,8,9]));
 log(_.transduce(_.filter(isEven), apush, [], [0,1,2,3,4,5,6,7,8,9]));
 log(_.transduce(_.comp(_.map(inc), _.filter(isEven)), apush, [], [0,1,2,3,4,5,6,7,8,9]));
+log(_.transduce(_.mapcat(reverse), apush, [], [[0,1,2],[3,4,5],[6,7,8]]));
 
 var largeArray = [];
 for(var i = 0; i < 1000000; i++) {
@@ -83,7 +89,7 @@ time(function() {
         }
     }
     return ret.length;
-}, 10);
+});
 
 log("native map/filter array, 2 ops")
 time(function() {
@@ -93,4 +99,4 @@ time(function() {
 log("transduce map large array, 2 ops")
 time(function() {
     return _.transduce(_.comp(_.map(inc),_.filter(isEven)), apush, [], largeArray).length;
-}, 10);
+});
