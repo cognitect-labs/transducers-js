@@ -15,7 +15,8 @@
 "use strict";
 
 if(typeof require != "undefined") {
-    var _ = require("../target/transducers.js");
+    var _  = require("../target/transducers.js");
+    var ld = require("../node_modules/lodash/lodash.js");
 } else {
     var _ = transducers;
 }
@@ -112,7 +113,22 @@ time(function() {
     return largeArray.map(inc).filter(isEven).length;
 });
 
-log("transduce map large array, 2 ops")
+log("transduce map/filter large array, 2 ops")
 time(function() {
     return _.transduce(_.comp(_.map(inc),_.filter(isEven)), apush, [], largeArray).length;
+});
+
+log("lodash map/filter large array, 2 ops")
+time(function() {
+    return ld.chain(largeArray).map(inc).filter(isEven).value().length;
+});
+
+log("transduce map/filter large array, 5 ops")
+time(function() {
+    return _.transduce(_.comp(_.map(inc),_.map(inc),_.map(inc),_.map(inc),_.filter(isEven)), apush, [], largeArray).length;
+});
+
+log("lodash map/filter large array, 5 ops")
+time(function() {
+    return ld.chain(largeArray).map(inc).map(inc).map(inc).map(inc).filter(isEven).value().length;
 });
