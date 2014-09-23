@@ -49,6 +49,10 @@ if(typeof Array.isArray != "undefined") {
     }
 }
 
+transducers.isObject = function(x) {
+    return goog.typeOf(x) == "object";
+};
+
 transducers.isIterable = function(x) {
     return x["@@iterator"] != null;
 };
@@ -254,7 +258,7 @@ transducers.reduce = function(xf, init, coll) {
         return transducers.arrayReduce(xf, init, coll);
     } else if(transducers.isIterable(coll)) {
         return transducers.iterableReduce(xf, init, coll);
-    } else if(goog.typeOf(coll) == "object") {
+    } else if(transducers.isObject(coll)) {
         return transducers.objectReduce(xf, init, coll);
     } else {
         throw new Error("Cannot reduce instance of " + coll.constructor.name);
@@ -265,6 +269,31 @@ transducers.transduce = function(xf, f, init, coll) {
     f = typeof f == "function" ? transducers.wrap(f) : f;
     xf = xf(f);
     return transducers.reduce(xf, init, coll);
+};
+
+transducers.stringAppend = function(string, x) {
+    return string + x;
+};
+
+transducers.arrayPush = function(arr, x) {
+    arr.push(x);
+    return array;
+};
+
+transducers.addEntry = function(obj, entry) {
+    obj[entry[0]] = entry[1];
+    return obj;
+};
+
+transducers.into = function(empty, xf, coll) {
+    xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
+    if(transducers.isString(coll)) {
+        return transducers.transduce(xf, transducers.stringAppend, empty, coll);
+    } else if(transducers.isArray(coll)) {
+        return transducers.transduce(xf, transducers.arrayPush, empty, coll);
+    } else if(transducers.isObject(coll)) {
+        return transducers.transduce(xf, transducers.addEntry, empty, coll);
+    }
 };
 
 // =============================================================================
@@ -280,7 +309,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.mapcat", transducers.mapcat);
     goog.exportSymbol("transducers.transduce", transducers.transduce);
     goog.exportSymbol("transducers.reduce", transducers.reduce);
-    goog.exportSymbol("transducers.chain", transducers.chain);
+    goog.exportSymbol("transducers.into", transducers.into);
 }
 
 if(TRANSDUCERS_NODE_TARGET) {
@@ -294,7 +323,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         mapcat: transducers.mapcat,
         transduce: transducers.transduce,
         reduce: transducers.reduce,
-        chain: transducers.chain
+        into: transducers.into
     };
 }
 
