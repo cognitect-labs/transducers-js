@@ -75,6 +75,9 @@ transducers.wrap = function(f) {
 // =============================================================================
 // Main Functions
 
+/**
+ * @constructor
+ */
 transducers.Reduced = function(value) {
     this.value = value;
 };
