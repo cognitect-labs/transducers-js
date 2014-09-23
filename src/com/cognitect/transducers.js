@@ -16,6 +16,9 @@
 
 goog.provide("com.cognitect.transducers");
 
+// =============================================================================
+// Build target config
+
 /** @define {boolean} */
 var TRANSDUCERS_NODE_TARGET = false;
 
@@ -73,7 +76,7 @@ transducers.wrap = function(f) {
 };
 
 // =============================================================================
-// Main Functions
+// Main
 
 /**
  * @constructor
