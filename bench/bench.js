@@ -58,6 +58,18 @@ log(_.transduce(_.comp(_.map(inc), _.filter(isEven)), apush, [], [0,1,2,3,4,5,6,
 log(_.transduce(_.mapcat(reverse), apush, [], [[0,1,2],[3,4,5],[6,7,8]]));
 log(_.transduce(_.map(ucKeys), addEntry, {}, {foo: 1, bar:2}));
 
+log(_.chain([1,2,3])
+     .map(inc)
+     .map(inc)
+     .reduce(apush, []));
+
+/*
+_(arr)
+ .map(inc)
+ .filter(isEven)
+ .reduce(apush, []) 
+*/
+
 var largeArray = [];
 for(var i = 0; i < 1000000; i++) {
     largeArray.push(i);

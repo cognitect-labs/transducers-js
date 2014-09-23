@@ -245,6 +245,45 @@ transducers.transduce = function(xf, f, init, coll) {
 };
 
 // =============================================================================
+// Underscore/Lodash style sugar
+
+/**
+ * @constructor
+ */
+transducers.Chain = function(coll, xf) {
+    this.coll = coll;
+    this.xf = xf;
+};
+
+transducers.Chain.prototype.map = function(f) {
+    return transducers.chain(this, transducers.map(f));
+};
+
+transducers.Chain.prototype.filter = function(f) {
+    return transducers.chain(this, transducers.filter(f));
+};
+
+transducers.Chain.prototype.reduce = function(f, init) {
+    return transducers.transduce(this.xf, f, init, this.coll);
+};
+
+transducers.isChain = function(x) {
+    return x instanceof transducers.Chain;
+};
+
+transducers.chain = function(x, xf) {
+    if(transducers.isChain(x)) {
+        if(x.xf) {
+            return new transducers.Chain(x.coll, transducers.comp(x.xf, xf));
+        } else {
+            return new transducers.Chain(x.coll, xf);
+        }
+    } else {
+        return new transducers.Chain(x, xf);
+    }
+};
+
+// =============================================================================
 // Exporting
 
 if(TRANSDUCERS_BROWSER_TARGET) {
@@ -257,6 +296,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.mapcat", transducers.mapcat);
     goog.exportSymbol("transducers.transduce", transducers.transduce);
     goog.exportSymbol("transducers.reduce", transducers.reduce);
+    goog.exportSymbol("transducers.chain", transducers.chain);
 }
 
 if(TRANSDUCERS_NODE_TARGET) {
@@ -269,7 +309,8 @@ if(TRANSDUCERS_NODE_TARGET) {
         cat: transducers.cat,
         mapcat: transducers.mapcat,
         transduce: transducers.transduce,
-        reduce: transducers.reduce
+        reduce: transducers.reduce,
+        chain: transducers.chain
     };
 }
 
