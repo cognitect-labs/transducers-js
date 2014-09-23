@@ -219,8 +219,6 @@ transducers.reduce = function(xf, init, coll) {
         return transducers.arrayReduce(xf, init, coll);
     } else if(transducers.isIterable(coll)) {
         return transducers.iterableReduce(xf, init, coll);
-    } else if(coll.forEeach) {
-        return transducers.forEachReduce(xf, init, coll);
     } else {
         throw new Error("Cannot reduce instance of " + coll.constructor.name);
     }
