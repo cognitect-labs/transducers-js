@@ -172,7 +172,9 @@ transducers.cat = function(xf) {
     };
 };
 
-transducers.mapcat = transducers.comp(transducers.map, transducers.cat);
+transducers.mapcat = function(f) {
+    return transducers.comp(transducers.map(f), transducers.cat);
+};
 
 transducers.stringReduce = function(xf, f, init, string) {
     var acc = init,
