@@ -99,7 +99,7 @@ transducers.comp = function(varArgs) {
             return f(g.apply(null, transducers.slice(arguments, 0)));
         };
     } if(arglen > 2) {
-        
+        // TODO
     } else {
         throw new Error("comp must given at least 2 arguments");
     }
@@ -179,10 +179,8 @@ transducers.mapcat = function(f) {
     return transducers.comp(transducers.map(f), transducers.cat);
 };
 
-transducers.stringReduce = function(xf, f, init, string) {
-    var acc = init,
-        f   = typeof f == "function" ? transducers.wrap(f) : f,
-        xf  = xf(f);
+transducers.stringReduce = function(xf, init, string) {
+    var acc = init;
     for(var i = 0; i < string.length; i++) {
         acc = xf.step(acc, string.charAt(i));
         if(transducers.isReduced(acc)) {
@@ -193,10 +191,8 @@ transducers.stringReduce = function(xf, f, init, string) {
     return xf.result(acc);
 };
 
-transducers.arrayReduce = function(xf, f, init, array) {
-    var acc = init,
-        f   = typeof f == "function" ? transducers.wrap(f) : f;
-        xf  = xf(f);
+transducers.arrayReduce = function(xf, init, array) {
+    var acc = init;
     for(var i = 0; i < array.length; i++) {
         acc = xf.step(acc, array[i]);
         if(transducers.isReduced(acc)) {
@@ -207,13 +203,27 @@ transducers.arrayReduce = function(xf, f, init, array) {
     return xf.result(acc);
 };
 
-transducers.reduce = function(xf, f, init, coll) {
+transducers.transduce = function(xf, f, init, coll) {
+    f = typeof f == "function" ? transducers.wrap(f) : f;
+    xf = xf(f);
     if(transducers.isString(coll)) {
-        return transducers.stringReduce(xf, f, init, coll);
+        return transducers.stringReduce(xf, init, coll);
     } else if(transducers.isArray(coll)) {
-        return transducers.arrayReduce(xf, f, init, coll);
+        return transducers.arrayReduce(xf, init, coll);
     } else if(transducers.isIterable(coll)) {
-        return transducers.iterableReduce(xf, f, init, coll);
+        return transducers.iterableReduce(xf, init, coll);
+    } else {
+        throw new Error("Cannot transduce instance of " + coll.constructor.name);
+    }
+};
+
+transducers.reduce = function(xf, init, coll) {
+    if(transducers.isString(coll)) {
+        return transducers.stringReduce(xf, init, coll);
+    } else if(transducers.isArray(coll)) {
+        return transducers.arrayReduce(xf, init, coll);
+    } else if(transducers.isIterable(coll)) {
+        return transducers.iterableReduce(xf, init, coll);
     } else {
         throw new Error("Cannot reduce instance of " + coll.constructor.name);
     }
@@ -230,6 +240,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.filter", transducers.filter);
     goog.exportSymbol("transducers.cat", transducers.cat);
     goog.exportSymbol("transducers.mapcat", transducers.mapcat);
+    goog.exportSymbol("transducers.transduce", transducers.transduce);
     goog.exportSymbol("transducers.reduce", transducers.reduce);
 }
 
@@ -242,6 +253,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         filter: transducers.filter,
         cat: transducers.cat,
         mapcat: transducers.mapcat,
+        transduce: transducers.transduce,
         reduce: transducers.reduce
     };
 }

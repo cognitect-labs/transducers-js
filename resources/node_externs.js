@@ -19,4 +19,5 @@ module.exports.map = function() {};
 module.exports.filter = function() {};
 module.exports.cat = function() {};
 module.exports.mapcat = function() {};
+module.exports.transduce = function() {};
 module.exports.reduce = function() {};
