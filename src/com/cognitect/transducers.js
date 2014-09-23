@@ -215,7 +215,7 @@ transducers.objectReduce = function(xf, init, obj) {
     var acc = init;
     for(var p in obj) {
         acc = xf.step(acc, [p, obj[p]]);
-        if(tansducers.isReduced(acc)) {
+        if(transducers.isReduced(acc)) {
             acc = acc.value;
             break;
         }

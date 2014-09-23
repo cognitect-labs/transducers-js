@@ -41,6 +41,8 @@ function time(f, iters) {
 function inc(n) { return n + 1; };
 function isEven(n) { return n % 2 == 0; };
 function apush(arr, x) { arr.push(x); return arr; };
+function addEntry(obj, entry) { obj[entry[0]] = entry[1]; return obj; };
+function ucKeys(entry) { return [entry[0].toUpperCase(), entry[1]]; };
 function doubleN(n) { return n + n; };
 function squareN(n) { return n * n; };
 function reverse(arr) {
@@ -54,6 +56,7 @@ log(_.transduce(_.map(inc), apush, [], [0,1,2,3,4,5,6,7,8,9]));
 log(_.transduce(_.filter(isEven), apush, [], [0,1,2,3,4,5,6,7,8,9]));
 log(_.transduce(_.comp(_.map(inc), _.filter(isEven)), apush, [], [0,1,2,3,4,5,6,7,8,9]));
 log(_.transduce(_.mapcat(reverse), apush, [], [[0,1,2],[3,4,5],[6,7,8]]));
+log(_.transduce(_.map(ucKeys), addEntry, {}, {foo: 1, bar:2}));
 
 var largeArray = [];
 for(var i = 0; i < 1000000; i++) {
