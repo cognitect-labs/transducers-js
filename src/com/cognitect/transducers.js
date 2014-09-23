@@ -187,11 +187,22 @@ transducers.reduce = function(xf, f, init, coll) {
     }
 };
 
+// =============================================================================
+// Exporting
+
 if(TRANSDUCERS_BROWSER_TARGET) {
+    goog.exportSymbol("transducers.reduced", transducers.reduced);
+    goog.exportSymbol("transducers.isReduced", transducers.isReduced);
+    goog.exportSymbol("transducers.comp", transducers.comp);
+    goog.exportSymbol("transducers.map", transducers.map);
+    goog.exportSymbol("transducers.filter", transducers.filter);
+    goog.exportSymbol("transducers.reduce", transducers.reduce);
 }
 
 if(TRANSDUCERS_NODE_TARGET) {
     module.exports = {
+        reduced: transducers.reduced,
+        isReduced: transducers.isReduced,
         comp: transducers.comp,
         map: transducers.map,
         filter: transducers.filter,
