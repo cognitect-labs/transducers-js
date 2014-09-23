@@ -63,12 +63,9 @@ log(_.chain([1,2,3])
      .map(inc)
      .reduce(apush, []));
 
-/*
-_(arr)
- .map(inc)
- .filter(isEven)
- .reduce(apush, []) 
-*/
+log(_.chain({foo: 1, bar: 2})
+     .map(ucKeys)
+     .reduce(addEntry, {}));
 
 var largeArray = [];
 for(var i = 0; i < 1000000; i++) {
