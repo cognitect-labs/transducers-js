@@ -29,7 +29,7 @@
     },
     "devDependencies": {
         "underscore": "1.7.0",
-        "lodash": "2.4.3",
+        "lodash": "2.4.1",
         "grunt": "~0.4.2",
         "grunt-cli": "~0.1.13",
         "grunt-contrib-jshint": "~0.7.2",

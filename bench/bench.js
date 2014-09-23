@@ -15,11 +15,22 @@
 "use strict";
 
 if(typeof require != "undefined") {
-    var _  = require("../target/transducers.js");
+    var t  = require("../target/transducers.js");
     var ld = require("../node_modules/lodash/lodash.js");
+    var ud = require("../node_modules/underscore/underscore.js");
 } else {
-    var _ = transducers;
+    ld = _;
+    t  = transducers;
 }
+
+var map       = t.map,
+    filter    = t.filter,
+    reduce    = t.reduce,
+    transduce = t.transduce,
+    mapcat    = t.mapcat,
+    reduced   = t.reduced,
+    isReduced = t.isReduced,
+    comp      = t.comp;
 
 function log(varArgs) {
     if(typeof console != "undefined") {
@@ -52,25 +63,16 @@ function reverse(arr) {
     return clone;
 };
 
-log(_.comp(doubleN,squareN)(3));
-log(_.transduce(_.map(inc), apush, [], [0,1,2,3,4,5,6,7,8,9]));
-log(_.transduce(_.filter(isEven), apush, [], [0,1,2,3,4,5,6,7,8,9]));
-log(_.transduce(_.comp(_.map(inc), _.filter(isEven)), apush, [], [0,1,2,3,4,5,6,7,8,9]));
-log(_.transduce(_.mapcat(reverse), apush, [], [[0,1,2],[3,4,5],[6,7,8]]));
-log(_.transduce(_.map(ucKeys), addEntry, {}, {foo: 1, bar:2}));
+log(comp(doubleN,squareN)(3));
+log(transduce(map(inc), apush, [], [0,1,2,3,4,5,6,7,8,9]));
+log(transduce(filter(isEven), apush, [], [0,1,2,3,4,5,6,7,8,9]));
+log(transduce(comp(map(inc), filter(isEven)), apush, [], [0,1,2,3,4,5,6,7,8,9]));
+log(transduce(mapcat(reverse), apush, [], [[0,1,2],[3,4,5],[6,7,8]]));
+log(transduce(map(ucKeys), addEntry, {}, {foo: 1, bar:2}));
 
-log(_.chain([1,2,3])
-     .map(inc)
-     .map(inc)
-     .value());
+var xf = comp(map(inc), map(inc), map(inc));
 
-log(_.chain({foo: 1, bar: 2})
-     .map(ucKeys)
-     .value());
-
-var xf = _.comp(_.map(inc), _.map(inc), _.map(inc));
-
-console.log(_.transduce(xf, apush, [], [1,2,3]));
+log(transduce(xf, apush, [], [1,2,3]));
 
 var largeArray = [];
 for(var i = 0; i < 1000000; i++) {
@@ -93,7 +95,7 @@ time(function() {
 
 log("transduce map large array, 1 op")
 time(function() {
-    return _.transduce(_.map(inc), apush, [], largeArray).length;
+    return transduce(map(inc), apush, [], largeArray).length;
 });
 
 log("for loop, 2 ops")
@@ -106,29 +108,31 @@ time(function() {
         }
     }
     return ret.length;
-});
+}, 10);
 
 log("native map/filter array, 2 ops")
 time(function() {
     return largeArray.map(inc).filter(isEven).length;
-});
+}, 10);
 
 log("transduce map/filter large array, 2 ops")
 time(function() {
-    return _.transduce(_.comp(_.map(inc),_.filter(isEven)), apush, [], largeArray).length;
-});
+    return transduce(comp(map(inc),filter(isEven)), apush, [], largeArray).length;
+}, 10);
 
 log("lodash map/filter large array, 2 ops")
 time(function() {
     return ld.chain(largeArray).map(inc).filter(isEven).value().length;
-});
+}, 10);
 
+/*
 log("transduce map/filter large array, 5 ops")
 time(function() {
-    return _.transduce(_.comp(_.map(inc),_.map(inc),_.map(inc),_.map(inc),_.filter(isEven)), apush, [], largeArray).length;
-});
+    return _.transduce(_.comp(_.map(inc),_.map(doubleN),_.map(inc),_.map(doubleN)), apush, [], largeArray).length;
+},10);
 
 log("lodash map/filter large array, 5 ops")
 time(function() {
-    return ld.chain(largeArray).map(inc).map(inc).map(inc).map(inc).filter(isEven).value().length;
-});
+    return ld.chain(largeArray).map(inc).filter(doubleN).map(inc).map(doubleN).value().length;
+},10);
+*/
