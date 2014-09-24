@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+cd `dirname $0`/..
+
+bin/build_dev_node
+node_modules/.bin/grunt nodeunit

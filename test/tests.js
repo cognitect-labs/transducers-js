@@ -16,3 +16,8 @@
 
 var transducers = require("../target/transducers.js");
 
+exports.testTake = function(test) {
+    test.ok(true);
+    test.done();
+};
+
