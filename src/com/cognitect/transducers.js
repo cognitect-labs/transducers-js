@@ -209,6 +209,38 @@ transducers.take = function(n) {
     }
 };
 
+/**
+ * @constructor
+ */
+transducers.Drop = function(n, xf) {
+    this.n = n;
+    this.xf = xf;
+};
+transducers.Drop.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.Drop.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.Drop.prototype.step = function(result, input) {
+    if(this.n > 0) {
+        this.n--;
+        return result;
+    } else {
+        return this.xf.step(result, input);
+    }
+};
+
+transducers.drop = function(n) {
+    if(typeof n !== "number") {
+        throw new Error("drop must be given an integer");
+    } else {
+        return function(xf) {
+            return new transducers.Drop(n, xf);
+        };
+    }
+};
+
 transducers.preservingReduced = function(xf) {
     return {
         init: function() {
@@ -358,6 +390,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         transduce: transducers.transduce,
         reduce: transducers.reduce,
         take: transducers.take,
+        drop: transducers.drop,
         into: transducers.into
     };
 }
