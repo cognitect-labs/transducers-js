@@ -21,3 +21,5 @@ module.exports.cat = function() {};
 module.exports.mapcat = function() {};
 module.exports.transduce = function() {};
 module.exports.reduce = function() {};
+module.exports.take = function() {};
+module.exports.into = function() {};

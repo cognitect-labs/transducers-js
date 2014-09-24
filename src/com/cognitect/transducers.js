@@ -176,6 +176,39 @@ transducers.filter = function(pred) {
     }
 };
 
+/**
+ * @constructor
+ */
+transducers.Take = function(n, xf) {
+    this.n = n;
+    this.xf = xf;
+};
+transducers.Take.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.Take.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.Take.prototype.step = function(result, input) {
+    if(this.n > 0) {
+        result = this.xf.step(result, input);
+    } else {
+        result = transducers.reduced(result);
+    }
+    this.n--;
+    return result;
+};
+
+transducers.take = function(n) {
+    if(typeof n !== "number") {
+        throw new Error("take must be given an integer");
+    } else {
+        return function(xf) {
+            return new transducers.Take(n, xf);
+        };
+    }
+};
+
 transducers.preservingReduced = function(xf) {
     return {
         init: function() {
@@ -309,6 +342,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.mapcat", transducers.mapcat);
     goog.exportSymbol("transducers.transduce", transducers.transduce);
     goog.exportSymbol("transducers.reduce", transducers.reduce);
+    goog.exportSymbol("transducers.take", transducers.take);
     goog.exportSymbol("transducers.into", transducers.into);
 }
 
@@ -323,6 +357,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         mapcat: transducers.mapcat,
         transduce: transducers.transduce,
         reduce: transducers.reduce,
+        take: transducers.take,
         into: transducers.into
     };
 }

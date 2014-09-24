@@ -14,10 +14,24 @@
 
 "use strict";
 
-var transducers = require("../target/transducers.js");
+var t         = require("../target/transducers.js"),
+    comp      = t.comp,
+    transduce = t.transduce,
+    reduce    = t.reduce,
+    map       = t.map,
+    mapcat    = t.mapcat,
+    take      = t.take;
+
+var smallArray = [0,1,2,3,4,5,6,7,8,9];
+
+var arrayPush = function(arr, x) {
+    arr.push(x);
+    return arr;
+}
 
 exports.testTake = function(test) {
-    test.ok(true);
+    var res = transduce(take(5), arrayPush, [], smallArray);
+    test.deepEqual(res, [0,1,2,3,4]);
     test.done();
 };
 
