@@ -342,7 +342,7 @@ transducers.stringAppend = function(string, x) {
 
 transducers.arrayPush = function(arr, x) {
     arr.push(x);
-    return array;
+    return arr;
 };
 
 transducers.addEntry = function(obj, entry) {
@@ -351,7 +351,6 @@ transducers.addEntry = function(obj, entry) {
 };
 
 transducers.into = function(empty, xf, coll) {
-    xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
     if(transducers.isString(coll)) {
         return transducers.transduce(xf, transducers.stringAppend, empty, coll);
     } else if(transducers.isArray(coll)) {

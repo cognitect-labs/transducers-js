@@ -21,14 +21,27 @@ var t         = require("../target/transducers.js"),
     map       = t.map,
     mapcat    = t.mapcat,
     take      = t.take,
-    drop      = t.drop;
+    drop      = t.drop,
+    into      = t.into;
 
 var smallArray = [0,1,2,3,4,5,6,7,8,9];
+
+var inc = function(n) {
+    return n+1;
+};
 
 var arrayPush = function(arr, x) {
     arr.push(x);
     return arr;
 }
+
+exports.testInto = function(test) {
+    var xf  = map(inc),
+        res = into([], xf, smallArray);
+    test.deepEqual(res, [1,2,3,4,5,6,7,8,9,10]);
+    test.done();
+};
+
 exports.testTake = function(test) {
     var res = transduce(take(5), arrayPush, [], smallArray);
     test.deepEqual(res, [0,1,2,3,4]);
