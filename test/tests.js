@@ -14,16 +14,17 @@
 
 "use strict";
 
-var t         = require("../target/transducers.js"),
-    comp      = t.comp,
-    transduce = t.transduce,
-    reduce    = t.reduce,
-    map       = t.map,
-    filter    = t.filter,
-    mapcat    = t.mapcat,
-    take      = t.take,
-    drop      = t.drop,
-    into      = t.into;
+var t           = require("../target/transducers.js"),
+    comp        = t.comp,
+    transduce   = t.transduce,
+    reduce      = t.reduce,
+    map         = t.map,
+    filter      = t.filter,
+    mapcat      = t.mapcat,
+    take        = t.take,
+    drop        = t.drop,
+    into        = t.into,
+    partitionBy = t.partitionBy;
 
 var smallArray = [0,1,2,3,4,5,6,7,8,9];
 
@@ -33,6 +34,10 @@ var inc = function(n) {
 
 var isEven = function(n) {
     return (n % 2) == 0;
+};
+
+var lessThanFive = function(n) {
+    return n < 5;
 };
 
 var arrayClone = function(arr) {
@@ -82,5 +87,11 @@ exports.testTake = function(test) {
 exports.testDrop = function(test) {
     var res = transduce(drop(5), arrayPush, [], smallArray);
     test.deepEqual(res, [5,6,7,8,9]);
+    test.done();
+};
+
+exports.partitionBy = function(test) {
+    var res = transduce(partitionBy(lessThanFive), arrayPush, [], smallArray);
+    test.deepEqual(res, [[0,1,2,3,4],[5,6,7,8,9]]);
     test.done();
 };
