@@ -23,4 +23,5 @@ module.exports.transduce = function() {};
 module.exports.reduce = function() {};
 module.exports.take = function() {};
 module.exports.drop = function() {};
+module.exports.partitionBy = function() {};
 module.exports.into = function() {};

@@ -241,6 +241,60 @@ transducers.drop = function(n) {
     }
 };
 
+transducers.NONE = {};
+
+/**
+ * @constructor
+ */
+transducers.PartitionBy = function(f, xf) {
+    this.f = f;
+    this.xf = xf;
+    this.a = [];
+    this.pval = transducers.NONE;
+};
+transducers.PartitionBy.prototype.init = function() {
+    return this.xf.init()
+};
+transducers.PartitionBy.prototype.result = function(result) {
+    if(this.a.length != 0) {
+        result = this.xf.step(result, this.a);
+        this.a = [];
+    }
+    return this.xf.result(result);
+};
+transducers.PartitionBy.prototype.step = function(result, input) {
+    var pval = this.pval;
+        val  = this.f(input);
+
+    this.pval = val;
+
+    // NOTE: we should probably allow someone to define
+    // equality? - David
+    if((pval == transducers.NONE) ||
+       (pval == val)) {
+        this.a.push(input);
+        return result;
+    } else {
+        var ret = this.xf.step(result, this.a),
+            a   = this.a;
+        this.a = [];
+        if(!transducers.isReduced(ret)) {
+            this.a.push(input);
+        }
+        return ret;
+    }
+};
+
+transducers.partitionBy = function(f) {
+    if(typeof f != "function") {
+        throw new Error("partitionBy must be given an function");
+    } else {
+        return function(xf) {
+            return new transducers.PartitionBy(f, xf);
+        };
+    }
+};
+
 transducers.preservingReduced = function(xf) {
     return {
         init: function() {
@@ -374,6 +428,8 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.transduce", transducers.transduce);
     goog.exportSymbol("transducers.reduce", transducers.reduce);
     goog.exportSymbol("transducers.take", transducers.take);
+    goog.exportSymbol("transducers.drop", transducers.drop);
+    goog.exportSymbol("transducers.partitionBy", transducers.partitionBy);
     goog.exportSymbol("transducers.into", transducers.into);
 }
 
@@ -390,6 +446,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         reduce: transducers.reduce,
         take: transducers.take,
         drop: transducers.drop,
+        partitionBy: transducers.partitionBy,
         into: transducers.into
     };
 }
