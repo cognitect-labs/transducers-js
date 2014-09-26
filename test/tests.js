@@ -35,10 +35,18 @@ var isEven = function(n) {
     return (n % 2) == 0;
 };
 
+var arrayClone = function(arr) {
+    return Array.prototype.slice.call(arr, 0);
+};
+
+var reverse = function(arr) {
+    return arrayClone(arr).reverse();
+};
+
 var arrayPush = function(arr, x) {
     arr.push(x);
     return arr;
-}
+};
 
 exports.testMap = function(test) {
     var res = transduce(map(inc), arrayPush, [], smallArray);
@@ -49,6 +57,12 @@ exports.testMap = function(test) {
 exports.testFilter = function(test) {
     var res = transduce(filter(isEven), arrayPush, [], smallArray);
     test.deepEqual(res, smallArray.filter(isEven));
+    test.done();
+};
+
+exports.testMapCat = function(test) {
+    var res = transduce(mapcat(reverse), arrayPush, [], [[3,2,1],[6,5,4],[9,8,7]]);
+    test.deepEqual(res, [1,2,3,4,5,6,7,8,9]);
     test.done();
 };
 
