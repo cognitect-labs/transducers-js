@@ -19,6 +19,7 @@ var t         = require("../target/transducers.js"),
     transduce = t.transduce,
     reduce    = t.reduce,
     map       = t.map,
+    filter    = t.filter,
     mapcat    = t.mapcat,
     take      = t.take,
     drop      = t.drop,
@@ -30,10 +31,26 @@ var inc = function(n) {
     return n+1;
 };
 
+var isEven = function(n) {
+    return (n % 2) == 0;
+};
+
 var arrayPush = function(arr, x) {
     arr.push(x);
     return arr;
 }
+
+exports.testMap = function(test) {
+    var res = transduce(map(inc), arrayPush, [], smallArray);
+    test.deepEqual(res, smallArray.map(inc));
+    test.done();
+};
+
+exports.testFilter = function(test) {
+    var res = transduce(filter(isEven), arrayPush, [], smallArray);
+    test.deepEqual(res, smallArray.filter(isEven));
+    test.done();
+};
 
 exports.testInto = function(test) {
     var xf  = map(inc),
