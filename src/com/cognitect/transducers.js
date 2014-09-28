@@ -300,6 +300,45 @@ transducers.partitionBy = function(f) {
     }
 };
 
+/**
+ * @constructor
+ */
+transducers.PartitionAll = function(n, xf) {
+    this.n = n;
+    this.xf = xf;
+    this.a = [];
+};
+transducers.PartitionAll.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.PartitionAll.prototype.result = function(result) {
+    if(this.a.length > 0) {
+        result = this.xf.step(result, this.a);
+        this.a = [];
+    }
+    return this.xf.result(result);
+};
+transducers.PartitionAll.prototype.step = function(result, input) {
+    this.a.push(input);
+    if(this.n == this.a.length) {
+        var a = this.a;
+        this.a = [];
+        return this.xf.step(result, a);
+    } else {
+        return result;
+    }
+};
+
+transducers.partitionAll = function(n) {
+    if(TRANSDUCERS_DEV && (typeof n != "number")) {
+        throw new Error("partitionAll must be given a number");
+    } else {
+        return function(xf) {
+            return new transducers.PartitionAll(n, xf);
+        };
+    }
+};
+
 transducers.preservingReduced = function(xf) {
     return {
         init: function() {
@@ -435,6 +474,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.take", transducers.take);
     goog.exportSymbol("transducers.drop", transducers.drop);
     goog.exportSymbol("transducers.partitionBy", transducers.partitionBy);
+    goog.exportSymbol("transducers.partitionAll", transducers.partitionAll);
     goog.exportSymbol("transducers.into", transducers.into);
 }
 
@@ -452,6 +492,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         take: transducers.take,
         drop: transducers.drop,
         partitionBy: transducers.partitionBy,
+        partitionAll: transducers.partitionAll,
         into: transducers.into
     };
 }

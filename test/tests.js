@@ -14,17 +14,18 @@
 
 "use strict";
 
-var t           = require("../target/transducers.js"),
-    comp        = t.comp,
-    transduce   = t.transduce,
-    reduce      = t.reduce,
-    map         = t.map,
-    filter      = t.filter,
-    mapcat      = t.mapcat,
-    take        = t.take,
-    drop        = t.drop,
-    into        = t.into,
-    partitionBy = t.partitionBy;
+var t            = require("../target/transducers.js"),
+    comp         = t.comp,
+    transduce    = t.transduce,
+    reduce       = t.reduce,
+    map          = t.map,
+    filter       = t.filter,
+    mapcat       = t.mapcat,
+    take         = t.take,
+    drop         = t.drop,
+    into         = t.into,
+    partitionBy  = t.partitionBy,
+    partitionAll = t.partitionAll;
 
 var smallArray = [0,1,2,3,4,5,6,7,8,9];
 
@@ -90,8 +91,14 @@ exports.testDrop = function(test) {
     test.done();
 };
 
-exports.partitionBy = function(test) {
+exports.testPartitionBy = function(test) {
     var res = transduce(partitionBy(lessThanFive), arrayPush, [], smallArray);
     test.deepEqual(res, [[0,1,2,3,4],[5,6,7,8,9]]);
+    test.done();
+};
+
+exports.testPartitionAll = function(test) {
+    var res = transduce(partitionAll(2), arrayPush, [], smallArray);
+    test.deepEqual(res, [[0,1],[2,3],[4,5],[6,7],[8,9]]);
     test.done();
 };
