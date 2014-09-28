@@ -262,6 +262,41 @@ transducers.takeWhile = function(pred) {
 /**
  * @constructor
  */
+transducers.TakeNth = function(n, xf) {
+    this.i = -1;
+    this.n = n;
+    this.xf = xf;
+};
+transducers.TakeNth.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.TakeNth.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.TakeNth.prototype.step = function(result, input) {
+    this.i++;
+    if((this.i % this.n) == 0) {
+        return this.xf.step(result, input);
+    } else {
+        return result;
+    }
+};
+
+transducers.takeNth = function(n) {
+    if(TRANSDUCERS_DEV && (typeof n != "number")) {
+        throw new Error("takeNth must be given a number");
+    } else {
+        return function(xf) {
+            return new transducers.TakeNth(n, xf);
+        };
+    }
+};
+
+// replace
+
+/**
+ * @constructor
+ */
 transducers.Drop = function(n, xf) {
     this.n = n;
     this.xf = xf;
@@ -417,6 +452,10 @@ transducers.partitionAll = function(n) {
     }
 };
 
+// keepIndexed
+// randomSample
+// iteration
+
 transducers.preservingReduced = function(xf) {
     return {
         init: function() {
@@ -512,6 +551,8 @@ transducers.transduce = function(xf, f, init, coll) {
     return transducers.reduce(xf, init, coll);
 };
 
+// completing
+
 transducers.stringAppend = function(string, x) {
     return string + x;
 };
@@ -553,6 +594,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.reduce", transducers.reduce);
     goog.exportSymbol("transducers.take", transducers.take);
     goog.exportSymbol("transducers.takeWhile", transducers.takeWhile);
+    goog.exportSymbol("transducers.takeNth", transducers.takeNth);
     goog.exportSymbol("transducers.drop", transducers.drop);
     goog.exportSymbol("transducers.dropWhile", transducers.dropWhile);
     goog.exportSymbol("transducers.partitionBy", transducers.partitionBy);
@@ -575,6 +617,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         reduce: transducers.reduce,
         take: transducers.take,
         takeWhile: transducers.takeWhile,
+        takeNth: transducers.takeNth,
         drop: transducers.drop,
         dropWhile: transducers.dropWhile,
         partitionBy: transducers.partitionBy,

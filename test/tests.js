@@ -25,6 +25,7 @@ var t            = require("../target/transducers.js"),
     mapcat       = t.mapcat,
     take         = t.take,
     takeWhile    = t.takeWhile,
+    takeNth      = t.takeNth,
     drop         = t.drop,
     dropWhile    = t.dropWhile,
     into         = t.into,
@@ -102,6 +103,12 @@ exports.testTakeWhile = function(test) {
     test.done();
 };
 
+exports.testTakeNth = function(test) {
+    var res = transduce(takeNth(2), arrayPush, [], smallArray);
+    test.deepEqual(res, smallArray.filter(isEven));
+    test.done();
+};
+
 exports.testDrop = function(test) {
     var res = transduce(drop(5), arrayPush, [], smallArray);
     test.deepEqual(res, [5,6,7,8,9]);
@@ -125,5 +132,3 @@ exports.testPartitionAll = function(test) {
     test.deepEqual(res, [[0,1],[2,3],[4,5],[6,7],[8,9]]);
     test.done();
 };
-
-

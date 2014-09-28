@@ -25,6 +25,7 @@ module.exports.transduce = function() {};
 module.exports.reduce = function() {};
 module.exports.take = function() {};
 module.exports.takeWhile = function() {};
+module.exports.takeNth = function() {};
 module.exports.drop = function() {};
 module.exports.dropWhile = function() {};
 module.exports.partitionBy = function() {};
