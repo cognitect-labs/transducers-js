@@ -20,6 +20,9 @@ goog.provide("com.cognitect.transducers");
 // Build target config
 
 /** @define {boolean} */
+var TRANSDUCERS_DEV = true;
+
+/** @define {boolean} */
 var TRANSDUCERS_NODE_TARGET = false;
 
 /** @define {boolean} */
@@ -114,7 +117,9 @@ transducers.comp = function(varArgs) {
     } if(arglen > 2) {
         return transducers.reduce(transducers.comp, arguments[0], transducers.slice(arguments, 1));
     } else {
-        throw new Error("comp must given at least 2 arguments");
+        if(TRANSDUCERS_DEV) {
+            throw new Error("comp must given at least 2 arguments");
+        }
     }
 };
 
@@ -136,7 +141,7 @@ transducers.Map.prototype.step = function(result, input) {
 };
 
 transducers.map = function(f) {
-    if(f == null) {
+    if(TRANSDUCERS_DEV && (f == null)) {
         throw new Error("At least one argument must be supplied to map");
     } else {
         return function(xf) {
@@ -167,7 +172,7 @@ transducers.Filter.prototype.step = function(result, input) {
 };
 
 transducers.filter = function(pred) {
-    if(pred == null) {
+    if(TRANSDUCERS_DEV && (pred == null)) {
         throw new Error("At least one argument must be supplied to filter");
     } else {
         return function(xf) {
@@ -200,7 +205,7 @@ transducers.Take.prototype.step = function(result, input) {
 };
 
 transducers.take = function(n) {
-    if(typeof n !== "number") {
+    if(TRANSDUCERS_DEV && (typeof n !== "number")) {
         throw new Error("take must be given an integer");
     } else {
         return function(xf) {
@@ -232,7 +237,7 @@ transducers.Drop.prototype.step = function(result, input) {
 };
 
 transducers.drop = function(n) {
-    if(typeof n !== "number") {
+    if(TRANSDUCERS_DEV && (typeof n !== "number")) {
         throw new Error("drop must be given an integer");
     } else {
         return function(xf) {
@@ -286,7 +291,7 @@ transducers.PartitionBy.prototype.step = function(result, input) {
 };
 
 transducers.partitionBy = function(f) {
-    if(typeof f != "function") {
+    if(TRANSDUCERS_DEV && (typeof f != "function")) {
         throw new Error("partitionBy must be given an function");
     } else {
         return function(xf) {
