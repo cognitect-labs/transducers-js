@@ -457,7 +457,75 @@ transducers.partitionAll = function(n) {
     }
 };
 
+/**
+ * @constructor
+ */
+transducers.Keep = function(f, xf) {
+    this.f = f;
+    this.xf = xf;
+};
+transducers.Keep.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.Keep.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.Keep.prototype.step = function(result, input) {
+    var v = this.f(input);
+    if(v == null) {
+        return result;
+    } else {
+        return this.xf.step(result, input);
+    }
+};
+
+// keep
+transducers.keep = function(f) {
+    if(TRANSDUCERS_DEV && (typeof f != "function")) {
+        throw new Error("keep must be given a function");
+    } else {
+        return function(xf) {
+            return new transducers.Keep(f, xf);
+        };
+    }
+};
+
 // keepIndexed
+/**
+ * @constructor
+ */
+transducers.KeepIndexed = function(f, xf) {
+    this.i = -1;
+    this.f = f;
+    this.xf = xf;
+};
+transducers.KeepIndexed.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.KeepIndexed.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.KeepIndexed.prototype.step = function(result, input) {
+    this.i++;
+    var v = this.f(this.i, input);
+    if(v == null) {
+        return result;
+    } else {
+        return this.xf.step(result, input);
+    }
+};
+
+// keep
+transducers.keepIndexed = function(f) {
+    if(TRANSDUCERS_DEV && (typeof f != "function")) {
+        throw new Error("keepIndexed must be given a function");
+    } else {
+        return function(xf) {
+            return new transducers.KeepIndexed(f, xf);
+        };
+    }
+};
+
 // randomSample
 // iteration
 
@@ -591,6 +659,8 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.map", transducers.map);
     goog.exportSymbol("transducers.filter", transducers.filter);
     goog.exportSymbol("transducers.remove", transducers.remove);
+    goog.exportSymbol("transducers.keep", transducers.keep);
+    goog.exportSymbol("transducers.keepIndexed", transducers.keepIndexed);
     goog.exportSymbol("transducers.cat", transducers.cat);
     goog.exportSymbol("transducers.mapcat", transducers.mapcat);
     goog.exportSymbol("transducers.transduce", transducers.transduce);
@@ -614,6 +684,8 @@ if(TRANSDUCERS_NODE_TARGET) {
         map: transducers.map,
         filter: transducers.filter,
         remove: transducers.remove,
+        keep: transducers.keep,
+        keepIndexed: transducers.keepIndexed,
         cat: transducers.cat,
         mapcat: transducers.mapcat,
         transduce: transducers.transduce,
