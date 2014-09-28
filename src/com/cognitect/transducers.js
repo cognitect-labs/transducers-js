@@ -111,6 +111,10 @@ transducers.reduced = function(x) {
 transducers.isReduced = function(x) {
     return x instanceof transducers.Reduced;
 };
+
+transducers.identity = function(x) {
+    return x;
+};
     
 transducers.comp = function(varArgs) {
     var arglen = arguments.length;
@@ -292,7 +296,8 @@ transducers.takeNth = function(n) {
     }
 };
 
-// replace
+// no maps in JS, perhaps define only if transit or
+// Map available? - David
 
 /**
  * @constructor
@@ -550,8 +555,6 @@ transducers.transduce = function(xf, f, init, coll) {
     xf = xf(f);
     return transducers.reduce(xf, init, coll);
 };
-
-// completing
 
 transducers.stringAppend = function(string, x) {
     return string + x;
