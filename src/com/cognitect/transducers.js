@@ -219,11 +219,42 @@ transducers.Take.prototype.step = function(result, input) {
 };
 
 transducers.take = function(n) {
-    if(TRANSDUCERS_DEV && (typeof n !== "number")) {
+    if(TRANSDUCERS_DEV && (typeof n != "number")) {
         throw new Error("take must be given an integer");
     } else {
         return function(xf) {
             return new transducers.Take(n, xf);
+        };
+    }
+};
+
+/**
+ * @constructor
+ */
+transducers.TakeWhile = function(pred, xf) {
+    this.pred = pred;
+    this.xf = xf;
+};
+transducers.TakeWhile.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.TakeWhile.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.TakeWhile.prototype.step = function(result, input) {
+    if(this.pred(input)) {
+        return this.xf.step(result, input);
+    } else {
+        return transducers.reduced(result);
+    }
+};
+
+transducers.takeWhile = function(pred) {
+    if(TRANSDUCERS_DEV && (typeof pred != "function")) {
+        throw new Error("takeWhile must given a function");
+    } else {
+        return function(xf) {
+            return new transducers.TakeWhile(pred, xf);
         };
     }
 };
@@ -479,6 +510,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.reduced", transducers.reduced);
     goog.exportSymbol("transducers.isReduced", transducers.isReduced);
     goog.exportSymbol("transducers.comp", transducers.comp);
+    goog.exportSymbol("transducers.complement", transducers.complement);
     goog.exportSymbol("transducers.map", transducers.map);
     goog.exportSymbol("transducers.filter", transducers.filter);
     goog.exportSymbol("transducers.remove", transducers.remove);
@@ -487,6 +519,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.transduce", transducers.transduce);
     goog.exportSymbol("transducers.reduce", transducers.reduce);
     goog.exportSymbol("transducers.take", transducers.take);
+    goog.exportSymbol("transducers.takeWhile", transducers.takeWhile);
     goog.exportSymbol("transducers.drop", transducers.drop);
     goog.exportSymbol("transducers.partitionBy", transducers.partitionBy);
     goog.exportSymbol("transducers.partitionAll", transducers.partitionAll);
@@ -507,6 +540,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         transduce: transducers.transduce,
         reduce: transducers.reduce,
         take: transducers.take,
+        takeWhile: transducers.takeWhile,
         drop: transducers.drop,
         partitionBy: transducers.partitionBy,
         partitionAll: transducers.partitionAll,

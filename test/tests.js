@@ -24,6 +24,7 @@ var t            = require("../target/transducers.js"),
     remove       = t.remove,
     mapcat       = t.mapcat,
     take         = t.take,
+    takeWhile    = t.takeWhile,
     drop         = t.drop,
     into         = t.into,
     partitionBy  = t.partitionBy,
@@ -90,6 +91,12 @@ exports.testInto = function(test) {
 
 exports.testTake = function(test) {
     var res = transduce(take(5), arrayPush, [], smallArray);
+    test.deepEqual(res, [0,1,2,3,4]);
+    test.done();
+};
+
+exports.testTakeWhile = function(test) {
+    var res = transduce(takeWhile(lessThanFive), arrayPush, [], smallArray);
     test.deepEqual(res, [0,1,2,3,4]);
     test.done();
 };
