@@ -22,6 +22,8 @@ var t            = require("../target/transducers.js"),
     map          = t.map,
     filter       = t.filter,
     remove       = t.remove,
+    keep         = t.keep,
+    keepIndexed  = t.keepIndexed,
     mapcat       = t.mapcat,
     take         = t.take,
     takeWhile    = t.takeWhile,
@@ -40,6 +42,10 @@ var inc = function(n) {
 
 var isEven = function(n) {
     return (n % 2) == 0;
+};
+
+var keepEven = function(n) {
+    return (n % 2 == 0) ? true : null;
 };
 
 var lessThanFive = function(n) {
@@ -73,8 +79,13 @@ exports.testFilter = function(test) {
 
 exports.testRemove = function(test) {
     var res = transduce(remove(isEven), arrayPush, [], smallArray);
-    test.ok(true);
     test.deepEqual(res, smallArray.filter(complement(isEven)));
+    test.done();
+};
+
+exports.testKeep = function(test) {
+    var res = transduce(keep(keepEven), arrayPush, [], smallArray);
+    test.deepEqual(res, smallArray.filter(isEven));
     test.done();
 };
 
