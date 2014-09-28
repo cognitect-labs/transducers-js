@@ -26,6 +26,7 @@ var t            = require("../target/transducers.js"),
     take         = t.take,
     takeWhile    = t.takeWhile,
     drop         = t.drop,
+    dropWhile    = t.dropWhile,
     into         = t.into,
     partitionBy  = t.partitionBy,
     partitionAll = t.partitionAll;
@@ -103,6 +104,12 @@ exports.testTakeWhile = function(test) {
 
 exports.testDrop = function(test) {
     var res = transduce(drop(5), arrayPush, [], smallArray);
+    test.deepEqual(res, [5,6,7,8,9]);
+    test.done();
+};
+
+exports.testDropWhile = function(test) {
+    var res = transduce(dropWhile(lessThanFive), arrayPush, [], smallArray);
     test.deepEqual(res, [5,6,7,8,9]);
     test.done();
 };

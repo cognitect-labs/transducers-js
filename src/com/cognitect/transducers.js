@@ -291,6 +291,39 @@ transducers.drop = function(n) {
     }
 };
 
+/**
+ * @constructor
+ */
+transducers.DropWhile = function(pred, xf) {
+    this.drop = true;
+    this.pred = pred;
+    this.xf = xf;
+};
+transducers.DropWhile.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.DropWhile.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.DropWhile.prototype.step = function(result, input) {
+    if(this.drop && this.pred(input)) {
+        return result;
+    } else {
+        if(this.drop) this.drop = false;
+        return this.xf.step(result, input);
+    }
+};
+
+transducers.dropWhile = function(pred) {
+    if(TRANSDUCERS_DEV && (typeof pred != "function")) {
+        throw new Error("dropWhile must be given a function");
+    } else {
+        return function(xf) {
+            return new transducers.DropWhile(pred, xf);
+        };
+    }
+};
+
 transducers.NONE = {};
 
 /**
@@ -521,6 +554,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.take", transducers.take);
     goog.exportSymbol("transducers.takeWhile", transducers.takeWhile);
     goog.exportSymbol("transducers.drop", transducers.drop);
+    goog.exportSymbol("transducers.dropWhile", transducers.dropWhile);
     goog.exportSymbol("transducers.partitionBy", transducers.partitionBy);
     goog.exportSymbol("transducers.partitionAll", transducers.partitionAll);
     goog.exportSymbol("transducers.into", transducers.into);
@@ -542,6 +576,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         take: transducers.take,
         takeWhile: transducers.takeWhile,
         drop: transducers.drop,
+        dropWhile: transducers.dropWhile,
         partitionBy: transducers.partitionBy,
         partitionAll: transducers.partitionAll,
         into: transducers.into
