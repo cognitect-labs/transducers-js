@@ -16,10 +16,12 @@
 
 var t            = require("../target/transducers.js"),
     comp         = t.comp,
+    complement   = t.complement,
     transduce    = t.transduce,
     reduce       = t.reduce,
     map          = t.map,
     filter       = t.filter,
+    remove       = t.remove,
     mapcat       = t.mapcat,
     take         = t.take,
     drop         = t.drop,
@@ -66,6 +68,13 @@ exports.testFilter = function(test) {
     test.done();
 };
 
+exports.testRemove = function(test) {
+    var res = transduce(remove(isEven), arrayPush, [], smallArray);
+    test.ok(true);
+    test.deepEqual(res, smallArray.filter(complement(isEven)));
+    test.done();
+};
+
 exports.testMapCat = function(test) {
     var res = transduce(mapcat(reverse), arrayPush, [], [[3,2,1],[6,5,4],[9,8,7]]);
     test.deepEqual(res, [1,2,3,4,5,6,7,8,9]);
@@ -102,3 +111,5 @@ exports.testPartitionAll = function(test) {
     test.deepEqual(res, [[0,1],[2,3],[4,5],[6,7],[8,9]]);
     test.done();
 };
+
+

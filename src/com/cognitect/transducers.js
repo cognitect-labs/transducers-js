@@ -68,6 +68,12 @@ transducers.slice = function(arrayLike, start, n) {
     }
 };
 
+transducers.complement = function(f) {
+    return function(varArgs) {
+        return !f.apply(null, transducers.slice(arguments, 0));
+    };
+};
+
 /**
  * @constructor
  */
@@ -172,12 +178,20 @@ transducers.Filter.prototype.step = function(result, input) {
 };
 
 transducers.filter = function(pred) {
-    if(TRANSDUCERS_DEV && (pred == null)) {
-        throw new Error("At least one argument must be supplied to filter");
+    if(TRANSDUCERS_DEV && (typeof pred != "function")) {
+        throw new Error("filter must be given a function");
     } else {
         return function(xf) {
             return new transducers.Filter(pred, xf);
         };
+    }
+};
+
+transducers.remove = function(f) {
+    if(TRANSDUCERS_DEV && (typeof f != "function")) {
+        throw new Error("remove must be given a function");
+    } else {
+        return transducers.filter(transducers.complement(f));
     }
 };
 
@@ -467,6 +481,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.comp", transducers.comp);
     goog.exportSymbol("transducers.map", transducers.map);
     goog.exportSymbol("transducers.filter", transducers.filter);
+    goog.exportSymbol("transducers.remove", transducers.remove);
     goog.exportSymbol("transducers.cat", transducers.cat);
     goog.exportSymbol("transducers.mapcat", transducers.mapcat);
     goog.exportSymbol("transducers.transduce", transducers.transduce);
@@ -483,8 +498,10 @@ if(TRANSDUCERS_NODE_TARGET) {
         reduced: transducers.reduced,
         isReduced: transducers.isReduced,
         comp: transducers.comp,
+        complement: transducers.complement,
         map: transducers.map,
         filter: transducers.filter,
+        remove: transducers.remove,
         cat: transducers.cat,
         mapcat: transducers.mapcat,
         transduce: transducers.transduce,
