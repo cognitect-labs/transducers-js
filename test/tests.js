@@ -48,6 +48,21 @@ var keepEven = function(n) {
     return (n % 2 == 0) ? true : null;
 };
 
+var keepIdxFn = function(i, x) {
+    switch(i) {
+        case 0:
+        case 2:
+        case 3:
+        case 6:
+        case 7:
+        return true;
+        break;
+        default:
+        return null;
+        break;
+    }
+};
+
 var lessThanFive = function(n) {
     return n < 5;
 };
@@ -86,6 +101,12 @@ exports.testRemove = function(test) {
 exports.testKeep = function(test) {
     var res = transduce(keep(keepEven), arrayPush, [], smallArray);
     test.deepEqual(res, smallArray.filter(isEven));
+    test.done();
+};
+
+exports.testKeepIndexed = function(test) {
+    var res = transduce(keepIndexed(keepIdxFn), arrayPush, [], smallArray);
+    test.deepEqual(res, [0, 2, 3, 6, 7]);
     test.done();
 };
 
