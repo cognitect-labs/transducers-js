@@ -14,12 +14,18 @@
 
 "use strict";
 
+var t  = null;
+var ld = null;
+var ud = null;
+
 if(typeof require != "undefined") {
-    var t  = require("../target/transducers.js");
-    var ld = require("../node_modules/lodash/lodash.js");
-    var ud = require("../node_modules/underscore/underscore.js");
+    t  = require("../target/transducers.js");
+    ld = require("../node_modules/lodash/lodash.js");
+    ud = require("../node_modules/underscore/underscore.js");
 } else {
-    ld = _;
+    if(typeof _ != "undefined") {
+        ld = _;
+    }
     t  = transducers;
 }
 
@@ -120,10 +126,14 @@ time(function() {
     return transduce(comp(map(inc),filter(isEven)), apush, [], largeArray).length;
 }, 10);
 
+if(ld != null) {
+
 log("lodash map/filter large array, 2 ops")
 time(function() {
     return ld.chain(largeArray).map(inc).filter(isEven).value().length;
 }, 10);
+
+}
 
 /*
 log("transduce map/filter large array, 5 ops")

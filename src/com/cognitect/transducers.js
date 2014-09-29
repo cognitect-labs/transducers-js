@@ -527,7 +527,7 @@ transducers.keepIndexed = function(f) {
 };
 
 // randomSample
-// iteration
+    // iteration
 
 transducers.preservingReduced = function(xf) {
     return {
