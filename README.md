@@ -33,7 +33,7 @@ var map    = t.map,
 
 var inc = function(n) { return n + 1; };
 var isEven = function(n) { return n % 2 == 0; };
-var xf = comp(map(inc), fiter(isEven))
+var xf = comp(map(inc), filter(isEven));
 
 console.log(into([], xf, [0,1,2,3,4]));
 ```
