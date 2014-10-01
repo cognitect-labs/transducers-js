@@ -648,6 +648,14 @@ transducers.into = function(empty, xf, coll) {
     }
 };
 
+transducers.toFn = function(xf, builder) {
+    if(typeof builder == "function") {
+        builder = transducers.wrap(builder);
+    }
+    var rxf = xf(builder);
+    return rxf.step.bind(rxf);
+};
+
 // =============================================================================
 // Exporting
 
@@ -673,6 +681,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.partitionBy", transducers.partitionBy);
     goog.exportSymbol("transducers.partitionAll", transducers.partitionAll);
     goog.exportSymbol("transducers.into", transducers.into);
+    goog.exportSymbol("transducers.toFn", transducers.toFn);
 }
 
 if(TRANSDUCERS_NODE_TARGET) {
@@ -697,7 +706,8 @@ if(TRANSDUCERS_NODE_TARGET) {
         dropWhile: transducers.dropWhile,
         partitionBy: transducers.partitionBy,
         partitionAll: transducers.partitionAll,
-        into: transducers.into
+        into: transducers.into,
+        toFn: transducers.toFn
     };
 }
 

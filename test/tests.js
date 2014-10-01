@@ -32,7 +32,8 @@ var t            = require("../target/transducers.js"),
     dropWhile    = t.dropWhile,
     into         = t.into,
     partitionBy  = t.partitionBy,
-    partitionAll = t.partitionAll;
+    partitionAll = t.partitionAll,
+    toFn         = t.toFn;
 
 var smallArray = [0,1,2,3,4,5,6,7,8,9];
 
@@ -173,5 +174,12 @@ exports.testComp = function(test) {
     var xf  = comp(filter(isEven),map(inc),map(square)),
         res = transduce(xf, arrayPush, [], smallArray);
     test.deepEqual(res, [1,9,25,49,81]);
+    test.done();
+};
+
+exports.testToFn = function(test) {
+    var f   = toFn(comp(filter(isEven),map(inc)), arrayPush),
+        res = smallArray.reduce(f, []);
+    test.deepEqual(res, [1,3,5,7,9]);
     test.done();
 };
