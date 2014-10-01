@@ -44,6 +44,10 @@ var isEven = function(n) {
     return (n % 2) == 0;
 };
 
+var square = function(n) {
+    return n*n;
+};
+
 var keepEven = function(n) {
     return (n % 2 == 0) ? true : null;
 };
@@ -162,5 +166,12 @@ exports.testPartitionBy = function(test) {
 exports.testPartitionAll = function(test) {
     var res = transduce(partitionAll(2), arrayPush, [], smallArray);
     test.deepEqual(res, [[0,1],[2,3],[4,5],[6,7],[8,9]]);
+    test.done();
+};
+
+exports.testComp = function(test) {
+    var xf  = comp(filter(isEven),map(inc),map(square)),
+        res = transduce(xf, arrayPush, [], smallArray);
+    test.deepEqual(res, [1,9,25,49,81]);
     test.done();
 };
