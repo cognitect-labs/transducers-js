@@ -685,9 +685,11 @@ transducers.toFn = function(xf, builder) {
 // =============================================================================
 // Utilities
 
-transducers.first = transducers.wrap(function(result, input) {
-    return transducers.reduced(input);
-});
+transducers.first = function(xf) {
+    return new transducers.wrap(function(result, input) {
+        return transducers.reduced(input);
+    });
+};
 
 // =============================================================================
 // Exporting

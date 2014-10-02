@@ -180,7 +180,7 @@ exports.testComp = function(test) {
 };
 
 exports.testToFn = function(test) {
-    var f   = toFn(comp(filter(isEven),map(inc)), arrayPush),
+    var f   = toFn(comp(filter(isEven),map(inc)),arrayPush),
         res = smallArray.reduce(f, []);
     test.deepEqual(res, [1,3,5,7,9]);
     test.done();
@@ -188,5 +188,6 @@ exports.testToFn = function(test) {
 
 exports.testFirst = function(test) {
     test.equal(transduce(first, completing, null, [1,2,3]), 1);
+    test.equal(transduce(comp(map(inc),first), completing, null, [1,2,3]), 2);
     test.done();
 };
