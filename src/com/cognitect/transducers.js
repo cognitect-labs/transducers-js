@@ -717,6 +717,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.partitionAll", transducers.partitionAll);
     goog.exportSymbol("transducers.into", transducers.into);
     goog.exportSymbol("transducers.toFn", transducers.toFn);
+    goog.exportSymbol("transducers.wrap", transducers.wrap);
     goog.exportSymbol("transducers.completing", transducers.completing);
     goog.exportSymbol("transducers.first", transducers.first);
 }
@@ -745,6 +746,7 @@ if(TRANSDUCERS_NODE_TARGET) {
         partitionAll: transducers.partitionAll,
         into: transducers.into,
         toFn: transducers.toFn,
+        wrap: transducers.wrap,
         completing: transducers.completing,
         first: transducers.first
     };

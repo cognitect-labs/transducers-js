@@ -35,4 +35,5 @@ module.exports.partitionAll = function() {};
 module.exports.into = function() {};
 module.exports.completing = function() {};
 module.exports.toFn = function() {};
+module.exports.wrap = function() {};
 module.exports.first = function() {};
