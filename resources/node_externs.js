@@ -33,4 +33,6 @@ module.exports.dropWhile = function() {};
 module.exports.partitionBy = function() {};
 module.exports.partitionAll = function() {};
 module.exports.into = function() {};
+module.exports.completing = function() {};
 module.exports.toFn = function() {};
+module.exports.first = function() {};

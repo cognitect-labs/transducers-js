@@ -77,8 +77,8 @@ transducers.complement = function(f) {
 /**
  * @constructor
  */
-transducers.Wrap = function(f) {
-    this.f = f;
+transducers.Wrap = function(stepFn) {
+    this.stepFn = stepFn;
 };
 transducers.Wrap.prototype.init = function() {
     throw new Error("init not implemented");
@@ -87,11 +87,11 @@ transducers.Wrap.prototype.result = function(result) {
     return result;
 };
 transducers.Wrap.prototype.step = function(result, input) {
-    return this.f(result, input);
+    return this.stepFn(result, input);
 };
 
-transducers.wrap = function(f) {
-    return new transducers.Wrap(f);
+transducers.wrap = function(stepFn) {
+    return new transducers.Wrap(stepFn);
 };
 
 // =============================================================================
@@ -648,6 +648,32 @@ transducers.into = function(empty, xf, coll) {
     }
 };
 
+/**
+ * @constructor
+ */
+transducers.Completing = function(cf, xf) {
+    this.cf = cf;
+    this.xf = xf;
+};
+transducers.Completing.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.Completing.prototype.result = function(result) {
+    return this.cf(result);
+};
+transducers.Completing.prototype.step = function(result, step) {
+    return this.xf.step(result, step);
+};
+
+transducers.completing = function(xf, cf) {
+    cf = cf || transducers.identity;
+    if(TRANSDUCERS_DEV && (xf != null) && transducers.isObject(xf)) {
+        throw new Error("completing must be given a transducer as first argument");
+    } else {
+        return new transducers.Completing(cf, xf);
+    }
+};
+
 transducers.toFn = function(xf, builder) {
     if(typeof builder == "function") {
         builder = transducers.wrap(builder);
@@ -655,6 +681,13 @@ transducers.toFn = function(xf, builder) {
     var rxf = xf(builder);
     return rxf.step.bind(rxf);
 };
+
+// =============================================================================
+// Utilities
+
+transducers.first = transducers.wrap(function(result, input) {
+    return transducers.reduced(input);
+});
 
 // =============================================================================
 // Exporting
@@ -682,6 +715,8 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.partitionAll", transducers.partitionAll);
     goog.exportSymbol("transducers.into", transducers.into);
     goog.exportSymbol("transducers.toFn", transducers.toFn);
+    goog.exportSymbol("transducers.completing", transducers.completing);
+    goog.exportSymbol("transducers.first", transducers.first);
 }
 
 if(TRANSDUCERS_NODE_TARGET) {
@@ -707,7 +742,9 @@ if(TRANSDUCERS_NODE_TARGET) {
         partitionBy: transducers.partitionBy,
         partitionAll: transducers.partitionAll,
         into: transducers.into,
-        toFn: transducers.toFn
+        toFn: transducers.toFn,
+        completing: transducers.completing,
+        first: transducers.first
     };
 }
 
