@@ -70,6 +70,14 @@ To build for the browser
 bin/build_release_browser
 ```
 
+## Running the tests
+
+Make sure you've first fetched the dependencies, then:
+
+```
+bin/test
+```
+
 ## Copyright and License
 
 Copyright © 2014 Cognitect
