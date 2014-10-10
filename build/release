@@ -1,0 +1,85 @@
+#!/bin/bash
+
+set -e
+
+echo "Cleaning..."
+rm -rf ./target
+
+echo "Calculating version..."
+prefix=`cat VERSION_PREFIX`
+suffix=`build/revision`
+version=$prefix.$suffix
+echo $version
+
+target_name=transducers-js-${version}
+
+echo "Tagging..."
+git tag -a v${version} -m "Release ${version}"
+git push origin v${version}
+
+echo "Building browser .js to cdn"
+bin/build_release_browser
+bin/build_release_browser_amd
+bin/build_dev_browser
+bin/build_dev_browser_amd
+
+echo "Pushing browser .js to cdn in s3"
+aws s3 --profile transit-upload sync ./target s3://cdn.cognitect.com/transducers --exclude "*" --include "transducers-${version}*.js" --content-type text/plain
+
+echo "Updating README.md versions"
+sed -i '' "s/[[:digit:]]\{1,2\}\.[[:digit:]]\{1,2\}\.[[:digit:]]\{2,4\}/${version}/g" README.md
+git commit -v -m "Update README.md with ${version}" README.md
+git push 
+
+# echo "Building new api docs"
+# bin/docs
+
+echo -e "Updating bower version\n"
+rm -rf bower-transducers-js
+git clone --quiet git@github.com:cognitect/bower-transducers-js.git bower-transducers-js > /dev/null
+cd bower-transducers-js
+cp ../target/transducers-${version}.js ./transducers.js
+cp ../target/transducers-${version}-min.js ./transducers-min.js
+cp ../target/transducers-${version}-amd.js ./transducers-amd.js
+cp ../target/transducers-${version}-amd-min.js ./transducers-amd-min.js
+git add -f transducers.js
+git add -f transducers-min.js
+git add -f transducers-amd.js
+git add -f transducers-amd-min.js
+sed -e "s/\"version\": \"[[:digit:]]\{1,2\}\.[[:digit:]]\{1,2\}\.[[:digit:]]\{2,4\}/\"version\": \"${version}/g" package.json > package.json.tmp
+rm package.json
+mv package.json.tmp package.json
+git add -f package.json
+sed -e "s/\"version\": \"[[:digit:]]\{1,2\}\.[[:digit:]]\{1,2\}\.[[:digit:]]\{2,4\}/\"version\": \"${version}/g" bower.json > bower.json.tmp
+rm bower.json
+mv bower.json.tmp bower.json
+git add -f bower.json
+git commit -m "${version}"
+git push -fq > /dev/null
+git tag ${version}
+git push --tags > /dev/null
+cd ..
+rm -rf bower-transducers-js
+
+echo "Updating npm version\n"
+bin/build_dev_node
+rm -rf npm-transducers-js
+git clone --quiet git@github.com:cognitect/npm-transducers-js.git npm-transducers-js > /dev/null
+cd npm-transducers-js
+cp ../target/transducers.js ./transducers.js
+git add -f transducers.js
+sed -e "s/\"version\": \"[[:digit:]]\{1,2\}\.[[:digit:]]\{1,2\}\.[[:digit:]]\{2,4\}/\"version\": \"${version}/g" package.json > package.json.tmp
+rm package.json
+mv package.json.tmp package.json
+git add -f package.json
+git commit -m "${version}"
+git push -fq > /dev/null
+git tag ${version}
+git push --tags > /dev/null
+echo "Releasing npm package\n"
+# Need help on this command!
+npm publish
+cd ..
+rm -rf npm-transducers-js
+
+echo "Release done!"
