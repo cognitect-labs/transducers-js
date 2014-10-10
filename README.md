@@ -80,6 +80,25 @@ let xf = comp(map(inc), filter(isEven));
 console.log(into([], xf, [0,1,2,3,4]));
 ```
 
+## Integration
+
+transducers-js can also easily be used in combination with *existing*
+reduce implementations, whether native or the shims provided by
+[Underscore](http://underscorejs.org) and
+[Lodash](http://lodash.com). Doing so with native and Underscore can
+deliver significant performance benefits. transducers may be easily
+converted from their object representation into the necessary
+two-arity function via `toFn`.
+
+```js
+var arr   = [0,1,2,3,4,5,6,7,8,9,10],
+    apush = function(arr, x) { arr.push(x); return arr; },
+    xf    = comp(map(inc), filter(isEven));
+
+arr.reduce(toFn(xf, apush), []); // native
+_(arr).reduce(toFn(xf, apush), []); // underscore or lodash
+```
+
 ## Building
 
 Fetch the dependecies:
