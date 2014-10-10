@@ -736,6 +736,8 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.wrap", transducers.wrap);
     goog.exportSymbol("transducers.completing", transducers.completing);
     goog.exportSymbol("transducers.first", transducers.first);
+    goog.exportSymbol("transducers.ensureReduced", transducers.first);
+    goog.exportSymbol("transducers.unreduced", transducers.first);
 }
 
 if(TRANSDUCERS_NODE_TARGET) {
@@ -764,7 +766,9 @@ if(TRANSDUCERS_NODE_TARGET) {
         toFn: transducers.toFn,
         wrap: transducers.wrap,
         completing: transducers.completing,
-        first: transducers.first
+        first: transducers.first,
+        ensureReduced: transducers.ensureReduced,
+        unreduced: transducers.unreduced
     };
 }
 
