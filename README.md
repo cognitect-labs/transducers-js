@@ -78,6 +78,13 @@ Make sure you've first fetched the dependencies, then:
 bin/test
 ```
 
+## Contributing 
+
+This library is open source, developed internally by [Cognitect](http://cognitect.com). Issues can be filed using [GitHub Issues](https://github.com/cognitect-labs/transducers-js/issues).
+
+This project is provided without support or guarantee of continued development.
+Because transducers-js may be incorporated into products or client projects, we prefer to do development internally and do not accept pull requests or patches. 
+
 ## Copyright and License
 
 Copyright © 2014 Cognitect
