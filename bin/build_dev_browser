@@ -21,4 +21,4 @@ java -jar deps/closure-compiler/compiler.jar -O SIMPLE --formatting PRETTY_PRINT
 --js deps/closure-library/closure/goog/asserts/asserts.js \
 --js deps/closure-library/closure/goog/array/array.js \
 --js deps/closure-library/closure/goog/object/object.js \
---js src/com/cognitect/transducers.js > target/transducers.js
+--js src/com/cognitect/transducers.js > target/transducers-$version.js
