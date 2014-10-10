@@ -112,6 +112,22 @@ transducers.isReduced = function(x) {
     return x instanceof transducers.Reduced;
 };
 
+transducers.ensureReduced = function(x) {
+    if(transducers.isReduced(x)) {
+        return x;
+    } else {
+        return transducers.reduced(x);
+    }
+};
+
+transducers.unreduced = function(x) {
+    if(transducers.isReduced(x)) {
+        return x.value;
+    } else {
+        return x;
+    }
+};
+
 transducers.identity = function(x) {
     return x;
 };
@@ -216,7 +232,7 @@ transducers.Take.prototype.step = function(result, input) {
     if(this.n > 0) {
         result = this.xf.step(result, input);
     } else {
-        result = transducers.reduced(result);
+        result = transducers.ensureReduced(result);
     }
     this.n--;
     return result;
@@ -398,7 +414,7 @@ transducers.PartitionBy.prototype.step = function(result, input) {
         this.a.push(input);
         return result;
     } else {
-        var ret = this.xf.step(result, this.a),
+        var ret = transducers.unreduced(this.xf.step(result, this.a)),
             a   = this.a;
         this.a = [];
         if(!transducers.isReduced(ret)) {
@@ -441,7 +457,7 @@ transducers.PartitionAll.prototype.step = function(result, input) {
     if(this.n == this.a.length) {
         var a = this.a;
         this.a = [];
-        return this.xf.step(result, a);
+        return transducers.unreduced(this.xf.step(result, a));
     } else {
         return result;
     }
