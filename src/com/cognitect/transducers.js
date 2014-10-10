@@ -610,10 +610,12 @@ transducers.arrayReduce = function(xf, init, array) {
 transducers.objectReduce = function(xf, init, obj) {
     var acc = init;
     for(var p in obj) {
-        acc = xf.step(acc, [p, obj[p]]);
-        if(transducers.isReduced(acc)) {
-            acc = acc.value;
-            break;
+        if(obj.hasOwnProperty(p)) {
+            acc = xf.step(acc, [p, obj[p]]);
+            if(transducers.isReduced(acc)) {
+                acc = acc.value;
+                break;
+            }
         }
     }
     return xf.result(acc);
