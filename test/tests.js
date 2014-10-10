@@ -191,3 +191,27 @@ exports.testFirst = function(test) {
     test.equal(transduce(comp(map(inc),first), completing, null, [1,2,3]), 2);
     test.done();
 };
+
+var range = function(n) {
+    var i = 0;
+    return {
+        next: function() {
+            if(i < n) {
+                var ret = {done: false, value: i};
+                i++;
+                return ret;
+            } else {
+                return {done: true, value: null}
+            }
+        }
+    };
+};
+
+exports.testIterableReduce = function(test) {
+    var ints = range(10),
+        res  = transduce(map(inc), arrayPush, [], ints);
+
+    test.deepEqual(res, [1,2,3,4,5,6,7,8,9,10]);
+
+    test.done();
+};

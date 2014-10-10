@@ -57,7 +57,7 @@ transducers.isObject = function(x) {
 };
 
 transducers.isIterable = function(x) {
-    return x["@@iterator"] != null;
+    return x["@@iterator"] || x["next"];
 };
 
 transducers.slice = function(arrayLike, start, n) {
@@ -615,6 +615,20 @@ transducers.objectReduce = function(xf, init, obj) {
             acc = acc.value;
             break;
         }
+    }
+    return xf.result(acc);
+};
+
+transducers.iterableReduce = function(xf, init, iter) {
+    var acc  = init,
+        step = iter.next();
+    while(!step.done) {
+        acc = xf.step(acc, step.value);
+        if(transducers.isReduced(acc)) {
+            acc = acc.value;
+            break;
+        }
+        step = iter.next();
     }
     return xf.result(acc);
 };
