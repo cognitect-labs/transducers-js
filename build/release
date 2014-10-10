@@ -36,7 +36,7 @@ git push
 
 echo -e "Updating bower version\n"
 rm -rf bower-transducers-js
-git clone --quiet git@github.com:cognitect/bower-transducers-js.git bower-transducers-js > /dev/null
+git clone --quiet git@github.com:cognitect-labs/bower-transducers-js.git bower-transducers-js > /dev/null
 cd bower-transducers-js
 cp ../target/transducers-${version}.js ./transducers.js
 cp ../target/transducers-${version}-min.js ./transducers-min.js
@@ -64,7 +64,7 @@ rm -rf bower-transducers-js
 echo "Updating npm version\n"
 bin/build_dev_node
 rm -rf npm-transducers-js
-git clone --quiet git@github.com:cognitect/npm-transducers-js.git npm-transducers-js > /dev/null
+git clone --quiet git@github.com:cognitect-labs/npm-transducers-js.git npm-transducers-js > /dev/null
 cd npm-transducers-js
 cp ../target/transducers.js ./transducers.js
 git add -f transducers.js
