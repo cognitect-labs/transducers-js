@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+cd `dirname $0`/..
+
+mkdir -p target
+
+prefix=`cat VERSION_PREFIX`
+suffix=`build/revision`
+version=$prefix.$suffix
+prelude=`bin/prelude`
+preludenl=$prelude.$'\n'
+
+java -jar deps/closure-compiler/compiler.jar -O ADVANCED --generate_exports --output_wrapper "$preludenl;(function(){%output%})();" -D TRANSDUCERS_BROWSER_AMD_TARGET=true -D TRANSDUCERS_DEV=false \
+--externs=resources/amd_externs.js \
+--js deps/closure-library/closure/goog/base.js \
+--js deps/closure-library/closure/goog/debug/error.js \
+--js deps/closure-library/closure/goog/dom/nodetype.js \
+--js deps/closure-library/closure/goog/string/string.js \
+--js deps/closure-library/closure/goog/asserts/asserts.js \
+--js deps/closure-library/closure/goog/array/array.js \
+--js deps/closure-library/closure/goog/object/object.js \
+--js src/com/cognitect/transducers.js 
+--js src/com/cognitect/transducers_amd.js > target/transducers-$version-amd-min.js
