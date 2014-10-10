@@ -620,8 +620,13 @@ transducers.objectReduce = function(xf, init, obj) {
 };
 
 transducers.iterableReduce = function(xf, init, iter) {
+    if(iter["@@iterator"]) {
+        iter = iter["@@iterator"]();
+    }
+
     var acc  = init,
         step = iter.next();
+    
     while(!step.done) {
         acc = xf.step(acc, step.value);
         if(transducers.isReduced(acc)) {
@@ -630,6 +635,7 @@ transducers.iterableReduce = function(xf, init, iter) {
         }
         step = iter.next();
     }
+
     return xf.result(acc);
 };
 
