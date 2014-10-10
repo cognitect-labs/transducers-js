@@ -65,7 +65,7 @@ var inc = function(n) { return n + 1; };
 var isEven = function(n) { return n % 2 == 0; };
 var xf = comp(map(inc), filter(isEven));
 
-console.log(into([], xf, [0,1,2,3,4]));
+console.log(into([], xf, [0,1,2,3,4])); // [2,4]
 ```
 
 With ES6:
@@ -77,7 +77,7 @@ let inc = (n) => n + 1;
 let isEven = (n) => n % 2 == 0;
 let xf = comp(map(inc), filter(isEven));
 
-console.log(into([], xf, [0,1,2,3,4]));
+console.log(into([], xf, [0,1,2,3,4])); // [2,4]
 ```
 
 ## Integration
