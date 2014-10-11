@@ -116,8 +116,7 @@ _(arr).reduce(toFn(xf, apush), []); // underscore or lodash
 
 ### Immutable-js
 
-Unlike existing functional utility libraries like Underscore, or
-lodash, transducers-js can work with custom collection types and still
+transducers-js can work with custom collection types and still
 deliver the same performance benefits, for example with Immutable-js:
 
 ```js
