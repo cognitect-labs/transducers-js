@@ -1,6 +1,12 @@
 # transducers-js
 
-A high performance Transducers implementation for JavaScript.
+A high performance
+[Transducers](http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming)
+implementation for JavaScript.
+
+For more general information about Transducers see the following resources:
+* ["Transducers are coming" announce blog post](http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming)
+* [Rich Hickey's Transducers StrangeLoop presentation](https://www.youtube.com/watch?v=6mTbuzafcII)
 
 ## Releases and Dependency Information
 
