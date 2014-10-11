@@ -19,11 +19,11 @@ For further details about Transducers see the following resources:
 
 ## Releases and Dependency Information
 
-* Latest release: 0.4.93
+* Latest release: 0.4.101
 
 ### JavaScript
 
-You can include either the [release](http://cdn.cognitect.com/transducers/transducers-0.4.93-min.js) (2K gzipped) or [development](http://cdn.cognitect.com/transducers/transducers-0.4.93.js) build of transducers-js on your webpage. We also provide [Require.js](http://requirejs.org) compatible [release](http://cdn.cognitect.com/transducers/transducers-0.4.93-amd-min.js) and [dev](http://cdn.cognitect.com/transducers/transducers-0.4.93-amd.js) builds.
+You can include either the [release](http://cdn.cognitect.com/transducers/transducers-0.4.101-min.js) (2K gzipped) or [development](http://cdn.cognitect.com/transducers/transducers-0.4.101.js) build of transducers-js on your webpage. We also provide [Require.js](http://requirejs.org) compatible [release](http://cdn.cognitect.com/transducers/transducers-0.4.101-amd-min.js) and [dev](http://cdn.cognitect.com/transducers/transducers-0.4.101-amd.js) builds.
 
 ### Node.js
 
@@ -32,7 +32,7 @@ transducers-js is released to [npm](https://www.npmjs.org). Add transducers-js t
 ```javascript
 {...
   "dependencies": {
-    "transducers-js": "0.4.93"
+    "transducers-js": "0.4.101"
   }
  ...}
 ```
@@ -44,7 +44,7 @@ You can also include transducers-js in your `bower.json` dependencies:
 ```javascript
 {...
   "dependencies": {
-    "transducers-js": "0.4.93"
+    "transducers-js": "0.4.101"
   }
  ...}
 ```
