@@ -4,7 +4,16 @@ A high performance
 [Transducers](http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming)
 implementation for JavaScript.
 
-For more general information about Transducers see the following resources:
+Transducers are composable algorithmic transformations. They are
+independent from the context of their input and output sources and
+specify only the essence of the transformation in terms of an
+individual element. Because transducers are decoupled from input or
+output sources, they can be used in many different processes -
+collections, streams, channels, observables, etc. Transducers compose
+directly, without awareness of input or creation of intermediate
+aggregates.
+
+For further details about Transducers see the following resources:
 * ["Transducers are coming" announce blog post](http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming)
 * [Rich Hickey's Transducers StrangeLoop presentation](https://www.youtube.com/watch?v=6mTbuzafcII)
 
