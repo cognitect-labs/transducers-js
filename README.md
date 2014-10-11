@@ -8,7 +8,7 @@ A high performance Transducers implementation for JavaScript.
 
 ### JavaScript
 
-You can include either the [release](http://cdn.cognitect.com/transducers/transducers-0.4.93-min.js)(2K gzipped) or [development](http://cdn.cognitect.com/transducers/transducers-0.4.93.js) build of transducers-js on your webpage. We also provide [Require.js](http://requirejs.org) compatible [release](http://cdn.cognitect.com/transducers/transducers-0.4.93-amd-min.js) and [dev](http://cdn.cognitect.com/transducers/transducers-0.4.93-amd.js) builds.
+You can include either the [release](http://cdn.cognitect.com/transducers/transducers-0.4.93-min.js) (2K gzipped) or [development](http://cdn.cognitect.com/transducers/transducers-0.4.93.js) build of transducers-js on your webpage. We also provide [Require.js](http://requirejs.org) compatible [release](http://cdn.cognitect.com/transducers/transducers-0.4.93-amd-min.js) and [dev](http://cdn.cognitect.com/transducers/transducers-0.4.93-amd.js) builds.
 
 ### Node.js
 
