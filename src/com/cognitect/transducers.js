@@ -676,11 +676,11 @@ transducers.addEntry = function(obj, entry) {
 };
 
 transducers.into = function(empty, xf, coll) {
-    if(transducers.isString(coll)) {
+    if(transducers.isString(empty)) {
         return transducers.transduce(xf, transducers.stringAppend, empty, coll);
-    } else if(transducers.isArray(coll)) {
+    } else if(transducers.isArray(empty)) {
         return transducers.transduce(xf, transducers.arrayPush, empty, coll);
-    } else if(transducers.isObject(coll)) {
+    } else if(transducers.isObject(empty)) {
         return transducers.transduce(xf, transducers.addEntry, empty, coll);
     }
 };
