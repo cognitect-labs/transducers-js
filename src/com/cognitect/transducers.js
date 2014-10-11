@@ -414,8 +414,7 @@ transducers.PartitionBy.prototype.step = function(result, input) {
         this.a.push(input);
         return result;
     } else {
-        var ret = transducers.unreduced(this.xf.step(result, this.a)),
-            a   = this.a;
+        var ret = transducers.unreduced(this.xf.step(result, this.a));
         this.a = [];
         if(!transducers.isReduced(ret)) {
             this.a.push(input);
