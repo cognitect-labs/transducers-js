@@ -800,7 +800,7 @@ transducers.iterableReduce = function(xf, init, iter) {
  * @method transducers.reduce
  * @param {Transducer|Function} xf a transducer or two-arity function
  * @param {Object} init any JavaScript value
- * @param {String|Array|Object|Iterable} any iterable JavaScript value
+ * @param {String|Array|Object|Iterable} coll any iterable JavaScript value
  * @return {Object} a iterable JavaScript value: string, array
  *   iterable, or object.
  */
@@ -827,7 +827,7 @@ transducers.reduce = function(xf, init, coll) {
  * @param {Transducer} xf a transducer
  * @param {Transducer|Function} f a transducer or two-arity function
  * @param {Object} init any JavaScript value
- * @param {String|Array|Object|Iterable} any iterable JavaScript value
+ * @param {String|Array|Object|Iterable} coll any iterable JavaScript value
  * @return {Object} a JavaScript value.
  */
 transducers.transduce = function(xf, f, init, coll) {
