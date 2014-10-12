@@ -394,7 +394,7 @@
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l708"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:708</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l789"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:789</code></a>
         
         </p>
 
@@ -497,7 +497,7 @@
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l183"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:183</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l207"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:207</code></a>
         
         </p>
 
@@ -540,6 +540,19 @@
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var inc = function(n) { return n + 1 };
+var double = function(n) { return n * 2 };
+var incDouble = t.comp(double, inc);
+incDouble(3); // 8</code></pre>
+
+            </div>
+        </div>
     
 </div>
 
@@ -648,6 +661,16 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var isEven = function(n) { return n % 2 == 0; };
+var isOdd = transducers.complement(isEven);</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -703,7 +726,7 @@
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l889"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:889</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l989"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:989</code></a>
         
         </p>
 
@@ -827,7 +850,7 @@ logic at the end of a reduction/transduction.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l433"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:433</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l490"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:490</code></a>
         
         </p>
 
@@ -885,6 +908,17 @@ logic at the end of a reduction/transduction.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.drop(3);
+t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -934,7 +968,7 @@ logic at the end of a reduction/transduction.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l472"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:472</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l533"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:533</code></a>
         
         </p>
 
@@ -993,6 +1027,17 @@ pred is true.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.dropWhile(function(n) { return n &lt; 3; });
+t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -1042,7 +1087,7 @@ pred is true.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l145"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:145</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l157"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:157</code></a>
         
         </p>
 
@@ -1100,6 +1145,18 @@ pred is true.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var x = t.ensureReduced(1);
+var y = t.ensureReduced(x);
+x === y; // true</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -1149,7 +1206,7 @@ pred is true.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l260"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:260</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l295"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:295</code></a>
         
         </p>
 
@@ -1207,6 +1264,18 @@ pred is true.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var isEven = function(n) { return n % 2 == 0; };
+var xf = t.filter(isEven);
+t.into([], xf, [0,1,2,3,4]); // [0,2,4];</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -1256,7 +1325,7 @@ pred is true.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l928"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:928</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l1034"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1034</code></a>
         
         </p>
 
@@ -1363,7 +1432,7 @@ pred is true.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l173"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:173</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l195"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:195</code></a>
         
         </p>
 
@@ -1420,6 +1489,15 @@ pred is true.</p>
         </div>
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>transducers.identity(1); // 1</code></pre>
+
+            </div>
+        </div>
     
 </div>
 
@@ -1482,7 +1560,7 @@ pred is true.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l853"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:853</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l946"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:946</code></a>
         
         </p>
 
@@ -1573,6 +1651,20 @@ pred is true.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var inc = function(n) { return n+1; };
+var isEven = function(n) { return n % 2 == 0; };
+var apush = function(arr,x) { arr.push(x); return arr; };
+var xf = t.comp(t.map(inc),t.filter(isEven));
+t.into([], xf, [1,2,3,4]); // [2,4]</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -1622,7 +1714,7 @@ pred is true.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l134"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:134</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l142"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:142</code></a>
         
         </p>
 
@@ -1681,6 +1773,17 @@ pred is true.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+t.isReduced(1); // false
+t.isReduced(t.reduced(1)); // true</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -1730,7 +1833,7 @@ pred is true.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l620"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:620</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l693"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:693</code></a>
         
         </p>
 
@@ -1742,7 +1845,7 @@ pred is true.</p>
 
     <div class="description">
         <p>A keeping transducer. Keep inputs as long as the provided
-function does not return null.</p>
+function does not return null or undefined.</p>
 
     </div>
 
@@ -1788,6 +1891,17 @@ function does not return null.</p>
         </div>
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.keep(function(x) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
+t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&quot;bar&quot;]</code></pre>
+
+            </div>
+        </div>
     
 </div>
 
@@ -1838,7 +1952,7 @@ function does not return null.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l662"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:662</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l739"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:739</code></a>
         
         </p>
 
@@ -1897,6 +2011,17 @@ index as the second argument.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.keepIndexed(function(x, i) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
+t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&quot;bar&quot;]</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -1946,7 +2071,7 @@ index as the second argument.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l223"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:223</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l253"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:253</code></a>
         
         </p>
 
@@ -2004,6 +2129,18 @@ index as the second argument.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var inc = function(n) { return n+1; };
+var xf = t.map(inc);
+t.into([], xf, [1,2,3]); // [2,3,4]</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -2053,7 +2190,7 @@ index as the second argument.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l729"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:729</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l810"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:810</code></a>
         
         </p>
 
@@ -2111,6 +2248,18 @@ index as the second argument.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var reverse = function(arr) { var arr = Array.prototype.slice.call(arr, 0); arr.reverse(); return arr; }
+var xf = t.mapcat(reverse);
+t.into([], xf, [[3,2,1],[6,5,4]]); // [1,2,3,4,5,6]</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -2160,7 +2309,7 @@ index as the second argument.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l581"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:581</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l650"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:650</code></a>
         
         </p>
 
@@ -2219,6 +2368,17 @@ arrays of size N.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.partitionAll(3);
+t.into([], xf, [0,1,2,3,4,5]); // [[0,1,2],[3,4,5]]</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -2268,7 +2428,7 @@ arrays of size N.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l532"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:532</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l597"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:597</code></a>
         
         </p>
 
@@ -2330,6 +2490,17 @@ inputs.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.partitionBy(function(x) { return typeof x == &quot;string&quot;; });
+t.into([], xf, [0,1,&quot;foo&quot;,&quot;bar&quot;,2,3,&quot;bar&quot;,&quot;baz&quot;]); // [[0,1],[&quot;foo&quot;,&quot;bar&quot;],[2,3],[&quot;bar&quot;,&quot;baz&quot;]];</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -2379,7 +2550,7 @@ inputs.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l682"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:682</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l763"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:763</code></a>
         
         </p>
 
@@ -2499,7 +2670,7 @@ reduced by wrapping one more time. See cat.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l797"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:797</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l883"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:883</code></a>
         
         </p>
 
@@ -2640,7 +2811,7 @@ collection - returns the reduction.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l124"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:124</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l130"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:130</code></a>
         
         </p>
 
@@ -2698,6 +2869,15 @@ collection - returns the reduction.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var reduced = transducers.reduced(1);</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -2747,7 +2927,7 @@ collection - returns the reduction.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l276"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:276</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l316"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:316</code></a>
         
         </p>
 
@@ -2806,6 +2986,18 @@ eliminate values.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var isEven = function(n) { return n % 2 == 0; };
+var xf = t.remove(isEven);
+t.into([], xf, [0,1,2,3,4]); // [1,3];</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -2855,7 +3047,7 @@ eliminate values.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l314"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:314</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l359"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:359</code></a>
         
         </p>
 
@@ -2914,6 +3106,17 @@ returning a reduced result.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.take(3);
+t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -2963,7 +3166,7 @@ returning a reduced result.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l392"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:392</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l445"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:445</code></a>
         
         </p>
 
@@ -3021,6 +3224,17 @@ returning a reduced result.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.takeNth(3);
+t.into([], xf, [0,1,2,3,4,5]); // [2,5];</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -3070,7 +3284,7 @@ returning a reduced result.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l352"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:352</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l401"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:401</code></a>
         
         </p>
 
@@ -3129,6 +3343,17 @@ return true for inputs.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.takeWhile(function(n) { return n &lt; 3; });
+t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -3184,7 +3409,7 @@ return true for inputs.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l906"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:906</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l1006"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1006</code></a>
         
         </p>
 
@@ -3262,6 +3487,19 @@ Underscore, lodash</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var arr = [0,1,2,3,4,5],
+var apush = function(arr, x) { arr.push(x); return arr; },
+var xf = t.comp(t.map(inc),t.filter(isEven));
+arr.reduce(t.toFn(xf, apush), []); // [2,4,6]</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -3329,7 +3567,7 @@ Underscore, lodash</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l822"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:822</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l908"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:908</code></a>
         
         </p>
 
@@ -3437,6 +3675,20 @@ collection - returns the reduction.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var inc = function(n) { return n+1; };
+var isEven = function(n) { return n % 2 == 0; };
+var apush = function(arr,x) { arr.push(x); return arr; };
+var xf = t.comp(t.map(inc),t.filter(isEven));
+t.transduce(xf, apush, [], [1,2,3,4]); // [2,4]</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -3486,7 +3738,7 @@ collection - returns the reduction.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l159"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:159</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l176"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:176</code></a>
         
         </p>
 
@@ -3544,6 +3796,18 @@ collection - returns the reduction.</p>
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var x = t.reduced(1);
+t.unreduced(x); // 1
+t.unreduced(t.unreduced(x)); // 1</code></pre>
+
+            </div>
+        </div>
+    
 </div>
 
                 
@@ -3593,7 +3857,7 @@ collection - returns the reduction.</p>
             
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l102"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:102</code></a>
+        <a href="../files/src_com_cognitect_transducers.js.html#l105"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:105</code></a>
         
         </p>
 
@@ -3652,6 +3916,16 @@ it into a transducer transformer object.</p>
         </div>
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var t = transducers;
+var arrayPush = t.wrap(function(arr, x) { arr.push(x); return arr; });</code></pre>
+
+            </div>
+        </div>
     
 </div>
 
