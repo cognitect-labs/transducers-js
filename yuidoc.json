@@ -1,0 +1,9 @@
+{
+    "name": "transducers-js",
+    "description": "A Transducers implementation for JavaScript",
+    "version": "0.4.101",
+    "url": "http://github.com/cognitect-labs/transducers-js",
+    "options": {
+        "outdir": "docs"
+    }
+}
