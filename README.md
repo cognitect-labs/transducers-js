@@ -95,6 +95,10 @@ let xf = comp(map(inc), filter(isEven));
 console.log(into([], xf, [0,1,2,3,4])); // [2,4]
 ```
 
+## Documentation
+
+Documentation can be found [here](http://cognitect-labs.github.io/transducers-js).
+
 ## Integration
 
 transducers-js can also easily be used in combination with *existing*
