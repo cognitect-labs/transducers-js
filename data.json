@@ -1,0 +1,800 @@
+{
+    "project": {
+        "name": "transducers-js",
+        "description": "A Transducers implementation for JavaScript",
+        "version": "0.4.101",
+        "url": "http://github.com/cognitect-labs/transducers-js"
+    },
+    "files": {
+        "src/com/cognitect/transducers.js": {
+            "name": "src/com/cognitect/transducers.js",
+            "modules": {},
+            "classes": {
+                "transducers": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "transducers": {
+            "name": "transducers",
+            "shortname": "transducers",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/com/cognitect/transducers.js",
+            "line": 36
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 22,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 25,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 28,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 31,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 74,
+            "description": "Take a predicate function and return its complement.",
+            "itemtype": "method",
+            "name": "transducers.complement",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "predicate function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "the complement predicate function",
+                "type": "Function"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 86,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 102,
+            "description": "Take a two-arity reducing function where the first argument is the\naccumluation and the second argument is the next input and convert\nit into a transducer transformer object.",
+            "itemtype": "method",
+            "name": "transducers.wrap",
+            "params": [
+                {
+                    "name": "stepFn",
+                    "description": "a two-arity reducing function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a transducer transformer object",
+                "type": "transducers.Wrap"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 117,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 124,
+            "description": "Return a reduced value. Reduced values short circuit transduce.",
+            "itemtype": "method",
+            "name": "transducers.reduced",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "any JavaScript value",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "a reduced value",
+                "type": "transducers.Reduced"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 134,
+            "description": "Check if a value is reduced.",
+            "itemtype": "method",
+            "name": "transducers.isReduced",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "any JavaScript value",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "true if the value is an instance of transducers.Reduced\n  false otherwise",
+                "type": "Boolean"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 145,
+            "description": "Ensure that a value is reduced. If already reduced will not re-wrap.",
+            "itemtype": "method",
+            "name": "transducers.ensureReduced",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "any JavaScript value",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "a reduced value.",
+                "type": "transducers.Reduced"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 159,
+            "description": "Ensure a value is not reduced. Unwraps if reduced.",
+            "itemtype": "method",
+            "name": "transducers.unreduced",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "any JavaScript value",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "a JavaScript value",
+                "type": "Object"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 173,
+            "description": "Identity function.",
+            "itemtype": "method",
+            "name": "transducers.identiy",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "any JavaScript value",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "a JavaScript value",
+                "type": "Object"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 183,
+            "description": "Function composition. Take N function and return their composition.",
+            "itemtype": "method",
+            "name": "transducers.comp",
+            "params": [
+                {
+                    "name": "varArgs",
+                    "description": "N functions",
+                    "type": "Function"
+                }
+            ],
+            "result": "{Function} a function that represent the composition of the arguments.",
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 206,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 223,
+            "description": "Mapping transducer constructor",
+            "itemtype": "method",
+            "name": "transducers.map",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "the mapping operation",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "returns a mapping transducer",
+                "type": "transducers.Map"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 239,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 260,
+            "description": "Filtering transducer constructor",
+            "itemtype": "method",
+            "name": "transducers.filter",
+            "params": [
+                {
+                    "name": "pred",
+                    "description": "a predicate function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "returns a filtering transducer",
+                "type": "transducers.Filter"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 276,
+            "description": "Similar to filter except the predicate is used to\neliminate values.",
+            "itemtype": "method",
+            "name": "transducers.remove",
+            "params": [
+                {
+                    "name": "pred",
+                    "description": "a predicate function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "returns a removing transducer",
+                "type": "transducers.Filter"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 291,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 314,
+            "description": "A take transducer constructor. Will take n values before\nreturning a reduced result.",
+            "itemtype": "method",
+            "name": "transducers.take",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "the number of inputs to receive.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "a take transducer",
+                "type": "transducers.Take"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 331,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 352,
+            "description": "Like the take transducer except takes as long as the pred\nreturn true for inputs.",
+            "itemtype": "method",
+            "name": "transducers.takeWhile",
+            "params": [
+                {
+                    "name": "pred",
+                    "description": "a predicate function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a takeWhile transducer",
+                "type": "transducers.TakeWhile"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 369,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 392,
+            "description": "A transducer that takes every Nth input",
+            "itemtype": "method",
+            "name": "transducers.takeNth",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "an integer",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "a takeNth transducer",
+                "type": "transducers.TakeNth"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 411,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 433,
+            "description": "A dropping transducer constructor",
+            "itemtype": "method",
+            "name": "transducers.drop",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "an integer, the number of inputs to drop.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "a dropping transducer",
+                "type": "transducers.Drop"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 449,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 472,
+            "description": "A dropping transducer that drop inputs as long as\npred is true.",
+            "itemtype": "method",
+            "name": "transducers.dropWhile",
+            "params": [
+                {
+                    "name": "pred",
+                    "description": "a predicate function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a dropWhile transducer",
+                "type": "transducers.DropWhile"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 491,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 532,
+            "description": "A partitioning transducer. Collects inputs into\narrays as long as predicate remains true for contiguous\ninputs.",
+            "itemtype": "method",
+            "name": "transducers.partitionBy",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "a partition function. When the result\n  for an input changes from the previous result will create\n  a partition.",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a partitionBy transducer",
+                "type": "transducers.PartitionBy"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 552,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 581,
+            "description": "A partitioning transducer. Collects inputs into\narrays of size N.",
+            "itemtype": "method",
+            "name": "transducers.partitionAll",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "an integer",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "a partitionAll transducer",
+                "type": "transducers.PartitionAll"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 598,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 620,
+            "description": "A keeping transducer. Keep inputs as long as the provided\nfunction does not return null.",
+            "itemtype": "method",
+            "name": "transducers.keep",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "a function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a keep transducer",
+                "type": "transducers.Keep"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 638,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 662,
+            "description": "Like keep but the provided function will be passed the\nindex as the second argument.",
+            "itemtype": "method",
+            "name": "transducers.keepIndexed",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "a function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a keepIndexed transducer",
+                "type": "transducers.KeepIndexed"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 682,
+            "description": "Given a transformer returns a transformer which preserves\nreduced by wrapping one more time. See cat.",
+            "itemtype": "method",
+            "name": "transducers.preservingReduced",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "a transformer",
+                    "type": "Transformer"
+                }
+            ],
+            "return": {
+                "description": "a transformer which preserves reduced",
+                "type": "Transformer"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 708,
+            "description": "Given a transformer return a concatenating transformer",
+            "itemtype": "method",
+            "name": "transducers.cat",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "a transformer",
+                    "type": "Transformer"
+                }
+            ],
+            "return": {
+                "description": "a concatenating transformer",
+                "type": "Transformer"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 729,
+            "description": "A mapping concatenating transformer",
+            "itemtype": "method",
+            "name": "transducers.mapcat",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "the mapping function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a mapping concatenating transducer",
+                "type": "Transducer"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 797,
+            "description": "Given a transducer, an intial value and a \ncollection - returns the reduction.",
+            "itemtype": "method",
+            "name": "transducers.reduce",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "a transducer or two-arity function",
+                    "type": "Transducer|Function"
+                },
+                {
+                    "name": "init",
+                    "description": "any JavaScript value",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "a iterable JavaScript value: string, array\n  iterable, or object.",
+                "type": "Object"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 821,
+            "description": "Given a transducer, a builder function, an initial value\nand a iterable collection - returns the reduction.\ncollection - returns the reduction.",
+            "itemtype": "method",
+            "name": "transducers.transduce",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "a transducer",
+                    "type": "Transducer"
+                },
+                {
+                    "name": "f",
+                    "description": "a transducer or two-arity function",
+                    "type": "Transducer|Function"
+                },
+                {
+                    "name": "init",
+                    "description": "any JavaScript value",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "a JavaScript value.",
+                "type": "Object"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 851,
+            "description": "Reduce a value into the given empty value using a transducer.",
+            "itemtype": "method",
+            "name": "transducers.into",
+            "params": [
+                {
+                    "name": "empty",
+                    "description": "a JavaScript collection",
+                    "type": "String|Array|Object"
+                },
+                {
+                    "name": "xf",
+                    "description": "a transducer",
+                    "type": "Transducer"
+                },
+                {
+                    "name": "coll",
+                    "description": "any iterable JavaScript value: array, string,\n  object, or iterable.",
+                    "type": "Iterable"
+                }
+            ],
+            "return": {
+                "description": "a JavaScript value.",
+                "type": "Object"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 870,
+            "is_constructor": 1,
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 887,
+            "description": "A completing transducer constructor. Useful to provide cleanup\nlogic at the end of a reduction/transduction.",
+            "itemtype": "method",
+            "name": "transducers.completing",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "a transducer",
+                    "type": "Transducer"
+                },
+                {
+                    "name": "cf",
+                    "description": "a function to apply at the end of the reduction/transduction",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a transducer",
+                "type": "Transducer"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 904,
+            "description": "Convert a tranducer transformer object into a function so\nthat it can be used with existing reduce implementation i.e. native,\nUnderscore, lodash",
+            "itemtype": "method",
+            "name": "transducers.toFn",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "a transducer",
+                    "type": "Transducer"
+                },
+                {
+                    "name": "builder",
+                    "description": "a function which take the accumulator and the\n  the next input and return a new accumulator value.",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "a two-arity function compatible with existing reduce\n  implementations",
+                "type": "Function"
+            },
+            "class": "transducers"
+        },
+        {
+            "file": "src/com/cognitect/transducers.js",
+            "line": 926,
+            "description": "Return a transducer which simply returns the first input.",
+            "itemtype": "method",
+            "name": "transducers.first",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "a transducer",
+                    "type": "Transducer"
+                }
+            ],
+            "return": {
+                "description": "a transducer",
+                "type": "Transducer"
+            },
+            "class": "transducers"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: result",
+            "line": " src/com/cognitect/transducers.js:183"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:22"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:25"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:28"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:31"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:86"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:117"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:206"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:239"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:291"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:331"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:369"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:411"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:449"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:491"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:552"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:598"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:638"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/com/cognitect/transducers.js:870"
+        }
+    ]
+}
