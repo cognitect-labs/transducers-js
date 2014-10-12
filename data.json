@@ -579,6 +579,11 @@
                     "name": "init",
                     "description": "any JavaScript value",
                     "type": "Object"
+                },
+                {
+                    "name": "coll",
+                    "description": "any iterable JavaScript value",
+                    "type": "String|Array|Object|Iterable"
                 }
             ],
             "return": {
@@ -589,7 +594,7 @@
         },
         {
             "file": "src/com/cognitect/transducers.js",
-            "line": 821,
+            "line": 822,
             "description": "Given a transducer, a builder function, an initial value\nand a iterable collection - returns the reduction.\ncollection - returns the reduction.",
             "itemtype": "method",
             "name": "transducers.transduce",
@@ -608,6 +613,11 @@
                     "name": "init",
                     "description": "any JavaScript value",
                     "type": "Object"
+                },
+                {
+                    "name": "coll",
+                    "description": "any iterable JavaScript value",
+                    "type": "String|Array|Object|Iterable"
                 }
             ],
             "return": {
@@ -618,7 +628,7 @@
         },
         {
             "file": "src/com/cognitect/transducers.js",
-            "line": 851,
+            "line": 853,
             "description": "Reduce a value into the given empty value using a transducer.",
             "itemtype": "method",
             "name": "transducers.into",
@@ -647,13 +657,13 @@
         },
         {
             "file": "src/com/cognitect/transducers.js",
-            "line": 870,
+            "line": 872,
             "is_constructor": 1,
             "class": "transducers"
         },
         {
             "file": "src/com/cognitect/transducers.js",
-            "line": 887,
+            "line": 889,
             "description": "A completing transducer constructor. Useful to provide cleanup\nlogic at the end of a reduction/transduction.",
             "itemtype": "method",
             "name": "transducers.completing",
@@ -677,7 +687,7 @@
         },
         {
             "file": "src/com/cognitect/transducers.js",
-            "line": 904,
+            "line": 906,
             "description": "Convert a tranducer transformer object into a function so\nthat it can be used with existing reduce implementation i.e. native,\nUnderscore, lodash",
             "itemtype": "method",
             "name": "transducers.toFn",
@@ -701,7 +711,7 @@
         },
         {
             "file": "src/com/cognitect/transducers.js",
-            "line": 926,
+            "line": 928,
             "description": "Return a transducer which simply returns the first input.",
             "itemtype": "method",
             "name": "transducers.first",
@@ -794,7 +804,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/com/cognitect/transducers.js:870"
+            "line": " src/com/cognitect/transducers.js:872"
         }
     ]
 }
