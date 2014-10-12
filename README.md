@@ -19,11 +19,11 @@ For further details about Transducers see the following resources:
 
 ## Releases and Dependency Information
 
-* Latest release: 0.4.93
+* Latest release: 0.4.101
 
 ### JavaScript
 
-You can include either the [release](http://cdn.cognitect.com/transducers/transducers-0.4.93-min.js) (2K gzipped) or [development](http://cdn.cognitect.com/transducers/transducers-0.4.93.js) build of transducers-js on your webpage. We also provide [Require.js](http://requirejs.org) compatible [release](http://cdn.cognitect.com/transducers/transducers-0.4.93-amd-min.js) and [dev](http://cdn.cognitect.com/transducers/transducers-0.4.93-amd.js) builds.
+You can include either the [release](http://cdn.cognitect.com/transducers/transducers-0.4.101-min.js) (2K gzipped) or [development](http://cdn.cognitect.com/transducers/transducers-0.4.101.js) build of transducers-js on your webpage. We also provide [Require.js](http://requirejs.org) compatible [release](http://cdn.cognitect.com/transducers/transducers-0.4.101-amd-min.js) and [dev](http://cdn.cognitect.com/transducers/transducers-0.4.101-amd.js) builds.
 
 ### Node.js
 
@@ -32,7 +32,7 @@ transducers-js is released to [npm](https://www.npmjs.org). Add transducers-js t
 ```javascript
 {...
   "dependencies": {
-    "transducers-js": "0.4.93"
+    "transducers-js": "0.4.101"
   }
  ...}
 ```
@@ -44,7 +44,7 @@ You can also include transducers-js in your `bower.json` dependencies:
 ```javascript
 {...
   "dependencies": {
-    "transducers-js": "0.4.93"
+    "transducers-js": "0.4.101"
   }
  ...}
 ```
@@ -112,6 +112,37 @@ var arr   = [0,1,2,3,4,5,6,7,8,9,10],
 
 arr.reduce(toFn(xf, apush), []); // native
 _(arr).reduce(toFn(xf, apush), []); // underscore or lodash
+```
+
+### Immutable-js
+
+transducers-js can work with custom collection types and still
+deliver the same performance benefits, for example with Immutable-js:
+
+```js
+var Immutable  = require("immutable"),
+    t          = require("transducers-js"),
+    comp       = t.comp,
+    map        = t.map,
+    filter     = t.filter,
+    transduce  = t.transduce,
+
+var inc = function(n) { return n + 1; };
+var isEven = function(n) { return n % 2 == 0; };
+var sum = function(a,b) { return a+b; };
+
+var largeVector = Immutable.Vector();
+
+for(var i = 0; i < 1000000; i++) {
+    largeVector = largeVector.push(i);
+}
+
+// built in Immutable-js functionality
+largeVector.map(inc).filter(isEven).reduce(sum);
+
+// faster with transducers
+var xf = comp(map(inc),filter(isEven));
+transduce(xf, sum, 0, largeVector);
 ```
 
 ## Building

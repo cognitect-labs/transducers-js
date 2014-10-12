@@ -33,6 +33,9 @@ var TRANSDUCERS_BROWSER_AMD_TARGET = false;
 
 goog.scope(function() {
     
+/**
+ * @class transducers
+ */
 var transducers = com.cognitect.transducers;
 
 // =============================================================================
@@ -68,6 +71,12 @@ transducers.slice = function(arrayLike, start, n) {
     }
 };
 
+/**
+ * Take a predicate function and return its complement.
+ * @method transducers.complement
+ * @param {function} a predicate function
+ * @return {function} the complement predicate function
+ */
 transducers.complement = function(f) {
     return function(varArgs) {
         return !f.apply(null, transducers.slice(arguments, 0));
@@ -90,6 +99,14 @@ transducers.Wrap.prototype.step = function(result, input) {
     return this.stepFn(result, input);
 };
 
+/**
+ * Take a two-arity reducing function where the first argument is the
+ * accumluation and the second argument is the next input and convert
+ * it into a transducer transformer object.
+ * @method transducers.wrap
+ * @param {function} stepFn a two-arity reducing function
+ * @return {transducers.Wrap} a transducer transformer object
+ */
 transducers.wrap = function(stepFn) {
     return new transducers.Wrap(stepFn);
 };
@@ -104,14 +121,33 @@ transducers.Reduced = function(value) {
     this.value = value;
 };
 
+/**
+ * Return a reduced value. Reduced values short circuit transduce.
+ * @method transducers.reduced
+ * @param {Object} x any JavaScript value
+ * @return {transducers.Reduced} a reduced value
+ */ 
 transducers.reduced = function(x) {
     return new transducers.Reduced(x);
 };
 
+/**
+ * Check if a value is reduced.
+ * @method transducers.isReduced
+ * @param {Object} x any JavaScript value
+ * @return {Boolean} true if the value is an instance of transducers.Reduced
+ *   false otherwise
+ */
 transducers.isReduced = function(x) {
     return x instanceof transducers.Reduced;
 };
 
+/**
+ * Ensure that a value is reduced. If already reduced will not re-wrap.
+ * @method transducers.ensureReduced
+ * @param {Object} x any JavaScript value
+ * @return {transducers.Reduced} a reduced value.
+ */
 transducers.ensureReduced = function(x) {
     if(transducers.isReduced(x)) {
         return x;
@@ -120,6 +156,12 @@ transducers.ensureReduced = function(x) {
     }
 };
 
+/**
+ * Ensure a value is not reduced. Unwraps if reduced.
+ * @method transducers.unreduced
+ * @param {Object} x any JavaScript value
+ * @return {Object} a JavaScript value
+ */
 transducers.unreduced = function(x) {
     if(transducers.isReduced(x)) {
         return x.value;
@@ -128,10 +170,22 @@ transducers.unreduced = function(x) {
     }
 };
 
+/**
+ * Identity function.
+ * @method transducers.identiy
+ * @param {Object} x any JavaScript value
+ * @return {Object} a JavaScript value
+ */
 transducers.identity = function(x) {
     return x;
 };
     
+/**
+ * Function composition. Take N function and return their composition.
+ * @method transducers.comp
+ * @param {Function} varArgs N functions
+ * @result {Function} a function that represent the composition of the arguments.
+ */
 transducers.comp = function(varArgs) {
     var arglen = arguments.length;
     if(arglen == 2) {
@@ -166,6 +220,12 @@ transducers.Map.prototype.step = function(result, input) {
     return this.xf.step(result, this.f(input));
 };
 
+/**
+ * Mapping transducer constructor
+ * @method transducers.map 
+ * @param {Function} f the mapping operation
+ * @return {transducers.Map} returns a mapping transducer
+ */
 transducers.map = function(f) {
     if(TRANSDUCERS_DEV && (f == null)) {
         throw new Error("At least one argument must be supplied to map");
@@ -197,6 +257,12 @@ transducers.Filter.prototype.step = function(result, input) {
     }
 };
 
+/**
+ * Filtering transducer constructor
+ * @method transducers.filter
+ * @param {Function} pred a predicate function
+ * @return {transducers.Filter} returns a filtering transducer
+ */
 transducers.filter = function(pred) {
     if(TRANSDUCERS_DEV && (typeof pred != "function")) {
         throw new Error("filter must be given a function");
@@ -207,11 +273,18 @@ transducers.filter = function(pred) {
     }
 };
 
-transducers.remove = function(f) {
-    if(TRANSDUCERS_DEV && (typeof f != "function")) {
+/**
+ * Similar to filter except the predicate is used to
+ * eliminate values.
+ * @method transducers.remove pred a predicate function
+ * @param {Function}
+ * @return {transducers.Filter} returns a removing transducer
+ */
+transducers.remove = function(pred) {
+    if(TRANSDUCERS_DEV && (typeof pred != "function")) {
         throw new Error("remove must be given a function");
     } else {
-        return transducers.filter(transducers.complement(f));
+        return transducers.filter(transducers.complement(pred));
     }
 };
 
@@ -238,6 +311,13 @@ transducers.Take.prototype.step = function(result, input) {
     return result;
 };
 
+/**
+ * A take transducer constructor. Will take n values before
+ * returning a reduced result.
+ * @method transducers.take
+ * @param {Number} n the number of inputs to receive.
+ * @return {transducers.Take} a take transducer
+ */
 transducers.take = function(n) {
     if(TRANSDUCERS_DEV && (typeof n != "number")) {
         throw new Error("take must be given an integer");
@@ -269,6 +349,13 @@ transducers.TakeWhile.prototype.step = function(result, input) {
     }
 };
 
+/**
+ * Like the take transducer except takes as long as the pred
+ * return true for inputs.
+ * @method transducers.takeWhile
+ * @param {Function} pred a predicate function
+ * @return {transducers.TakeWhile} a takeWhile transducer
+ */
 transducers.takeWhile = function(pred) {
     if(TRANSDUCERS_DEV && (typeof pred != "function")) {
         throw new Error("takeWhile must given a function");
@@ -302,6 +389,12 @@ transducers.TakeNth.prototype.step = function(result, input) {
     }
 };
 
+/**
+ * A transducer that takes every Nth input
+ * @method transducers.takeNth
+ * @param {Number} n an integer
+ * @return {transducers.TakeNth} a takeNth transducer
+ */
 transducers.takeNth = function(n) {
     if(TRANSDUCERS_DEV && (typeof n != "number")) {
         throw new Error("takeNth must be given a number");
@@ -337,6 +430,12 @@ transducers.Drop.prototype.step = function(result, input) {
     }
 };
 
+/**
+ * A dropping transducer constructor
+ * @method transducers.drop
+ * @param {Number} n an integer, the number of inputs to drop.
+ * @return {transducers.Drop} a dropping transducer
+ */
 transducers.drop = function(n) {
     if(TRANSDUCERS_DEV && (typeof n !== "number")) {
         throw new Error("drop must be given an integer");
@@ -370,6 +469,13 @@ transducers.DropWhile.prototype.step = function(result, input) {
     }
 };
 
+/**
+ * A dropping transducer that drop inputs as long as
+ * pred is true.
+ * @method transducers.dropWhile
+ * @param {Function} pred a predicate function
+ * @return {transducers.DropWhile} a dropWhile transducer
+ */
 transducers.dropWhile = function(pred) {
     if(TRANSDUCERS_DEV && (typeof pred != "function")) {
         throw new Error("dropWhile must be given a function");
@@ -423,6 +529,16 @@ transducers.PartitionBy.prototype.step = function(result, input) {
     }
 };
 
+/**
+ * A partitioning transducer. Collects inputs into
+ * arrays as long as predicate remains true for contiguous
+ * inputs.
+ * @method transducers.partitionBy
+ * @param {Function} f a partition function. When the result
+ *   for an input changes from the previous result will create
+ *   a partition.
+ * @return {transducers.PartitionBy} a partitionBy transducer
+ */
 transducers.partitionBy = function(f) {
     if(TRANSDUCERS_DEV && (typeof f != "function")) {
         throw new Error("partitionBy must be given an function");
@@ -462,6 +578,13 @@ transducers.PartitionAll.prototype.step = function(result, input) {
     }
 };
 
+/**
+ * A partitioning transducer. Collects inputs into
+ * arrays of size N.
+ * @method transducers.partitionAll
+ * @param {Number} n an integer
+ * @return {transducers.PartitionAll} a partitionAll transducer
+ */
 transducers.partitionAll = function(n) {
     if(TRANSDUCERS_DEV && (typeof n != "number")) {
         throw new Error("partitionAll must be given a number");
@@ -494,7 +617,13 @@ transducers.Keep.prototype.step = function(result, input) {
     }
 };
 
-// keep
+/**
+ * A keeping transducer. Keep inputs as long as the provided
+ * function does not return null.
+ * @method transducers.keep
+ * @param {Function} f a function
+ * @return {transducers.Keep} a keep transducer
+ */
 transducers.keep = function(f) {
     if(TRANSDUCERS_DEV && (typeof f != "function")) {
         throw new Error("keep must be given a function");
@@ -530,7 +659,13 @@ transducers.KeepIndexed.prototype.step = function(result, input) {
     }
 };
 
-// keep
+/**
+ * Like keep but the provided function will be passed the
+ * index as the second argument.
+ * @method transducers.keepIndexed
+ * @param {Function} f a function
+ * @return {transducers.KeepIndexed} a keepIndexed transducer
+ */
 transducers.keepIndexed = function(f) {
     if(TRANSDUCERS_DEV && (typeof f != "function")) {
         throw new Error("keepIndexed must be given a function");
@@ -542,8 +677,15 @@ transducers.keepIndexed = function(f) {
 };
 
 // randomSample
-    // iteration
+// iteration
 
+/**
+ * Given a transformer returns a transformer which preserves
+ * reduced by wrapping one more time. See cat.
+ * @method transducers.preservingReduced
+ * @param {transformer} xf a transformer
+ * @return {transformer} a transformer which preserves reduced
+ */
 transducers.preservingReduced = function(xf) {
     return {
         init: function() {
@@ -563,6 +705,12 @@ transducers.preservingReduced = function(xf) {
     };
 };
 
+/**
+ * Given a transformer return a concatenating transformer
+ * @method transducers.cat
+ * @param {transformer} xf a transformer
+ * @return {transformer} a concatenating transformer
+ */
 transducers.cat = function(xf) {
     var rxf = transducers.preservingReduced(xf);
     return {
@@ -578,6 +726,12 @@ transducers.cat = function(xf) {
     };
 };
 
+/**
+ * A mapping concatenating transformer
+ * @method transducers.mapcat
+ * @param {Function} f the mapping function
+ * @return {Transducer} a mapping concatenating transducer
+ */
 transducers.mapcat = function(f) {
     return transducers.comp(transducers.map(f), transducers.cat);
 };
@@ -640,6 +794,15 @@ transducers.iterableReduce = function(xf, init, iter) {
     return xf.result(acc);
 };
 
+/**
+ * Given a transducer, an intial value and a 
+ * collection - returns the reduction.
+ * @method transducers.reduce
+ * @param {Transducer|Function} xf a transducer or two-arity function
+ * @param {Object} init any JavaScript value
+ * @return {Object} a iterable JavaScript value: string, array
+ *   iterable, or object.
+ */
 transducers.reduce = function(xf, init, coll) {
     xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
     if(transducers.isString(coll)) {
@@ -655,6 +818,16 @@ transducers.reduce = function(xf, init, coll) {
     }
 };
 
+/**
+ * Given a transducer, a builder function, an initial value
+ * and a iterable collection - returns the reduction.
+ * collection - returns the reduction.
+ * @method transducers.transduce
+ * @param {Transducer} xf a transducer
+ * @param {Transducer|Function} f a transducer or two-arity function
+ * @param {Object} init any JavaScript value
+ * @return {Object} a JavaScript value.
+ */
 transducers.transduce = function(xf, f, init, coll) {
     f = typeof f == "function" ? transducers.wrap(f) : f;
     xf = xf(f);
@@ -675,6 +848,15 @@ transducers.addEntry = function(obj, entry) {
     return obj;
 };
 
+/**
+ * Reduce a value into the given empty value using a transducer.
+ * @method transducers.into
+ * @param {String|Array|Object} empty a JavaScript collection
+ * @param {Transducer} xf a transducer
+ * @param {Iterable} coll any iterable JavaScript value: array, string,
+ *   object, or iterable.
+ * @return {Object} a JavaScript value.
+ */
 transducers.into = function(empty, xf, coll) {
     if(transducers.isString(empty)) {
         return transducers.transduce(xf, transducers.stringAppend, empty, coll);
@@ -702,6 +884,14 @@ transducers.Completing.prototype.step = function(result, step) {
     return this.xf.step(result, step);
 };
 
+/**
+ * A completing transducer constructor. Useful to provide cleanup
+ * logic at the end of a reduction/transduction.
+ * @method transducers.completing
+ * @param {Transducer} xf a transducer
+ * @param {Function} cf a function to apply at the end of the reduction/transduction
+ * @return {Transducer} a transducer
+ */
 transducers.completing = function(xf, cf) {
     cf = cf || transducers.identity;
     if(TRANSDUCERS_DEV && (xf != null) && transducers.isObject(xf)) {
@@ -711,6 +901,17 @@ transducers.completing = function(xf, cf) {
     }
 };
 
+/**
+ * Convert a tranducer transformer object into a function so
+ * that it can be used with existing reduce implementation i.e. native,
+ * Underscore, lodash
+ * @method transducers.toFn
+ * @param {Transducer} xf a transducer
+ * @param {Function} builder a function which take the accumulator and the
+ *   the next input and return a new accumulator value.
+ * @return {Function} a two-arity function compatible with existing reduce
+ *   implementations
+ */
 transducers.toFn = function(xf, builder) {
     if(typeof builder == "function") {
         builder = transducers.wrap(builder);
@@ -722,6 +923,12 @@ transducers.toFn = function(xf, builder) {
 // =============================================================================
 // Utilities
 
+/**
+ * Return a transducer which simply returns the first input.
+ * @method transducers.first
+ * @param {Transducer} xf a transducer
+ * @return {Transducer} a transducer
+ */
 transducers.first = function(xf) {
     return new transducers.wrap(function(result, input) {
         return transducers.reduced(input);
