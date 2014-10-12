@@ -276,8 +276,8 @@ transducers.filter = function(pred) {
 /**
  * Similar to filter except the predicate is used to
  * eliminate values.
- * @method transducers.remove pred a predicate function
- * @param {Function}
+ * @method transducers.remove 
+ * @param {Function} pred a predicate function
  * @return {transducers.Filter} returns a removing transducer
  */
 transducers.remove = function(pred) {
@@ -800,6 +800,7 @@ transducers.iterableReduce = function(xf, init, iter) {
  * @method transducers.reduce
  * @param {Transducer|Function} xf a transducer or two-arity function
  * @param {Object} init any JavaScript value
+ * @param {String|Array|Object|Iterable} any iterable JavaScript value
  * @return {Object} a iterable JavaScript value: string, array
  *   iterable, or object.
  */
@@ -826,6 +827,7 @@ transducers.reduce = function(xf, init, coll) {
  * @param {Transducer} xf a transducer
  * @param {Transducer|Function} f a transducer or two-arity function
  * @param {Object} init any JavaScript value
+ * @param {String|Array|Object|Iterable} any iterable JavaScript value
  * @return {Object} a JavaScript value.
  */
 transducers.transduce = function(xf, f, init, coll) {
