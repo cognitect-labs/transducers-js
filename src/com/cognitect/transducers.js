@@ -297,6 +297,11 @@ transducers.Filter.prototype.step = function(result, input) {
  * @method transducers.filter
  * @param {Function} pred a predicate function
  * @return {transducers.Filter} returns a filtering transducer
+ * @example
+ *     var t = transducers;
+ *     var isEven = function(n) { return n % 2 == 0; };
+ *     var xf = t.filter(isEven);
+ *     t.into([], xf, [0,1,2,3,4]); // [0,2,4];
  */
 transducers.filter = function(pred) {
     if(TRANSDUCERS_DEV && (typeof pred != "function")) {
@@ -314,6 +319,11 @@ transducers.filter = function(pred) {
  * @method transducers.remove 
  * @param {Function} pred a predicate function
  * @return {transducers.Filter} returns a removing transducer
+ * @example
+ *     var t = transducers;
+ *     var isEven = function(n) { return n % 2 == 0; };
+ *     var xf = t.remove(isEven);
+ *     t.into([], xf, [0,1,2,3,4]); // [1,3];
  */
 transducers.remove = function(pred) {
     if(TRANSDUCERS_DEV && (typeof pred != "function")) {
@@ -352,6 +362,10 @@ transducers.Take.prototype.step = function(result, input) {
  * @method transducers.take
  * @param {Number} n the number of inputs to receive.
  * @return {transducers.Take} a take transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.take(3);
+ *     t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];
  */
 transducers.take = function(n) {
     if(TRANSDUCERS_DEV && (typeof n != "number")) {
@@ -390,6 +404,10 @@ transducers.TakeWhile.prototype.step = function(result, input) {
  * @method transducers.takeWhile
  * @param {Function} pred a predicate function
  * @return {transducers.TakeWhile} a takeWhile transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.takeWhile(function(n) { return n < 3; });
+ *     t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];
  */
 transducers.takeWhile = function(pred) {
     if(TRANSDUCERS_DEV && (typeof pred != "function")) {
@@ -429,6 +447,10 @@ transducers.TakeNth.prototype.step = function(result, input) {
  * @method transducers.takeNth
  * @param {Number} n an integer
  * @return {transducers.TakeNth} a takeNth transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.takeNth(3);
+ *     t.into([], xf, [0,1,2,3,4,5]); // [2,5];
  */
 transducers.takeNth = function(n) {
     if(TRANSDUCERS_DEV && (typeof n != "number")) {
@@ -470,6 +492,10 @@ transducers.Drop.prototype.step = function(result, input) {
  * @method transducers.drop
  * @param {Number} n an integer, the number of inputs to drop.
  * @return {transducers.Drop} a dropping transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.drop(3);
+ *     t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];
  */
 transducers.drop = function(n) {
     if(TRANSDUCERS_DEV && (typeof n !== "number")) {
@@ -510,6 +536,10 @@ transducers.DropWhile.prototype.step = function(result, input) {
  * @method transducers.dropWhile
  * @param {Function} pred a predicate function
  * @return {transducers.DropWhile} a dropWhile transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.dropWhile(function(n) { return n < 3; });
+ *     t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];
  */
 transducers.dropWhile = function(pred) {
     if(TRANSDUCERS_DEV && (typeof pred != "function")) {
@@ -573,6 +603,10 @@ transducers.PartitionBy.prototype.step = function(result, input) {
  *   for an input changes from the previous result will create
  *   a partition.
  * @return {transducers.PartitionBy} a partitionBy transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.partitionBy(function(x) { return typeof x == "string"; });
+ *     t.into([], xf, [0,1,"foo","bar",2,3,"bar","baz"]); // [[0,1],["foo","bar"],[2,3],["bar","baz"]];
  */
 transducers.partitionBy = function(f) {
     if(TRANSDUCERS_DEV && (typeof f != "function")) {
@@ -619,6 +653,10 @@ transducers.PartitionAll.prototype.step = function(result, input) {
  * @method transducers.partitionAll
  * @param {Number} n an integer
  * @return {transducers.PartitionAll} a partitionAll transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.partitionAll(3);
+ *     t.into([], xf, [0,1,2,3,4,5]); // [[0,1,2],[3,4,5]]
  */
 transducers.partitionAll = function(n) {
     if(TRANSDUCERS_DEV && (typeof n != "number")) {
@@ -654,10 +692,14 @@ transducers.Keep.prototype.step = function(result, input) {
 
 /**
  * A keeping transducer. Keep inputs as long as the provided
- * function does not return null.
+ * function does not return null or undefined.
  * @method transducers.keep
  * @param {Function} f a function
  * @return {transducers.Keep} a keep transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.keep(function(x) { if(typeof x == "string") return "cool"; });
+ *     t.into([], xf, [0,1,"foo",3,4,"bar"]); // ["foo","bar"]
  */
 transducers.keep = function(f) {
     if(TRANSDUCERS_DEV && (typeof f != "function")) {
@@ -700,6 +742,10 @@ transducers.KeepIndexed.prototype.step = function(result, input) {
  * @method transducers.keepIndexed
  * @param {Function} f a function
  * @return {transducers.KeepIndexed} a keepIndexed transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.keepIndexed(function(x, i) { if(typeof x == "string") return "cool"; });
+ *     t.into([], xf, [0,1,"foo",3,4,"bar"]); // ["foo","bar"]
  */
 transducers.keepIndexed = function(f) {
     if(TRANSDUCERS_DEV && (typeof f != "function")) {
@@ -766,6 +812,11 @@ transducers.cat = function(xf) {
  * @method transducers.mapcat
  * @param {Function} f the mapping function
  * @return {Transducer} a mapping concatenating transducer
+ * @example
+ *     var t = transducers;
+ *     var reverse = function(arr) { var arr = Array.prototype.slice.call(arr, 0); arr.reverse(); return arr; }
+ *     var xf = t.mapcat(reverse);
+ *     t.into([], xf, [[3,2,1],[6,5,4]]); // [1,2,3,4,5,6]
  */
 transducers.mapcat = function(f) {
     return transducers.comp(transducers.map(f), transducers.cat);
@@ -864,6 +915,13 @@ transducers.reduce = function(xf, init, coll) {
  * @param {Object} init any JavaScript value
  * @param {String|Array|Object|Iterable} coll any iterable JavaScript value
  * @return {Object} a JavaScript value.
+ * @example
+ *     var t = transducers;
+ *     var inc = function(n) { return n+1; };
+ *     var isEven = function(n) { return n % 2 == 0; };
+ *     var apush = function(arr,x) { arr.push(x); return arr; };
+ *     var xf = t.comp(t.map(inc),t.filter(isEven));
+ *     t.transduce(xf, apush, [], [1,2,3,4]); // [2,4]
  */
 transducers.transduce = function(xf, f, init, coll) {
     f = typeof f == "function" ? transducers.wrap(f) : f;
@@ -893,6 +951,13 @@ transducers.addEntry = function(obj, entry) {
  * @param {Iterable} coll any iterable JavaScript value: array, string,
  *   object, or iterable.
  * @return {Object} a JavaScript value.
+ * @example
+ *     var t = transducers;
+ *     var inc = function(n) { return n+1; };
+ *     var isEven = function(n) { return n % 2 == 0; };
+ *     var apush = function(arr,x) { arr.push(x); return arr; };
+ *     var xf = t.comp(t.map(inc),t.filter(isEven));
+ *     t.into([], xf, [1,2,3,4]); // [2,4]
  */
 transducers.into = function(empty, xf, coll) {
     if(transducers.isString(empty)) {
@@ -948,6 +1013,12 @@ transducers.completing = function(xf, cf) {
  *   the next input and return a new accumulator value.
  * @return {Function} a two-arity function compatible with existing reduce
  *   implementations
+ * @example
+ *     var t = transducers;
+ *     var arr = [0,1,2,3,4,5],
+ *     var apush = function(arr, x) { arr.push(x); return arr; },
+ *     var xf = t.comp(t.map(inc),t.filter(isEven));
+ *     arr.reduce(t.toFn(xf, apush), []); // [2,4,6]
  */
 transducers.toFn = function(xf, builder) {
     if(typeof builder == "function") {
