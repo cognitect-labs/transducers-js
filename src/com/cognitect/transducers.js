@@ -76,6 +76,9 @@ transducers.slice = function(arrayLike, start, n) {
  * @method transducers.complement
  * @param {function} a predicate function
  * @return {function} the complement predicate function
+ * @example
+ *     var isEven = function(n) { return n % 2 == 0; };
+ *     var isOdd = transducers.complement(isEven);
  */
 transducers.complement = function(f) {
     return function(varArgs) {
@@ -106,6 +109,9 @@ transducers.Wrap.prototype.step = function(result, input) {
  * @method transducers.wrap
  * @param {function} stepFn a two-arity reducing function
  * @return {transducers.Wrap} a transducer transformer object
+ * @example
+ *     var t = transducers;
+ *     var arrayPush = t.wrap(function(arr, x) { arr.push(x); return arr; });
  */
 transducers.wrap = function(stepFn) {
     return new transducers.Wrap(stepFn);
@@ -126,6 +132,8 @@ transducers.Reduced = function(value) {
  * @method transducers.reduced
  * @param {Object} x any JavaScript value
  * @return {transducers.Reduced} a reduced value
+ * @example
+ *     var reduced = transducers.reduced(1);
  */ 
 transducers.reduced = function(x) {
     return new transducers.Reduced(x);
@@ -137,6 +145,10 @@ transducers.reduced = function(x) {
  * @param {Object} x any JavaScript value
  * @return {Boolean} true if the value is an instance of transducers.Reduced
  *   false otherwise
+ * @example
+ *     var t = transducers;
+ *     t.isReduced(1); // false
+ *     t.isReduced(t.reduced(1)); // true
  */
 transducers.isReduced = function(x) {
     return x instanceof transducers.Reduced;
@@ -147,6 +159,11 @@ transducers.isReduced = function(x) {
  * @method transducers.ensureReduced
  * @param {Object} x any JavaScript value
  * @return {transducers.Reduced} a reduced value.
+ * @example
+ *     var t = transducers;
+ *     var x = t.ensureReduced(1);
+ *     var y = t.ensureReduced(x);
+ *     x === y; // true
  */
 transducers.ensureReduced = function(x) {
     if(transducers.isReduced(x)) {
@@ -161,6 +178,11 @@ transducers.ensureReduced = function(x) {
  * @method transducers.unreduced
  * @param {Object} x any JavaScript value
  * @return {Object} a JavaScript value
+ * @example
+ *     var t = transducers;
+ *     var x = t.reduced(1);
+ *     t.unreduced(x); // 1
+ *     t.unreduced(t.unreduced(x)); // 1
  */
 transducers.unreduced = function(x) {
     if(transducers.isReduced(x)) {
@@ -175,6 +197,8 @@ transducers.unreduced = function(x) {
  * @method transducers.identiy
  * @param {Object} x any JavaScript value
  * @return {Object} a JavaScript value
+ * @example
+ *     transducers.identity(1); // 1
  */
 transducers.identity = function(x) {
     return x;
@@ -185,6 +209,12 @@ transducers.identity = function(x) {
  * @method transducers.comp
  * @param {Function} varArgs N functions
  * @result {Function} a function that represent the composition of the arguments.
+ * @example
+ *     var t = transducers;
+ *     var inc = function(n) { return n + 1 };
+ *     var double = function(n) { return n * 2 };
+ *     var incDouble = t.comp(double, inc);
+ *     incDouble(3); // 8
  */
 transducers.comp = function(varArgs) {
     var arglen = arguments.length;
@@ -225,6 +255,11 @@ transducers.Map.prototype.step = function(result, input) {
  * @method transducers.map 
  * @param {Function} f the mapping operation
  * @return {transducers.Map} returns a mapping transducer
+ * @example
+ *     var t = transducers;
+ *     var inc = function(n) { return n+1; };
+ *     var xf = t.map(inc);
+ *     t.into([], xf, [1,2,3]); // [2,3,4]
  */
 transducers.map = function(f) {
     if(TRANSDUCERS_DEV && (f == null)) {
