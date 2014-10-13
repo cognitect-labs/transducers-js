@@ -756,7 +756,7 @@
         },
         {
             "file": "src/com/cognitect/transducers.js",
-            "line": 1006,
+            "line": 1007,
             "description": "Convert a tranducer transformer object into a function so\nthat it can be used with existing reduce implementation i.e. native,\nUnderscore, lodash",
             "itemtype": "method",
             "name": "transducers.toFn",
@@ -783,7 +783,7 @@
         },
         {
             "file": "src/com/cognitect/transducers.js",
-            "line": 1034,
+            "line": 1035,
             "description": "Return a transducer which simply returns the first input.",
             "itemtype": "method",
             "name": "transducers.first",

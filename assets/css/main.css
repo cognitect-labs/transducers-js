@@ -25,8 +25,7 @@ html {
 }
 
 body {
-    /*font: 13px/1.4 'Lucida Grande', 'Lucida Sans Unicode', 'DejaVu Sans', 'Bitstream Vera Sans', 'Helvetica', 'Arial', sans-serif;*/
-    font: 13px/1.4 'Helvetica', 'Arial', sans-serif;
+    font: 13px/1.4 'Lucida Grande', 'Lucida Sans Unicode', 'DejaVu Sans', 'Bitstream Vera Sans', 'Helvetica', 'Arial', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -35,10 +34,6 @@ body {
 a {
     color: #356de4;
     text-decoration: none;
-}
-
-.hidden {
-    display: none;
 }
 
 a:hover { text-decoration: underline; }
@@ -188,15 +183,55 @@ th {
     min-width: 1024px;
 }
 
+#main { width: 754px; }
+#sidebar { width: 270px; margin: 0 15px; }
+
 .content { padding: 0 20px 0 25px; }
 
-.sidebar {
-    padding: 0 15px 0 10px;
+/* -- Sidebar --------------------------------------------------------------- */
+.sidebox {
+    background: #F9F9FC;/*E6E9F5*/
+    border: 1px solid #D4D8EB;
+
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Helvetica', 'Arial', sans-serif;
+    margin: 0 0 15px 0;
+    padding-bottom: 1px;
 }
-#bd {
-    padding: 7px 0 130px;
-    position: relative;
-    width: 99%;
+
+.sidebox h2 {
+    background: #E5E6F1;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    color: #5E6BA4;
+    font-weight: bold;
+    font-size: 107.692%;
+    margin: 0;
+    padding: 4px 7px 5px;
+}
+
+.sidebox .bd {
+    font-size: 84.615%;
+    padding: 0 5px 0 8px;
+}
+
+.sidebox li { list-style-type: disc; color:#D4D5E3; }
+
+.sidebox ol, .sidebox ul {
+    margin-left: 0;
+    padding-left: 16px;
+}
+
+.sidebox ol ol, .sidebox ol ul,
+.sidebox ul ol, .sidebox ul ul {
+    margin: 0;
+    padding-left: 16px;
 }
 
 /* -- Table of Contents ----------------------------------------------------- */
@@ -209,8 +244,8 @@ th {
 .toc li li { font-weight: normal; }
 
 /* -- Intro and Example Boxes ----------------------------------------------- */
-/*
 .intro, .example { margin-bottom: 2em; }
+
 .example {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -220,10 +255,10 @@ th {
     box-shadow: 0 0 5px #bfbfbf;
     padding: 1em;
 }
+
 .intro {
     background: none repeat scroll 0 0 #F0F1F8; border: 1px solid #D4D8EB; padding: 0 1em;
 }
-*/
 
 /* -- Other Styles ---------------------------------------------------------- */
 
@@ -273,6 +308,56 @@ th {
     text-align: right;
 }
 
+.yui3-skin-sam #classdocs .yui3-tabview-panel {
+    background-color: transparent;
+}
+
+.yui3-skin-sam #classdocs .yui3-tabview-panel {
+    border: none;
+}
+
+.yui3-skin-sam .yui3-tabview .yui3-tab,
+.yui3-skin-sam .yui3-tabview .yui3-tab-selected,
+.yui3-skin-sam .yui3-tabview .yui3-tab-hover {
+    background: -moz-linear-gradient(center top , #F4F0EC 0%, #D6D2CE 100%) repeat scroll 0 0 transparent;
+    border-bottom: 1px solid #DEDCD9;
+    border-right: 1px solid #CDCBC8;
+    border-left: 1px solid #CDCBC8;
+    border-top: 1px solid #DADADA;
+    color: #333333;
+    text-decoration: none;
+}
+.yui3-skin-sam .yui3-tabview .yui3-tab-label,
+.yui3-skin-sam .yui3-tabview .yui3-tab-selected .yui3-tab-label {
+    border: none;
+    background: none;
+    font-size: 100%;
+    color: #000;
+}
+
+.yui3-skin-sam .yui3-tabview .yui3-tab-selected,
+.yui3-skin-sam .yui3-tabview .yui3-tab-hover {
+    background: none;
+    background-color: #fff;
+    border-bottom-color: #FFFFFF;
+    border-top: 2px solid #8193C9;
+    font-weight: bold;
+    color: #000;
+
+}
+
+.yui3-skin-sam .yui3-tabview-list {
+    border-color: #DFDFDF;
+    border-width: 0 0 1px; 
+}
+
+
+a.external {
+    background-image: url(external-small.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    padding-left: 16px;
+}
 
 #classdocs .item {
     border-bottom: 1px solid #466899;
@@ -330,25 +415,8 @@ ul li p {
     font-size: 110%;
 }
 
-.apidocs .methods .extends .method,
-.apidocs .properties .extends .property,
-.apidocs .attrs .extends .attr,
-.apidocs .events .extends .event {
-    font-weight: bold;
-}
-
-.apidocs .methods .extends .inherited,
-.apidocs .properties .extends .inherited,
-.apidocs .attrs .extends .inherited,
-.apidocs .events .extends .inherited {
-    font-weight: normal;
-}
-
 #hd {
-    background: whiteSmoke;
-    background: -moz-linear-gradient(top,#DCDBD9 0,#F6F5F3 100%);
-    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#DCDBD9),color-stop(100%,#F6F5F3));
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dcdbd9',endColorstr='#F6F5F3',GradientType=0);
+    background: -moz-linear-gradient(center top , #DCDBD9 0%, #F6F5F3 100%) repeat scroll 0 0 transparent;
     border-bottom: 1px solid #DFDFDF;
     padding: 0 15px 1px 20px;
     margin-bottom: 15px;
@@ -357,427 +425,5 @@ ul li p {
 #hd img {
     margin-right: 10px;
     vertical-align: middle;
-}
-
-
-/* -- API Docs CSS ---------------------------------------------------------- */
-
-/*
-This file is organized so that more generic styles are nearer the top, and more
-specific styles are nearer the bottom of the file. This allows us to take full
-advantage of the cascade to avoid redundant style rules. Please respect this
-convention when making changes.
-*/
-
-/* -- Generic TabView styles ------------------------------------------------ */
-
-/*
-These styles apply to all API doc tabviews. To change styles only for a
-specific tabview, see the other sections below.
-*/
-
-.yui3-js-enabled .apidocs .tabview {
-    visibility: hidden; /* Hide until the TabView finishes rendering. */
-    _visibility: visible;
-}
-
-.apidocs .tabview.yui3-tabview-content { visibility: visible; }
-.apidocs .tabview .yui3-tabview-panel { background: #fff; }
-
-/* -- Generic Content Styles ------------------------------------------------ */
-
-/* Headings */
-h2, h3, h4, h5, h6 {
-    border: none;
-    color: #30418C;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.link-docs {
-    float: right;
-    font-size: 15px;
-    margin: 4px 4px 6px;
-    padding: 6px 30px 5px;
-}
-
-.apidocs { zoom: 1; }
-
-/* Generic box styles. */
-.apidocs .box {
-    border: 1px solid;
-    border-radius: 3px;
-    margin: 1em 0;
-    padding: 0 1em;
-}
-
-/* A flag is a compact, capsule-like indicator of some kind. It's used to
-   indicate private and protected items, item return types, etc. in an
-   attractive and unobtrusive way. */
-.apidocs .flag {
-    background: #bababa;
-    border-radius: 3px;
-    color: #fff;
-    font-size: 11px;
-    margin: 0 0.5em;
-    padding: 2px 4px 1px;
-}
-
-/* Class/module metadata such as "Uses", "Extends", "Defined in", etc. */
-.apidocs .meta {
-    background: #f9f9f9;
-    border-color: #efefef;
-    color: #555;
-    font-size: 11px;
-    padding: 3px 6px;
-}
-
-.apidocs .meta p { margin: 0; }
-
-/* Deprecation warning. */
-.apidocs .box.deprecated,
-.apidocs .flag.deprecated {
-    background: #fdac9f;
-    border: 1px solid #fd7775;
-}
-
-.apidocs .box.deprecated p { margin: 0.5em 0; }
-.apidocs .flag.deprecated { color: #333; }
-
-/* Module/Class intro description. */
-.apidocs .intro {
-    background: #f0f1f8;
-    border-color: #d4d8eb;
-}
-
-/* Loading spinners. */
-#bd.loading .apidocs,
-#api-list.loading .yui3-tabview-panel {
-    background: #fff url(../img/spinner.gif) no-repeat center 70px;
-    min-height: 150px;
-}
-
-#bd.loading .apidocs .content,
-#api-list.loading .yui3-tabview-panel .apis {
-    display: none;
-}
-
-.apidocs .no-visible-items { color: #666; }
-
-/* Generic inline list. */
-.apidocs ul.inline {
-    display: inline;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.apidocs ul.inline li { display: inline; }
-
-/* Comma-separated list. */
-.apidocs ul.commas li:after { content: ','; }
-.apidocs ul.commas li:last-child:after { content: ''; }
-
-/* Keyboard shortcuts. */
-kbd .cmd { font-family: Monaco, Helvetica; }
-
-/* -- Generic Access Level styles ------------------------------------------- */
-.apidocs .item.protected,
-.apidocs .item.private,
-.apidocs .index-item.protected,
-.apidocs .index-item.deprecated,
-.apidocs .index-item.private {
-    display: none;
-}
-
-.show-deprecated .item.deprecated,
-.show-deprecated .index-item.deprecated,
-.show-protected .item.protected,
-.show-protected .index-item.protected,
-.show-private .item.private,
-.show-private .index-item.private {
-    display: block;
-}
-
-.hide-inherited .item.inherited,
-.hide-inherited .index-item.inherited {
-    display: none;
-}
-
-/* -- Generic Item Index styles --------------------------------------------- */
-.apidocs .index { margin: 1.5em 0 3em; }
-
-.apidocs .index h3 {
-    border-bottom: 1px solid #efefef;
-    color: #333;
-    font-size: 13px;
-    margin: 2em 0 0.6em;
-    padding-bottom: 2px;
-}
-
-.apidocs .index .no-visible-items { margin-top: 2em; }
-
-.apidocs .index-list {
-    border-color: #efefef;
-    font-size: 12px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    -moz-column-count: 4;
-    -moz-column-gap: 10px;
-    -moz-column-width: 170px;
-    -ms-column-count: 4;
-    -ms-column-gap: 10px;
-    -ms-column-width: 170px;
-    -o-column-count: 4;
-    -o-column-gap: 10px;
-    -o-column-width: 170px;
-    -webkit-column-count: 4;
-    -webkit-column-gap: 10px;
-    -webkit-column-width: 170px;
-    column-count: 4;
-    column-gap: 10px;
-    column-width: 170px;
-}
-
-.apidocs .no-columns .index-list {
-    -moz-column-count: 1;
-    -ms-column-count: 1;
-    -o-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1;
-}
-
-.apidocs .index-item { white-space: nowrap; }
-
-.apidocs .index-item .flag {
-    background: none;
-    border: none;
-    color: #afafaf;
-    display: inline;
-    margin: 0 0 0 0.2em;
-    padding: 0;
-}
-
-/* -- Generic API item styles ----------------------------------------------- */
-.apidocs .args {
-    display: inline;
-    margin: 0 0.5em;
-}
-
-.apidocs .flag.chainable { background: #46ca3b; }
-.apidocs .flag.protected { background: #9b86fc; }
-.apidocs .flag.private { background: #fd6b1b; }
-.apidocs .flag.async { background: #356de4; }
-.apidocs .flag.required { background: #e60923; }
-
-.apidocs .item {
-    border-bottom: 1px solid #efefef;
-    margin: 1.5em 0 2em;
-    padding-bottom: 2em;
-}
-
-.apidocs .item h4,
-.apidocs .item h5,
-.apidocs .item h6 {
-    color: #333;
-    font-family: inherit;
-    font-size: 100%;
-}
-
-.apidocs .item .description p,
-.apidocs .item pre.code {
-    margin: 1em 0 0;
-}
-
-.apidocs .item .meta {
-    background: none;
-    border: none;
-    padding: 0;
-}
-
-.apidocs .item .name {
-    display: inline;
-    font-size: 14px;
-}
-
-.apidocs .item .type,
-.apidocs .item .type a,
-.apidocs .returns-inline {
-    color: #555;
-}
-
-.apidocs .item .type,
-.apidocs .returns-inline {
-    font-size: 11px;
-    margin: 0 0 0 0;
-}
-
-.apidocs .item .type a { border-bottom: 1px dotted #afafaf; }
-.apidocs .item .type a:hover { border: none; }
-
-/* -- Item Parameter List --------------------------------------------------- */
-.apidocs .params-list {
-    list-style: square;
-    margin: 1em 0 0 2em;
-    padding: 0;
-}
-
-.apidocs .param { margin-bottom: 1em; }
-
-.apidocs .param .type,
-.apidocs .param .type a {
-    color: #666;
-}
-
-.apidocs .param .type {
-    margin: 0 0 0 0.5em;
-    *margin-left: 0.5em;
-}
-
-.apidocs .param-name { font-weight: bold; }
-
-/* -- Item "Emits" block ---------------------------------------------------- */
-.apidocs .item .emits {
-    background: #f9f9f9;
-    border-color: #eaeaea;
-}
-
-/* -- Item "Returns" block -------------------------------------------------- */
-.apidocs .item .returns .type,
-.apidocs .item .returns .type a {
-    font-size: 100%;
-    margin: 0;
-}
-
-/* -- Class Constructor block ----------------------------------------------- */
-.apidocs .constructor .item {
-    border: none;
-    padding-bottom: 0;
-}
-
-/* -- File Source View ------------------------------------------------------ */
-.apidocs .file pre.code,
-#doc .apidocs .file pre.prettyprint {
-    background: inherit;
-    border: none;
-    overflow: visible;
-    padding: 0;
-}
-
-.apidocs .L0,
-.apidocs .L1,
-.apidocs .L2,
-.apidocs .L3,
-.apidocs .L4,
-.apidocs .L5,
-.apidocs .L6,
-.apidocs .L7,
-.apidocs .L8,
-.apidocs .L9 {
-    background: inherit;
-}
-
-/* -- Submodule List -------------------------------------------------------- */
-.apidocs .module-submodule-description {
-    font-size: 12px;
-    margin: 0.3em 0 1em;
-}
-
-.apidocs .module-submodule-description p:first-child { margin-top: 0; }
-
-/* -- Sidebar TabView ------------------------------------------------------- */
-#api-tabview { margin-top: 0.6em; }
-
-#api-tabview-filter,
-#api-tabview-panel {
-    border: 1px solid #dfdfdf;
-}
-
-#api-tabview-filter {
-    border-bottom: none;
-    border-top: none;
-    padding: 0.6em 10px 0 10px;
-}
-
-#api-tabview-panel { border-top: none; }
-#api-filter { width: 97%; }
-
-/* -- Content TabView ------------------------------------------------------- */
-#classdocs .yui3-tabview-panel { border: none; }
-
-/* -- Source File Contents -------------------------------------------------- */
-.prettyprint li.L0,
-.prettyprint li.L1,
-.prettyprint li.L2,
-.prettyprint li.L3,
-.prettyprint li.L5,
-.prettyprint li.L6,
-.prettyprint li.L7,
-.prettyprint li.L8 {
-    list-style: decimal;
-}
-
-/* -- API options ----------------------------------------------------------- */
-#api-options {
-    font-size: 11px;
-    margin-top: 2.2em;
-    position: absolute;
-    right: 1.5em;
-}
-
-/*#api-options label { margin-right: 0.6em; }*/
-
-/* -- API list -------------------------------------------------------------- */
-#api-list {
-    margin-top: 1.5em;
-    *zoom: 1;
-}
-
-.apis {
-    font-size: 12px;
-    line-height: 1.4;
-    list-style: none;
-    margin: 0;
-    padding: 0.5em 0 0.5em 0.4em;
-}
-
-.apis a {
-    border: 1px solid transparent;
-    display: block;
-    margin: 0 0 0 -4px;
-    padding: 1px 4px 0;
-    text-decoration: none;
-    _border: none;
-    _display: inline;
-}
-
-.apis a:hover,
-.apis a:focus {
-    background: #E8EDFC;
-    background: -moz-linear-gradient(top, #e8edfc 0%, #becef7 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E8EDFC), color-stop(100%,#BECEF7));
-    border-color: #AAC0FA;
-    border-radius: 3px;
-    color: #333;
-    outline: none;
-}
-
-.api-list-item a:hover,
-.api-list-item a:focus {
-    font-weight: bold;
-    text-shadow: 1px 1px 1px #fff;
-}
-
-.apis .message { color: #888; }
-.apis .result a { padding: 3px 5px 2px; }
-
-.apis .result .type {
-    right: 4px;
-    top: 7px;
-}
-
-.api-list-item .yui3-highlight {
-    font-weight: bold;
 }
 

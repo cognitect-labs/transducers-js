@@ -3,3957 +3,1543 @@
 <head>
     <meta charset="utf-8">
     <title>transducers - transducers-js</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.8.0pr2/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+    <script src="http://yui.yahooapis.com/combo?3.8.0pr2/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
 
 <div id="doc">
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
-            
-                <h1><img src="../assets/css/logo.png" title="transducers-js"></h1>
-            
+            <h1><a href="../index.html"><img width="100" src="../assets/css/cognitect.jpg">transducers-js: transducers</a></h1>
         </div>
         <div class="yui3-u-1-4 version">
             <em>API Docs for: 0.4.101</em>
         </div>
     </div>
-    <div id="bd" class="yui3-g">
+    <div class="yui3-g">
 
-        <div class="yui3-u-1-4">
-            <div id="docs-sidebar" class="sidebar apidocs">
-                <div id="api-list">
-    <h2 class="off-left">APIs</h2>
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
+        <div id="sidebar" class="yui3-u">
+            <div id="modules" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Modules</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            
         </ul>
+    </div>
+</div>
 
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
+<div id="classes" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Classes</h2>
+    </div>
+    <div class="bd">
+        <ul>
             
                 <li><a href="../classes/transducers.html">transducers</a></li>
             
-            </ul>
+        </ul>
+    </div>
+</div>
 
-            <ul id="api-modules" class="apis modules">
+
+<div id="methods-on-page" class="sidebox on-page">
+    <div class="hd">
+        <h2 class="no-toc">Methods On Page</h2>
+    </div>
+    <div class="bd">
+        <ul>
             
-            </ul>
-        </div>
+                <li><a href="#methods_transducers.cat">transducers.cat</a></li>
+            
+                <li><a href="#methods_transducers.comp">transducers.comp</a></li>
+            
+                <li><a href="#methods_transducers.complement">transducers.complement</a></li>
+            
+                <li><a href="#methods_transducers.completing">transducers.completing</a></li>
+            
+                <li><a href="#methods_transducers.drop">transducers.drop</a></li>
+            
+                <li><a href="#methods_transducers.dropWhile">transducers.dropWhile</a></li>
+            
+                <li><a href="#methods_transducers.ensureReduced">transducers.ensureReduced</a></li>
+            
+                <li><a href="#methods_transducers.filter">transducers.filter</a></li>
+            
+                <li><a href="#methods_transducers.first">transducers.first</a></li>
+            
+                <li><a href="#methods_transducers.identiy">transducers.identiy</a></li>
+            
+                <li><a href="#methods_transducers.into">transducers.into</a></li>
+            
+                <li><a href="#methods_transducers.isReduced">transducers.isReduced</a></li>
+            
+                <li><a href="#methods_transducers.keep">transducers.keep</a></li>
+            
+                <li><a href="#methods_transducers.keepIndexed">transducers.keepIndexed</a></li>
+            
+                <li><a href="#methods_transducers.map">transducers.map</a></li>
+            
+                <li><a href="#methods_transducers.mapcat">transducers.mapcat</a></li>
+            
+                <li><a href="#methods_transducers.partitionAll">transducers.partitionAll</a></li>
+            
+                <li><a href="#methods_transducers.partitionBy">transducers.partitionBy</a></li>
+            
+                <li><a href="#methods_transducers.preservingReduced">transducers.preservingReduced</a></li>
+            
+                <li><a href="#methods_transducers.reduce">transducers.reduce</a></li>
+            
+                <li><a href="#methods_transducers.reduced">transducers.reduced</a></li>
+            
+                <li><a href="#methods_transducers.remove">transducers.remove</a></li>
+            
+                <li><a href="#methods_transducers.take">transducers.take</a></li>
+            
+                <li><a href="#methods_transducers.takeNth">transducers.takeNth</a></li>
+            
+                <li><a href="#methods_transducers.takeWhile">transducers.takeWhile</a></li>
+            
+                <li><a href="#methods_transducers.toFn">transducers.toFn</a></li>
+            
+                <li><a href="#methods_transducers.transduce">transducers.transduce</a></li>
+            
+                <li><a href="#methods_transducers.unreduced">transducers.unreduced</a></li>
+            
+                <li><a href="#methods_transducers.wrap">transducers.wrap</a></li>
+            
+        </ul>
     </div>
 </div>
 
-            </div>
-        </div>
-        <div class="yui3-u-3-4">
-                <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited" checked>
-            Inherited
-        </label>
 
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
 
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
 
+
+
+
+
+
+<div id="fileTree" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Files</h2>
     </div>
+    <div class="bd">
+        <ul><li>src/<ul><li>com/<ul><li>cognitect/<ul><li><a href="../files/src_com_cognitect_transducers.js.html">transducers.js</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+</div>
 
 
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        <h1>transducers Class</h1>
-<div class="box meta">
-    
 
-    
-
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_com_cognitect_transducers.js.html#l36"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:36</code></a>
         </div>
-    
 
-    
-
-    
-</div>
+        <div id="main" class="yui3-u">
+            <div class="content"><h4>Class transducers</h4>
 
 
 
-<div class="box intro">
-    
-</div>
+<span class="foundat">Class defined in: <a href="../../files/src_com_cognitect_transducers.js.html#l36"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:36</code></a></span>
+<div class="intro"></div>
 
 
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
+<div id="classdocs">
+    <ul>
         
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        <li><a href="#methods">Methods</a></li>
         
         
         
         
     </ul>
-
     <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.cat">transducers.cat</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.comp">transducers.comp</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.complement">transducers.complement</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.completing">transducers.completing</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.drop">transducers.drop</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.dropWhile">transducers.dropWhile</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.ensureReduced">transducers.ensureReduced</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.filter">transducers.filter</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.first">transducers.first</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.identiy">transducers.identiy</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.into">transducers.into</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.isReduced">transducers.isReduced</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.keep">transducers.keep</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.keepIndexed">transducers.keepIndexed</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.map">transducers.map</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.mapcat">transducers.mapcat</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.partitionAll">transducers.partitionAll</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.partitionBy">transducers.partitionBy</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.preservingReduced">transducers.preservingReduced</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.reduce">transducers.reduce</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.reduced">transducers.reduced</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.remove">transducers.remove</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.take">transducers.take</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.takeNth">transducers.takeNth</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.takeWhile">transducers.takeWhile</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.toFn">transducers.toFn</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.transduce">transducers.transduce</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.unreduced">transducers.unreduced</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transducers.wrap">transducers.wrap</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
         
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_transducers.cat" class="method item">
-    <h3 class="name"><code>transducers.cat</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+            <div id="methods">
             
-                <li class="arg">
-                    
-                        <code>xf</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.cat"></a>
+<div class="method item">
+    Transformer <strong class="name"><code>transducers.cat</code></strong>( <code>xf </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Transformer</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l789"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:789</code></a>
+    </span><br>
+    <p>Given a transformer return a concatenating transformer</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transformer&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l789"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:789</code></a>
-        
-        </p>
+        <p>a transformer</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Given a transformer return a concatenating transformer</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">xf</code>
-                        <span class="type">Transformer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a transformer</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Transformer</span>:
-                    
-                    <p>a concatenating transformer</p>
-
-                
-            </div>
-        </div>
     
-
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transformer&gt; <p>a concatenating transformer</p>
+</div>
+    
+    
     
 </div>
 
-                
-                    <div id="method_transducers.comp" class="method item">
-    <h3 class="name"><code>transducers.comp</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>varArgs</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.comp"></a>
+<div class="method item">
+     <strong class="name"><code>transducers.comp</code></strong>( <code>varArgs </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l207"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:207</code></a>
+    </span><br>
+    <p>Function composition. Take N function and return their composition.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>varArgs</code> <strong>&lt;Function&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l207"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:207</code></a>
-        
-        </p>
+        <p>N functions</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Function composition. Take N function and return their composition.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">varArgs</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>N functions</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var inc = function(n) { return n + 1 };
 var double = function(n) { return n * 2 };
 var incDouble = t.comp(double, inc);
 incDouble(3); // 8</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.complement" class="method item">
-    <h3 class="name"><code>transducers.complement</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>a</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.complement"></a>
+<div class="method item">
+    Function <strong class="name"><code>transducers.complement</code></strong>( <code>a </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Function</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l74"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:74</code></a>
+    </span><br>
+    <p>Take a predicate function and return its complement.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>a</code> <strong>&lt;Function&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l74"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:74</code></a>
-        
-        </p>
+        <p>predicate function</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Take a predicate function and return its complement.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">a</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>predicate function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Function</span>:
-                    
-                    <p>the complement predicate function</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var isEven = function(n) { return n % 2 == 0; };
+    <br><div class="returns"><strong>Returns:</strong> &lt;Function&gt; <p>the complement predicate function</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var isEven = function(n) { return n % 2 == 0; };
 var isOdd = transducers.complement(isEven);</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.completing" class="method item">
-    <h3 class="name"><code>transducers.completing</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>xf</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>cf</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.completing"></a>
+<div class="method item">
+    Transducer <strong class="name"><code>transducers.completing</code></strong>( <code>xf, cf </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Transducer</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l989"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:989</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A completing transducer constructor. Useful to provide cleanup
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l989"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:989</code></a>
+    </span><br>
+    <p>A completing transducer constructor. Useful to provide cleanup
 logic at the end of a reduction/transduction.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
+        
+        
+        <p>a transducer</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">xf</code>
-                        <span class="type">Transducer</span>
-                    
+        </li>
+    
+        <li>
+        
+            <code>cf</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a function to apply at the end of the reduction/transduction</p>
 
-                    
-
-                    <div class="param-description">
-                        <p>a transducer</p>
-
-                    </div>
-
-                    
-                </li>
             
-                <li class="param">
-                    
-                        <code class="param-name">cf</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a function to apply at the end of the reduction/transduction</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Transducer</span>:
-                    
-                    <p>a transducer</p>
-
-                
-            </div>
-        </div>
     
-
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transducer&gt; <p>a transducer</p>
+</div>
+    
+    
     
 </div>
 
-                
-                    <div id="method_transducers.drop" class="method item">
-    <h3 class="name"><code>transducers.drop</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>n</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.drop"></a>
+<div class="method item">
+    transducers.Drop <strong class="name"><code>transducers.drop</code></strong>( <code>n </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Drop</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l490"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:490</code></a>
+    </span><br>
+    <p>A dropping transducer constructor</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>n</code> <strong>&lt;Number&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l490"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:490</code></a>
-        
-        </p>
+        <p>an integer, the number of inputs to drop.</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A dropping transducer constructor</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">n</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>an integer, the number of inputs to drop.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Drop</span>:
-                    
-                    <p>a dropping transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Drop&gt; <p>a dropping transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.drop(3);
 t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.dropWhile" class="method item">
-    <h3 class="name"><code>transducers.dropWhile</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>pred</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.dropWhile"></a>
+<div class="method item">
+    transducers.DropWhile <strong class="name"><code>transducers.dropWhile</code></strong>( <code>pred </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.DropWhile</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l533"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:533</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A dropping transducer that drop inputs as long as
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l533"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:533</code></a>
+    </span><br>
+    <p>A dropping transducer that drop inputs as long as
 pred is true.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>pred</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a predicate function</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">pred</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a predicate function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.DropWhile</span>:
-                    
-                    <p>a dropWhile transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.DropWhile&gt; <p>a dropWhile transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.dropWhile(function(n) { return n &lt; 3; });
 t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.ensureReduced" class="method item">
-    <h3 class="name"><code>transducers.ensureReduced</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.ensureReduced"></a>
+<div class="method item">
+    transducers.Reduced <strong class="name"><code>transducers.ensureReduced</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Reduced</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l157"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:157</code></a>
+    </span><br>
+    <p>Ensure that a value is reduced. If already reduced will not re-wrap.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l157"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:157</code></a>
-        
-        </p>
+        <p>any JavaScript value</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Ensure that a value is reduced. If already reduced will not re-wrap.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Reduced</span>:
-                    
-                    <p>a reduced value.</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Reduced&gt; <p>a reduced value.</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var x = t.ensureReduced(1);
 var y = t.ensureReduced(x);
 x === y; // true</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.filter" class="method item">
-    <h3 class="name"><code>transducers.filter</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>pred</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.filter"></a>
+<div class="method item">
+    transducers.Filter <strong class="name"><code>transducers.filter</code></strong>( <code>pred </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Filter</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l295"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:295</code></a>
+    </span><br>
+    <p>Filtering transducer constructor</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>pred</code> <strong>&lt;Function&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l295"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:295</code></a>
-        
-        </p>
+        <p>a predicate function</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Filtering transducer constructor</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">pred</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a predicate function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Filter</span>:
-                    
-                    <p>returns a filtering transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Filter&gt; <p>returns a filtering transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var isEven = function(n) { return n % 2 == 0; };
 var xf = t.filter(isEven);
 t.into([], xf, [0,1,2,3,4]); // [0,2,4];</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.first" class="method item">
-    <h3 class="name"><code>transducers.first</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>xf</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.first"></a>
+<div class="method item">
+    Transducer <strong class="name"><code>transducers.first</code></strong>( <code>xf </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Transducer</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l1035"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1035</code></a>
+    </span><br>
+    <p>Return a transducer which simply returns the first input.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l1034"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1034</code></a>
-        
-        </p>
+        <p>a transducer</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Return a transducer which simply returns the first input.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">xf</code>
-                        <span class="type">Transducer</span>
-                    
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transducer&gt; <p>a transducer</p>
+</div>
+    
+    
+    
+</div>
 
-                    
-
-                    <div class="param-description">
-                        <p>a transducer</p>
-
-                    </div>
-
-                    
-                </li>
             
-            </ul>
-        </div>
+                <a name="methods_transducers.identiy"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.identiy</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
     
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l195"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:195</code></a>
+    </span><br>
+    <p>Identity function.</p>
 
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Transducer</span>:
-                    
-                    <p>a transducer</p>
-
-                
-            </div>
-        </div>
+    <strong>Parameters:</strong>
+    <ul class="params">
     
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a JavaScript value</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>transducers.identity(1); // 1</code></pre>
 
     
 </div>
 
-                
-                    <div id="method_transducers.identiy" class="method item">
-    <h3 class="name"><code>transducers.identiy</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.into"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.into</code></strong>( <code>empty, xf, coll </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l946"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:946</code></a>
+    </span><br>
+    <p>Reduce a value into the given empty value using a transducer.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>empty</code> <strong>&lt;String | Array | Object&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l195"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:195</code></a>
+        <p>a JavaScript collection</p>
+
+            
+        </li>
+    
+        <li>
         
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Identity function.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    <p>a JavaScript value</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>transducers.identity(1); // 1</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_transducers.into" class="method item">
-    <h3 class="name"><code>transducers.into</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>empty</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>xf</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>coll</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l946"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:946</code></a>
-        
-        </p>
+        <p>a transducer</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Reduce a value into the given empty value using a transducer.</p>
-
-    </div>
-
+            
+        </li>
     
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">empty</code>
-                        <span class="type">String | Array | Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a JavaScript collection</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">xf</code>
-                        <span class="type">Transducer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a transducer</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">coll</code>
-                        <span class="type">Iterable</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any iterable JavaScript value: array, string,
+        <li>
+        
+            <code>coll</code> <strong>&lt;Iterable&gt;</strong>
+        
+        
+        <p>any iterable JavaScript value: array, string,
   object, or iterable.</p>
 
-                    </div>
-
-                    
-                </li>
             
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    <p>a JavaScript value.</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a JavaScript value.</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var inc = function(n) { return n+1; };
 var isEven = function(n) { return n % 2 == 0; };
 var apush = function(arr,x) { arr.push(x); return arr; };
 var xf = t.comp(t.map(inc),t.filter(isEven));
 t.into([], xf, [1,2,3,4]); // [2,4]</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.isReduced" class="method item">
-    <h3 class="name"><code>transducers.isReduced</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.isReduced"></a>
+<div class="method item">
+    Boolean <strong class="name"><code>transducers.isReduced</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l142"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:142</code></a>
+    </span><br>
+    <p>Check if a value is reduced.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l142"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:142</code></a>
-        
-        </p>
+        <p>any JavaScript value</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Check if a value is reduced.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>true if the value is an instance of transducers.Reduced
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Boolean&gt; <p>true if the value is an instance of transducers.Reduced
   false otherwise</p>
-
-                
-            </div>
-        </div>
+</div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 t.isReduced(1); // false
 t.isReduced(t.reduced(1)); // true</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.keep" class="method item">
-    <h3 class="name"><code>transducers.keep</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>f</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.keep"></a>
+<div class="method item">
+    transducers.Keep <strong class="name"><code>transducers.keep</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Keep</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l693"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:693</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A keeping transducer. Keep inputs as long as the provided
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l693"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:693</code></a>
+    </span><br>
+    <p>A keeping transducer. Keep inputs as long as the provided
 function does not return null or undefined.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a function</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">f</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Keep</span>:
-                    
-                    <p>a keep transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Keep&gt; <p>a keep transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.keep(function(x) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
 t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&quot;bar&quot;]</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.keepIndexed" class="method item">
-    <h3 class="name"><code>transducers.keepIndexed</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>f</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.keepIndexed"></a>
+<div class="method item">
+    transducers.KeepIndexed <strong class="name"><code>transducers.keepIndexed</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.KeepIndexed</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l739"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:739</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Like keep but the provided function will be passed the
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l739"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:739</code></a>
+    </span><br>
+    <p>Like keep but the provided function will be passed the
 index as the second argument.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a function</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">f</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.KeepIndexed</span>:
-                    
-                    <p>a keepIndexed transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.KeepIndexed&gt; <p>a keepIndexed transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.keepIndexed(function(x, i) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
 t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&quot;bar&quot;]</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.map" class="method item">
-    <h3 class="name"><code>transducers.map</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>f</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.map"></a>
+<div class="method item">
+    transducers.Map <strong class="name"><code>transducers.map</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Map</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l253"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:253</code></a>
+    </span><br>
+    <p>Mapping transducer constructor</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l253"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:253</code></a>
-        
-        </p>
+        <p>the mapping operation</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Mapping transducer constructor</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">f</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the mapping operation</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Map</span>:
-                    
-                    <p>returns a mapping transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Map&gt; <p>returns a mapping transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var inc = function(n) { return n+1; };
 var xf = t.map(inc);
 t.into([], xf, [1,2,3]); // [2,3,4]</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.mapcat" class="method item">
-    <h3 class="name"><code>transducers.mapcat</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>f</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.mapcat"></a>
+<div class="method item">
+    Transducer <strong class="name"><code>transducers.mapcat</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Transducer</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l810"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:810</code></a>
+    </span><br>
+    <p>A mapping concatenating transformer</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l810"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:810</code></a>
-        
-        </p>
+        <p>the mapping function</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A mapping concatenating transformer</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">f</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the mapping function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Transducer</span>:
-                    
-                    <p>a mapping concatenating transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transducer&gt; <p>a mapping concatenating transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var reverse = function(arr) { var arr = Array.prototype.slice.call(arr, 0); arr.reverse(); return arr; }
 var xf = t.mapcat(reverse);
 t.into([], xf, [[3,2,1],[6,5,4]]); // [1,2,3,4,5,6]</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.partitionAll" class="method item">
-    <h3 class="name"><code>transducers.partitionAll</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>n</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.partitionAll"></a>
+<div class="method item">
+    transducers.PartitionAll <strong class="name"><code>transducers.partitionAll</code></strong>( <code>n </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.PartitionAll</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l650"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:650</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A partitioning transducer. Collects inputs into
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l650"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:650</code></a>
+    </span><br>
+    <p>A partitioning transducer. Collects inputs into
 arrays of size N.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>n</code> <strong>&lt;Number&gt;</strong>
+        
+        
+        <p>an integer</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">n</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>an integer</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.PartitionAll</span>:
-                    
-                    <p>a partitionAll transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.PartitionAll&gt; <p>a partitionAll transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.partitionAll(3);
 t.into([], xf, [0,1,2,3,4,5]); // [[0,1,2],[3,4,5]]</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.partitionBy" class="method item">
-    <h3 class="name"><code>transducers.partitionBy</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>f</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.partitionBy"></a>
+<div class="method item">
+    transducers.PartitionBy <strong class="name"><code>transducers.partitionBy</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.PartitionBy</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l597"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:597</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A partitioning transducer. Collects inputs into
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l597"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:597</code></a>
+    </span><br>
+    <p>A partitioning transducer. Collects inputs into
 arrays as long as predicate remains true for contiguous
 inputs.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">f</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a partition function. When the result
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a partition function. When the result
   for an input changes from the previous result will create
   a partition.</p>
 
-                    </div>
-
-                    
-                </li>
             
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.PartitionBy</span>:
-                    
-                    <p>a partitionBy transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.PartitionBy&gt; <p>a partitionBy transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.partitionBy(function(x) { return typeof x == &quot;string&quot;; });
 t.into([], xf, [0,1,&quot;foo&quot;,&quot;bar&quot;,2,3,&quot;bar&quot;,&quot;baz&quot;]); // [[0,1],[&quot;foo&quot;,&quot;bar&quot;],[2,3],[&quot;bar&quot;,&quot;baz&quot;]];</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.preservingReduced" class="method item">
-    <h3 class="name"><code>transducers.preservingReduced</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>xf</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.preservingReduced"></a>
+<div class="method item">
+    Transformer <strong class="name"><code>transducers.preservingReduced</code></strong>( <code>xf </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Transformer</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l763"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:763</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Given a transformer returns a transformer which preserves
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l763"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:763</code></a>
+    </span><br>
+    <p>Given a transformer returns a transformer which preserves
 reduced by wrapping one more time. See cat.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transformer&gt;</strong>
+        
+        
+        <p>a transformer</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">xf</code>
-                        <span class="type">Transformer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a transformer</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Transformer</span>:
-                    
-                    <p>a transformer which preserves reduced</p>
-
-                
-            </div>
-        </div>
     
-
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transformer&gt; <p>a transformer which preserves reduced</p>
+</div>
+    
+    
     
 </div>
 
-                
-                    <div id="method_transducers.reduce" class="method item">
-    <h3 class="name"><code>transducers.reduce</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>xf</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>init</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>coll</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.reduce"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.reduce</code></strong>( <code>xf, init, coll </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l883"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:883</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Given a transducer, an intial value and a 
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l883"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:883</code></a>
+    </span><br>
+    <p>Given a transducer, an intial value and a 
 collection - returns the reduction.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">xf</code>
-                        <span class="type">Transducer | Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a transducer or two-arity function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">init</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">coll</code>
-                        <span class="type">String | Array | Object | Iterable</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any iterable JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+    <strong>Parameters:</strong>
+    <ul class="params">
     
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer | Function&gt;</strong>
+        
+        
+        <p>a transducer or two-arity function</p>
 
+            
+        </li>
     
-        <div class="returns">
-            <h4>Returns:</h4>
+        <li>
+        
+            <code>init</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
 
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    <p>a iterable JavaScript value: string, array
+            
+        </li>
+    
+        <li>
+        
+            <code>coll</code> <strong>&lt;String | Array | Object | Iterable&gt;</strong>
+        
+        
+        <p>any iterable JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a iterable JavaScript value: string, array
   iterable, or object.</p>
-
-                
-            </div>
-        </div>
+</div>
     
+    
+    
+</div>
+
+            
+                <a name="methods_transducers.reduced"></a>
+<div class="method item">
+    transducers.Reduced <strong class="name"><code>transducers.reduced</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l130"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:130</code></a>
+    </span><br>
+    <p>Return a reduced value. Reduced values short circuit transduce.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Reduced&gt; <p>a reduced value</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var reduced = transducers.reduced(1);</code></pre>
 
     
 </div>
 
-                
-                    <div id="method_transducers.reduced" class="method item">
-    <h3 class="name"><code>transducers.reduced</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.remove"></a>
+<div class="method item">
+    transducers.Filter <strong class="name"><code>transducers.remove</code></strong>( <code>pred </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Reduced</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l130"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:130</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Return a reduced value. Reduced values short circuit transduce.</p>
-
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Reduced</span>:
-                    
-                    <p>a reduced value</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var reduced = transducers.reduced(1);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_transducers.remove" class="method item">
-    <h3 class="name"><code>transducers.remove</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>pred</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Filter</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l316"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:316</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Similar to filter except the predicate is used to
+        <a href="../../files/src_com_cognitect_transducers.js.html#l316"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:316</code></a>
+    </span><br>
+    <p>Similar to filter except the predicate is used to
 eliminate values.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>pred</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a predicate function</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">pred</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a predicate function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Filter</span>:
-                    
-                    <p>returns a removing transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Filter&gt; <p>returns a removing transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var isEven = function(n) { return n % 2 == 0; };
 var xf = t.remove(isEven);
 t.into([], xf, [0,1,2,3,4]); // [1,3];</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.take" class="method item">
-    <h3 class="name"><code>transducers.take</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>n</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.take"></a>
+<div class="method item">
+    transducers.Take <strong class="name"><code>transducers.take</code></strong>( <code>n </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Take</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l359"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:359</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A take transducer constructor. Will take n values before
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l359"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:359</code></a>
+    </span><br>
+    <p>A take transducer constructor. Will take n values before
 returning a reduced result.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>n</code> <strong>&lt;Number&gt;</strong>
+        
+        
+        <p>the number of inputs to receive.</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">n</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the number of inputs to receive.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Take</span>:
-                    
-                    <p>a take transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Take&gt; <p>a take transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.take(3);
 t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.takeNth" class="method item">
-    <h3 class="name"><code>transducers.takeNth</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>n</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.takeNth"></a>
+<div class="method item">
+    transducers.TakeNth <strong class="name"><code>transducers.takeNth</code></strong>( <code>n </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.TakeNth</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l445"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:445</code></a>
+    </span><br>
+    <p>A transducer that takes every Nth input</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>n</code> <strong>&lt;Number&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l445"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:445</code></a>
-        
-        </p>
+        <p>an integer</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A transducer that takes every Nth input</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">n</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>an integer</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.TakeNth</span>:
-                    
-                    <p>a takeNth transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.TakeNth&gt; <p>a takeNth transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.takeNth(3);
 t.into([], xf, [0,1,2,3,4,5]); // [2,5];</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.takeWhile" class="method item">
-    <h3 class="name"><code>transducers.takeWhile</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>pred</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.takeWhile"></a>
+<div class="method item">
+    transducers.TakeWhile <strong class="name"><code>transducers.takeWhile</code></strong>( <code>pred </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.TakeWhile</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l401"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:401</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Like the take transducer except takes as long as the pred
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l401"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:401</code></a>
+    </span><br>
+    <p>Like the take transducer except takes as long as the pred
 return true for inputs.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>pred</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a predicate function</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">pred</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a predicate function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.TakeWhile</span>:
-                    
-                    <p>a takeWhile transducer</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.TakeWhile&gt; <p>a takeWhile transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var xf = t.takeWhile(function(n) { return n &lt; 3; });
 t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.toFn" class="method item">
-    <h3 class="name"><code>transducers.toFn</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>xf</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>builder</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.toFn"></a>
+<div class="method item">
+    Function <strong class="name"><code>transducers.toFn</code></strong>( <code>xf, builder </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Function</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l1006"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1006</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Convert a tranducer transformer object into a function so
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l1007"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1007</code></a>
+    </span><br>
+    <p>Convert a tranducer transformer object into a function so
 that it can be used with existing reduce implementation i.e. native,
 Underscore, lodash</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
+        
+        
+        <p>a transducer</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">xf</code>
-                        <span class="type">Transducer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a transducer</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">builder</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a function which take the accumulator and the
+        </li>
+    
+        <li>
+        
+            <code>builder</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a function which take the accumulator and the
   the next input and return a new accumulator value.</p>
 
-                    </div>
-
-                    
-                </li>
             
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Function</span>:
-                    
-                    <p>a two-arity function compatible with existing reduce
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Function&gt; <p>a two-arity function compatible with existing reduce
   implementations</p>
-
-                
-            </div>
-        </div>
+</div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var arr = [0,1,2,3,4,5],
 var apush = function(arr, x) { arr.push(x); return arr; },
 var xf = t.comp(t.map(inc),t.filter(isEven));
 arr.reduce(t.toFn(xf, apush), []); // [2,4,6]</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.transduce" class="method item">
-    <h3 class="name"><code>transducers.transduce</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>xf</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>f</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>init</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>coll</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.transduce"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.transduce</code></strong>( <code>xf, f, init, coll </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l908"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:908</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Given a transducer, a builder function, an initial value
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l908"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:908</code></a>
+    </span><br>
+    <p>Given a transducer, a builder function, an initial value
 and a iterable collection - returns the reduction.
 collection - returns the reduction.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">xf</code>
-                        <span class="type">Transducer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a transducer</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">f</code>
-                        <span class="type">Transducer | Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a transducer or two-arity function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">init</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">coll</code>
-                        <span class="type">String | Array | Object | Iterable</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any iterable JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+    <strong>Parameters:</strong>
+    <ul class="params">
     
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
+        
+        
+        <p>a transducer</p>
 
+            
+        </li>
     
-        <div class="returns">
-            <h4>Returns:</h4>
+        <li>
+        
+            <code>f</code> <strong>&lt;Transducer | Function&gt;</strong>
+        
+        
+        <p>a transducer or two-arity function</p>
 
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    <p>a JavaScript value.</p>
-
-                
-            </div>
-        </div>
+            
+        </li>
     
+        <li>
+        
+            <code>init</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
 
+            
+        </li>
     
-        <div class="example">
-            <h4>Example:</h4>
+        <li>
+        
+            <code>coll</code> <strong>&lt;String | Array | Object | Iterable&gt;</strong>
+        
+        
+        <p>any iterable JavaScript value</p>
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a JavaScript value.</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var inc = function(n) { return n+1; };
 var isEven = function(n) { return n % 2 == 0; };
 var apush = function(arr,x) { arr.push(x); return arr; };
 var xf = t.comp(t.map(inc),t.filter(isEven));
 t.transduce(xf, apush, [], [1,2,3,4]); // [2,4]</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.unreduced" class="method item">
-    <h3 class="name"><code>transducers.unreduced</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.unreduced"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.unreduced</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l176"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:176</code></a>
+    </span><br>
+    <p>Ensure a value is not reduced. Unwraps if reduced.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
         
         
-        <a href="../files/src_com_cognitect_transducers.js.html#l176"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:176</code></a>
-        
-        </p>
+        <p>any JavaScript value</p>
 
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Ensure a value is not reduced. Unwraps if reduced.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>any JavaScript value</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    <p>a JavaScript value</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a JavaScript value</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var x = t.reduced(1);
 t.unreduced(x); // 1
 t.unreduced(t.unreduced(x)); // 1</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
-                    <div id="method_transducers.wrap" class="method item">
-    <h3 class="name"><code>transducers.wrap</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
-                <li class="arg">
-                    
-                        <code>stepFn</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+                <a name="methods_transducers.wrap"></a>
+<div class="method item">
+    transducers.Wrap <strong class="name"><code>transducers.wrap</code></strong>( <code>stepFn </code> ) 
+    <br>
+    <span class="foundat">
     
-
-    
-        <span class="returns-inline">
-            <span class="type">transducers.Wrap</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
         
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_com_cognitect_transducers.js.html#l105"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:105</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Take a two-arity reducing function where the first argument is the
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l105"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:105</code></a>
+    </span><br>
+    <p>Take a two-arity reducing function where the first argument is the
 accumluation and the second argument is the next input and convert
 it into a transducer transformer object.</p>
 
-    </div>
-
     
-        <div class="params">
-            <h4>Parameters:</h4>
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>stepFn</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a two-arity reducing function</p>
 
-            <ul class="params-list">
             
-                <li class="param">
-                    
-                        <code class="param-name">stepFn</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>a two-arity reducing function</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
+        </li>
     
-
+    </ul>
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">transducers.Wrap</span>:
-                    
-                    <p>a transducer transformer object</p>
-
-                
-            </div>
-        </div>
     
-
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var t = transducers;
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Wrap&gt; <p>a transducer transformer object</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
 var arrayPush = t.wrap(function(arr, x) { arr.push(x); return arr; });</code></pre>
 
-            </div>
-        </div>
     
 </div>
 
-                
+            
             </div>
         
-
         
-
         
-
         
     </div>
 </div>
-
-                    </div>
-                </div>
-            </div>
+</div>
         </div>
     </div>
 </div>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
 <script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
+<script src="../assets/js/tabs.js"></script>
 </body>
 </html>
