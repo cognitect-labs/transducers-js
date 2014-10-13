@@ -35,7 +35,8 @@ var t            = require("../target/transducers.js"),
     partitionAll = t.partitionAll,
     completing   = t.completing,
     toFn         = t.toFn,
-    first        = t.first;
+    first        = t.first,
+    wrap         = t.wrap;
 
 var smallArray = [0,1,2,3,4,5,6,7,8,9];
 
@@ -189,6 +190,16 @@ exports.testToFn = function(test) {
 exports.testFirst = function(test) {
     test.equal(transduce(first, completing, null, [1,2,3]), 1);
     test.equal(transduce(comp(map(inc),first), completing, null, [1,2,3]), 2);
+    test.done();
+};
+
+exports.testCompleting = function(test) {
+    var arrWrap       = function(arr) { return {value: arr}; },
+        arrayPushWrap = completing(arrayPush, arrWrap),
+        xf            = comp(map(inc), filter(isEven));
+
+    test.deepEqual(transduce(xf, arrayPushWrap, [], [0,1,2,3]), {value: [2,4]});
+
     test.done();
 };
 
