@@ -10,26 +10,97 @@ transducers.reduced = function() {};
 transducers.isReduced = function() {};
 transducers.comp = function() {};
 transducers.complement = function() {};
+
 transducers.map = function() {};
+/**
+ * @constructor
+ */
+transducers.Map = function() {};
+
 transducers.filter = function() {};
+/**
+ * @constructor
+ */
+transducers.Filter = function() {};
+
 transducers.remove = function() {};
+/**
+ * @constructor
+ */
+transducers.Remove = function() {};
+
 transducers.keep = function() {};
+/**
+ * @constructor
+ */
+transducers.Keep = function() {};
+
 transducers.keepIndexed = function() {};
+/**
+ * @constructor
+ */
+transducers.KeepIndexed = function() {};
+
+transducers.take = function() {};
+/**
+ * @constructor
+ */
+transducers.Take = function() {};
+
+transducers.takeWhile = function() {};
+/**
+ * @constructor
+ */
+transducers.TakeWhile = function() {};
+
+transducers.takeNth = function() {};
+/**
+ * @constructor
+ */
+transducers.TakeNth = function() {};
+
+transducers.drop = function() {};
+/**
+ * @constructor
+ */
+transducers.Drop = function() {};
+
+transducers.dropWhile = function() {};
+/**
+ * @constructor
+ */
+transducers.DropWhile = function() {};
+
+transducers.partitionBy = function() {};
+/**
+ * @constructor
+ */
+transducers.PartitionBy = function() {};
+
+transducers.partitionAll = function() {};
+/**
+ * @constructor
+ */
+transducers.PartitionAll = function() {};
+
+transducers.completing = function() {};
+/**
+ * @constructor
+ */
+transducers.Completing = function() {};
+
+transducers.wrap = function() {};
+/**
+ * @constructor
+ */
+transducers.Wrap = function() {};
+
 transducers.cat = function() {};
 transducers.mapcat = function() {};
 transducers.transduce = function() {};
 transducers.reduce = function() {};
-transducers.take = function() {};
-transducers.takeWhile = function() {};
-transducers.takeNth = function() {};
-transducers.drop = function() {};
-transducers.dropWhile = function() {};
-transducers.partitionBy = function() {};
-transducers.partitionAll = function() {};
 transducers.into = function() {};
-transducers.completing = function() {};
 transducers.toFn = function() {};
-transducers.wrap = function() {};
 transducers.first = function() {};
 transducers.ensureReduced = function() {};
 transducers.unreduced = function() {};

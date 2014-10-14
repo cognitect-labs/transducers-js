@@ -1005,7 +1005,7 @@ transducers.completing = function(xf, cf) {
 };
 
 /**
- * Convert a tranducer transformer object into a function so
+ * Convert a transducer transformer object into a function so
  * that it can be used with existing reduce implementation i.e. native,
  * Underscore, lodash
  * @method transducers.toFn
@@ -1052,26 +1052,56 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.isReduced", transducers.isReduced);
     goog.exportSymbol("transducers.comp", transducers.comp);
     goog.exportSymbol("transducers.complement", transducers.complement);
-    goog.exportSymbol("transducers.map", transducers.map);
-    goog.exportSymbol("transducers.filter", transducers.filter);
-    goog.exportSymbol("transducers.remove", transducers.remove);
-    goog.exportSymbol("transducers.keep", transducers.keep);
-    goog.exportSymbol("transducers.keepIndexed", transducers.keepIndexed);
-    goog.exportSymbol("transducers.cat", transducers.cat);
-    goog.exportSymbol("transducers.mapcat", transducers.mapcat);
     goog.exportSymbol("transducers.transduce", transducers.transduce);
     goog.exportSymbol("transducers.reduce", transducers.reduce);
+
+    goog.exportSymbol("transducers.map", transducers.map);
+    goog.exportSymbol("transducers.Map", transducers.Map);
+
+    goog.exportSymbol("transducers.filter", transducers.filter);
+    goog.exportSymbol("transducers.Filter", transducers.Filter);
+
+    goog.exportSymbol("transducers.remove", transducers.remove);
+    goog.exportSymbol("transducers.Remove", transducers.Remove);
+
+    goog.exportSymbol("transducers.keep", transducers.keep);
+    goog.exportSymbol("transducers.Keep", transducers.Keep);
+
+    goog.exportSymbol("transducers.keepIndexed", transducers.keepIndexed);
+    goog.exportSymbol("transducers.KeepIndexed", transducers.KeepIndexed);
+
     goog.exportSymbol("transducers.take", transducers.take);
+    goog.exportSymbol("transducers.Take", transducers.Take);
+
     goog.exportSymbol("transducers.takeWhile", transducers.takeWhile);
+    goog.exportSymbol("transducers.TakeWhile", transducers.TakeWhile);
+
     goog.exportSymbol("transducers.takeNth", transducers.takeNth);
+    goog.exportSymbol("transducers.TakeNth", transducers.TakeNth);
+
     goog.exportSymbol("transducers.drop", transducers.drop);
+    goog.exportSymbol("transducers.Drop", transducers.Drop);
+
     goog.exportSymbol("transducers.dropWhile", transducers.dropWhile);
+    goog.exportSymbol("transducers.DropWhile", transducers.DropWhile);
+
     goog.exportSymbol("transducers.partitionBy", transducers.partitionBy);
+    goog.exportSymbol("transducers.PartitionBy", transducers.PartitionBy);
+
     goog.exportSymbol("transducers.partitionAll", transducers.partitionAll);
+    goog.exportSymbol("transducers.PartitionAll", transducers.PartitionAll);
+
+    goog.exportSymbol("transducers.completing", transducers.completing);
+    goog.exportSymbol("transducers.Completing", transducers.Completing);
+
+    goog.exportSymbol("transducers.wrap", transducers.wrap);
+    goog.exportSymbol("transducers.Wrap", transducers.Wrap);
+
+    goog.exportSymbol("transducers.cat", transducers.cat);
+    goog.exportSymbol("transducers.mapcat", transducers.mapcat);
+
     goog.exportSymbol("transducers.into", transducers.into);
     goog.exportSymbol("transducers.toFn", transducers.toFn);
-    goog.exportSymbol("transducers.wrap", transducers.wrap);
-    goog.exportSymbol("transducers.completing", transducers.completing);
     goog.exportSymbol("transducers.first", transducers.first);
     goog.exportSymbol("transducers.ensureReduced", transducers.first);
     goog.exportSymbol("transducers.unreduced", transducers.first);
@@ -1083,27 +1113,58 @@ if(TRANSDUCERS_NODE_TARGET) {
         isReduced: transducers.isReduced,
         comp: transducers.comp,
         complement: transducers.complement,
+
         map: transducers.map,
+        Map: transducers.Map,
+
         filter: transducers.filter,
+        Filter: transducers.Filter,
+
         remove: transducers.remove,
+        Remove: transducers.Remove,
+
         keep: transducers.keep,
+        Kemove: transducers.Keep,
+
         keepIndexed: transducers.keepIndexed,
+        KeepIndexed: transducers.KeepIndexed,
+
+        take: transducers.take,
+        Take: transducers.Take,
+
+        takeWhile: transducers.takeWhile,
+        TakeWhile: transducers.TakeWhile,
+
+        takeNth: transducers.takeNth,
+        TakeNth: transducers.TakeNth,
+
+        drop: transducers.drop,
+        Drop: transducers.Drop,
+
+        dropWhile: transducers.dropWhile,
+        DropWhile: transducers.DropWhile,
+
+        partitionBy: transducers.partitionBy,
+        PartitionBy: transducers.PartitionBy,
+
+        partitionAll: transducers.partitionAll,
+        PartitionAll: transducers.PartitionAll,
+
+        completing: transducers.completing,
+        Completing: transducers.Completing,
+        
+        wrap: transducers.wrap,
+        Wrap: transducers.Wrap,
+        
         cat: transducers.cat,
         mapcat: transducers.mapcat,
+
         transduce: transducers.transduce,
         reduce: transducers.reduce,
-        take: transducers.take,
-        takeWhile: transducers.takeWhile,
-        takeNth: transducers.takeNth,
-        drop: transducers.drop,
-        dropWhile: transducers.dropWhile,
-        partitionBy: transducers.partitionBy,
-        partitionAll: transducers.partitionAll,
         into: transducers.into,
         toFn: transducers.toFn,
-        wrap: transducers.wrap,
-        completing: transducers.completing,
         first: transducers.first,
+
         ensureReduced: transducers.ensureReduced,
         unreduced: transducers.unreduced
     };
