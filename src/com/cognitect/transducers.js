@@ -896,17 +896,19 @@ transducers.iterableReduce = function(xf, init, iter) {
  *   iterable, or object.
  */
 transducers.reduce = function(xf, init, coll) {
-    xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
-    if(transducers.isString(coll)) {
-        return transducers.stringReduce(xf, init, coll);
-    } else if(transducers.isArray(coll)) {
-        return transducers.arrayReduce(xf, init, coll);
-    } else if(transducers.isIterable(coll)) {
-        return transducers.iterableReduce(xf, init, coll);
-    } else if(transducers.isObject(coll)) {
-        return transducers.objectReduce(xf, init, coll);
-    } else {
-        throw new Error("Cannot reduce instance of " + coll.constructor.name);
+    if(coll) {
+        xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
+        if(transducers.isString(coll)) {
+            return transducers.stringReduce(xf, init, coll);
+        } else if(transducers.isArray(coll)) {
+            return transducers.arrayReduce(xf, init, coll);
+        } else if(transducers.isIterable(coll)) {
+            return transducers.iterableReduce(xf, init, coll);
+        } else if(transducers.isObject(coll)) {
+            return transducers.objectReduce(xf, init, coll);
+        } else {
+            throw new Error("Cannot reduce instance of " + coll.constructor.name);
+        }
     }
 };
 
