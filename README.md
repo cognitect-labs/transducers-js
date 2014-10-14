@@ -164,7 +164,7 @@ Transducers are simply a function of one arity. The only argument
 is another transducer *transformer* (labeled `xf` in the code base).
 Note the distinction between the *transducer* which is a function of
 one argument and the *transformer* an object whose methods we'll
-describe in the following section:
+describe in the following section.
 
 For example the following simplified definition of `map`:
 
@@ -178,7 +178,7 @@ var map = function(f) {
 
 Since transducers are simply functions of one argument they can be
 composed easily via function composition to create transformer
-pipelines.
+pipelines. Note that transducers return transformers when invoked.
 
 ### Transformer protocol
 
