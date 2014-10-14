@@ -152,6 +152,24 @@ var xf = comp(map(inc),filter(isEven));
 transduce(xf, sum, 0, largeVector);
 ```
 
+### ES6 Collections
+
+ES6 collections return iterators and therefore can be
+reduced/transduced. For example with
+[transit-js](https://github.com/cognitect/transit-js) collections
+which satisfy many of the proposed Map/Set methods:
+
+```js
+var transit = require("transit-js"),
+    t       = require("transducers-js"),
+    m       = transit.map(["foo", "bar", "baz", "woz"]),
+    vUC     = function(kv) { return [kv[0], kv[1].toUpperCase()]; },
+    xf      = t.map(vUC);
+    madd    = function(m, kv) { m.set(kv[0], kv[1]); return m; };
+
+transduce(xf, madd, transit.map(), m.entries()); // Map ["foo", "BAR", "baz", "WOZ"]
+```
+
 ## The Transducer Protocol
 
 It is a goal that all JavaScript transducer implementations
@@ -210,6 +228,11 @@ Detecting the reduced state is critical to short circuiting a
 reduction/transduction. A reduced value is denoted by any JavaScript
 object that has the property `__transducers_reduced__` set to `true`.
 The reduced value should be stored in the `value` property of this object.
+
+### Iteration
+
+Anything which implements `@@iterator` which returns an ES6 compliant
+iterator is reducible/transducible. An ES6 iterator may also just be given directly to `reduce` or `transduce`.
 
 ## Building
 
