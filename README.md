@@ -16,6 +16,7 @@ aggregates.
 For further details about Transducers see the following resources:
 * ["Transducers are coming" announce blog post](http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming)
 * [Rich Hickey's Transducers StrangeLoop presentation](https://www.youtube.com/watch?v=6mTbuzafcII)
+* [API Docs](http://cognitect-labs.github.io/transducers-js/classes/transducers.html)
 
 ## Releases and Dependency Information
 
@@ -97,7 +98,7 @@ console.log(into([], xf, [0,1,2,3,4])); // [2,4]
 
 ## Documentation
 
-Documentation can be found [here](http://cognitect-labs.github.io/transducers-js).
+Documentation can be found [here](http://cognitect-labs.github.io/transducers-js/classes/transducers.html)
 
 ## Integration
 
