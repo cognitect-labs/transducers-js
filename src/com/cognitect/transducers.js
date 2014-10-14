@@ -151,7 +151,7 @@ transducers.reduced = function(x) {
  *     t.isReduced(t.reduced(1)); // true
  */
 transducers.isReduced = function(x) {
-    return (x instanceof transducers.Reduced) || x.__transducers_reduced__;
+    return (x instanceof transducers.Reduced) || (x && x.__transducers_reduced__);
 };
 
 /**
