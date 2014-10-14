@@ -995,8 +995,9 @@ transducers.Completing.prototype.step = function(result, step) {
  * @return {Transducer} a transducer
  */
 transducers.completing = function(xf, cf) {
+    xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
     cf = cf || transducers.identity;
-    if(TRANSDUCERS_DEV && (xf != null) && transducers.isObject(xf)) {
+    if(TRANSDUCERS_DEV && (xf != null) && !transducers.isObject(xf)) {
         throw new Error("completing must be given a transducer as first argument");
     } else {
         return new transducers.Completing(cf, xf);
