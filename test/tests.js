@@ -188,8 +188,8 @@ exports.testToFn = function(test) {
 };
 
 exports.testFirst = function(test) {
-    test.equal(transduce(first, completing, null, [1,2,3]), 1);
-    test.equal(transduce(comp(map(inc),first), completing, null, [1,2,3]), 2);
+    test.equal(reduce(first, null, [1,2,3]), 1);
+    test.equal(reduce(map(inc)(first), null, [1,2,3]), 2);
     test.done();
 };
 
@@ -224,5 +224,10 @@ exports.testIterableReduce = function(test) {
 
     test.deepEqual(res, [1,2,3,4,5,6,7,8,9,10]);
 
+    test.done();
+};
+
+exports.testFirstTakeWhile = function(test) {
+    test.equal(transduce(dropWhile(lessThanFive), first, null, range(10)), 5);
     test.done();
 };

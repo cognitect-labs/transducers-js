@@ -1044,16 +1044,13 @@ transducers.toFn = function(xf, builder) {
 // Utilities
 
 /**
- * Return a transducer which simply returns the first input.
+ * A transformer which simply returns the first input.
  * @method transducers.first
- * @param {Transducer} xf a transducer
- * @return {Transducer} a transducer
+ * @return {Transducer} a transducer transformer
  */
-transducers.first = function(xf) {
-    return new transducers.wrap(function(result, input) {
-        return transducers.reduced(input);
-    });
-};
+transducers.first = transducers.wrap(function(result, input) {
+    return transducers.reduced(input)
+});
 
 // =============================================================================
 // Exporting
