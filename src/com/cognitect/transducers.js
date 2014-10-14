@@ -114,7 +114,11 @@ transducers.Wrap.prototype.step = function(result, input) {
  *     var arrayPush = t.wrap(function(arr, x) { arr.push(x); return arr; });
  */
 transducers.wrap = function(stepFn) {
-    return new transducers.Wrap(stepFn);
+    if(typeof stepFn == "function") {
+        return new transducers.Wrap(stepFn);
+    } else {
+        return stepFn;
+    }
 };
 
 // =============================================================================
