@@ -1049,7 +1049,7 @@ transducers.toFn = function(xf, builder) {
  * @return {Transducer} a transducer transformer
  */
 transducers.first = transducers.wrap(function(result, input) {
-    return transducers.reduced(input)
+    return transducers.reduced(input);
 });
 
 // =============================================================================
