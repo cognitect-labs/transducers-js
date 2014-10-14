@@ -4,6 +4,7 @@ Object.step = function() {};
 Object.next = function() {};
 Object.value;
 Object.done;
+Object.__transducers_reduced__;
 var define = function() {};
 var transducers = {};
 transducers.reduced = function() {};
@@ -104,4 +105,4 @@ transducers.toFn = function() {};
 transducers.first = function() {};
 transducers.ensureReduced = function() {};
 transducers.unreduced = function() {};
-
+transducers.deref = function() {};

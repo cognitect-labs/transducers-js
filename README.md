@@ -152,6 +152,64 @@ var xf = comp(map(inc),filter(isEven));
 transduce(xf, sum, 0, largeVector);
 ```
 
+## The Transducer Protocol
+
+It is a goal that all JavaScript transducer implementations
+interoperate regardless of the surface level API. Towards this end the
+following outlines the protocol all transducers must follow.
+
+### Transducer composition
+
+Transducers are simply a function of one arity. The only argument
+is another transducer *transformer* (labeled `xf` in the code base).
+Note the distinction between the *transducer* which is a function of
+one argument and the *transformer* an object whose methods we'll
+describe in a second.
+
+For example the following simplified definition of `map`:
+
+```js
+var map = function(f) {
+    return function(xf) {
+        return Map(f, xf);
+    };
+};
+```
+
+Since transducers are simply functions of one argument they can be
+composed easily via function composition to create transformer
+pipelines.
+
+### Transformer protocol
+
+Transformers are objects. They must implement 3 methods, `init`,
+`result` and `step`. If a transformer is intended to be composed with
+other transformers they should either close over the next transformer
+or store it in a field.
+
+For example the `Map` transformer could look something like the
+following:
+
+```
+var Map = function(f, xf) {
+    return {
+       init: function() { return xf.init(); },
+       result: function(result) { return xf.result() },
+       step: function(result, input) { return xf.step(result, f(input)); }
+    };
+};
+```
+
+Note how we take care to call the next transformer in the pipeline. We
+could have of course created `Map` as a proper JavaScript type with
+prototype methods - this is in fact how it is done in transducers-js.
+
+### Reduced
+
+Detecting the reduced state is critical to short circuiting a
+reduction/transduction. A reduced value is denoted by any JavaScript
+object that has a single property `__transducers_reduced__`.
+
 ## Building
 
 Fetch the dependecies:

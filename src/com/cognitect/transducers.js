@@ -124,7 +124,7 @@ transducers.wrap = function(stepFn) {
  * @constructor
  */
 transducers.Reduced = function(value) {
-    this.value = value;
+    this.__transducers_reduced__ = value;
 };
 
 /**
@@ -151,7 +151,7 @@ transducers.reduced = function(x) {
  *     t.isReduced(t.reduced(1)); // true
  */
 transducers.isReduced = function(x) {
-    return x instanceof transducers.Reduced;
+    return (x instanceof transducers.Reduced) || x.__transducers_reduced__;
 };
 
 /**
@@ -173,6 +173,10 @@ transducers.ensureReduced = function(x) {
     }
 };
 
+transducers.deref = function(x) {
+    return x.__transducers_reduced__;
+};
+
 /**
  * Ensure a value is not reduced. Unwraps if reduced.
  * @method transducers.unreduced
@@ -186,7 +190,7 @@ transducers.ensureReduced = function(x) {
  */
 transducers.unreduced = function(x) {
     if(transducers.isReduced(x)) {
-        return x.value;
+        return transducers.deref(x);
     } else {
         return x;
     }
@@ -827,7 +831,7 @@ transducers.stringReduce = function(xf, init, string) {
     for(var i = 0; i < string.length; i++) {
         acc = xf.step(acc, string.charAt(i));
         if(transducers.isReduced(acc)) {
-            acc = acc.value;
+            acc = transducers.deref(acc);
             break;
         }
     }
@@ -839,7 +843,7 @@ transducers.arrayReduce = function(xf, init, array) {
     for(var i = 0; i < array.length; i++) {
         acc = xf.step(acc, array[i]);
         if(transducers.isReduced(acc)) {
-            acc = acc.value;
+            acc = transducers.deref(acc);
             break;
         }
     }
@@ -852,7 +856,7 @@ transducers.objectReduce = function(xf, init, obj) {
         if(obj.hasOwnProperty(p)) {
             acc = xf.step(acc, [p, obj[p]]);
             if(transducers.isReduced(acc)) {
-                acc = acc.value;
+                acc = transducers.deref(acc);
                 break;
             }
         }
@@ -871,7 +875,7 @@ transducers.iterableReduce = function(xf, init, iter) {
     while(!step.done) {
         acc = xf.step(acc, step.value);
         if(transducers.isReduced(acc)) {
-            acc = acc.value;
+            acc = transducers.deref(acc);
             break;
         }
         step = iter.next();
@@ -1105,6 +1109,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.first", transducers.first);
     goog.exportSymbol("transducers.ensureReduced", transducers.first);
     goog.exportSymbol("transducers.unreduced", transducers.first);
+    goog.exportSymbol("transducers.deref", transducers.deref);
 }
 
 if(TRANSDUCERS_NODE_TARGET) {
@@ -1166,7 +1171,8 @@ if(TRANSDUCERS_NODE_TARGET) {
         first: transducers.first,
 
         ensureReduced: transducers.ensureReduced,
-        unreduced: transducers.unreduced
+        unreduced: transducers.unreduced,
+        deref: transducers.deref
     };
 }
 
