@@ -18,7 +18,7 @@ For further details about Transducers see the following resources:
 * [Rich Hickey's Transducers StrangeLoop presentation](https://www.youtube.com/watch?v=6mTbuzafcII)
 * [API Docs](http://cognitect-labs.github.io/transducers-js/classes/transducers.html)
 
-transducers-java is brought to you by [Cognitect Labs](http://cognitect-labs.github.io/).
+transducers-js is brought to you by [Cognitect Labs](http://cognitect-labs.github.io/).
 
 ## Releases and Dependency Information
 
