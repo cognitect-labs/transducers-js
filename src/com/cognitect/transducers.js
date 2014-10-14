@@ -124,7 +124,8 @@ transducers.wrap = function(stepFn) {
  * @constructor
  */
 transducers.Reduced = function(value) {
-    this.__transducers_reduced__ = value;
+    this.__transducers_reduced__ = true;
+    this.value = value;
 };
 
 /**
@@ -174,7 +175,7 @@ transducers.ensureReduced = function(x) {
 };
 
 transducers.deref = function(x) {
-    return x.__transducers_reduced__;
+    return x.value;
 };
 
 /**

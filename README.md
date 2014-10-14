@@ -208,7 +208,8 @@ prototype methods - this is in fact how it is done in transducers-js.
 
 Detecting the reduced state is critical to short circuiting a
 reduction/transduction. A reduced value is denoted by any JavaScript
-object that has a single property `__transducers_reduced__`.
+object that has the property `__transducers_reduced__` set to `true`.
+The reduced value should be stored in the `value` property of this object.
 
 ## Building
 
