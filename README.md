@@ -164,7 +164,7 @@ Transducers are simply a function of one arity. The only argument
 is another transducer *transformer* (labeled `xf` in the code base).
 Note the distinction between the *transducer* which is a function of
 one argument and the *transformer* an object whose methods we'll
-describe in a second.
+describe in the following section:
 
 For example the following simplified definition of `map`:
 
