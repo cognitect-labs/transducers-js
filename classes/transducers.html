@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>transducers - transducers-js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.8.0pr2/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <script src="http://yui.yahooapis.com/combo?3.8.0pr2/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            <h1><a href="../index.html"><img width="100" src="../assets/css/cognitect.jpg">transducers-js: transducers</a></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.4.101</em>
+        </div>
+    </div>
+    <div class="yui3-g">
+
+        <div id="sidebar" class="yui3-u">
+            <div id="modules" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Modules</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+
+<div id="classes" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Classes</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            
+                <li><a href="../classes/transducers.html">transducers</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div id="methods-on-page" class="sidebox on-page">
+    <div class="hd">
+        <h2 class="no-toc">Methods On Page</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            
+                <li><a href="#methods_transducers.cat">transducers.cat</a></li>
+            
+                <li><a href="#methods_transducers.comp">transducers.comp</a></li>
+            
+                <li><a href="#methods_transducers.complement">transducers.complement</a></li>
+            
+                <li><a href="#methods_transducers.completing">transducers.completing</a></li>
+            
+                <li><a href="#methods_transducers.drop">transducers.drop</a></li>
+            
+                <li><a href="#methods_transducers.dropWhile">transducers.dropWhile</a></li>
+            
+                <li><a href="#methods_transducers.ensureReduced">transducers.ensureReduced</a></li>
+            
+                <li><a href="#methods_transducers.filter">transducers.filter</a></li>
+            
+                <li><a href="#methods_transducers.first">transducers.first</a></li>
+            
+                <li><a href="#methods_transducers.identiy">transducers.identiy</a></li>
+            
+                <li><a href="#methods_transducers.into">transducers.into</a></li>
+            
+                <li><a href="#methods_transducers.isReduced">transducers.isReduced</a></li>
+            
+                <li><a href="#methods_transducers.keep">transducers.keep</a></li>
+            
+                <li><a href="#methods_transducers.keepIndexed">transducers.keepIndexed</a></li>
+            
+                <li><a href="#methods_transducers.map">transducers.map</a></li>
+            
+                <li><a href="#methods_transducers.mapcat">transducers.mapcat</a></li>
+            
+                <li><a href="#methods_transducers.partitionAll">transducers.partitionAll</a></li>
+            
+                <li><a href="#methods_transducers.partitionBy">transducers.partitionBy</a></li>
+            
+                <li><a href="#methods_transducers.preservingReduced">transducers.preservingReduced</a></li>
+            
+                <li><a href="#methods_transducers.reduce">transducers.reduce</a></li>
+            
+                <li><a href="#methods_transducers.reduced">transducers.reduced</a></li>
+            
+                <li><a href="#methods_transducers.remove">transducers.remove</a></li>
+            
+                <li><a href="#methods_transducers.take">transducers.take</a></li>
+            
+                <li><a href="#methods_transducers.takeNth">transducers.takeNth</a></li>
+            
+                <li><a href="#methods_transducers.takeWhile">transducers.takeWhile</a></li>
+            
+                <li><a href="#methods_transducers.toFn">transducers.toFn</a></li>
+            
+                <li><a href="#methods_transducers.transduce">transducers.transduce</a></li>
+            
+                <li><a href="#methods_transducers.unreduced">transducers.unreduced</a></li>
+            
+                <li><a href="#methods_transducers.wrap">transducers.wrap</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="fileTree" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">Files</h2>
+    </div>
+    <div class="bd">
+        <ul><li>src/<ul><li>com/<ul><li>cognitect/<ul><li><a href="../files/src_com_cognitect_transducers.js.html">transducers.js</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+</div>
+
+
+
+        </div>
+
+        <div id="main" class="yui3-u">
+            <div class="content"><h4>Class transducers</h4>
+
+
+
+<span class="foundat">Class defined in: <a href="../../files/src_com_cognitect_transducers.js.html#l36"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:36</code></a></span>
+<div class="intro"></div>
+
+
+
+<div id="classdocs">
+    <ul>
+        
+        <li><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+    <div>
+        
+            <div id="methods">
+            
+                <a name="methods_transducers.cat"></a>
+<div class="method item">
+    Transformer <strong class="name"><code>transducers.cat</code></strong>( <code>xf </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l789"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:789</code></a>
+    </span><br>
+    <p>Given a transformer return a concatenating transformer</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transformer&gt;</strong>
+        
+        
+        <p>a transformer</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transformer&gt; <p>a concatenating transformer</p>
+</div>
+    
+    
+    
+</div>
+
+            
+                <a name="methods_transducers.comp"></a>
+<div class="method item">
+     <strong class="name"><code>transducers.comp</code></strong>( <code>varArgs </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l207"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:207</code></a>
+    </span><br>
+    <p>Function composition. Take N function and return their composition.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>varArgs</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>N functions</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var inc = function(n) { return n + 1 };
+var double = function(n) { return n * 2 };
+var incDouble = t.comp(double, inc);
+incDouble(3); // 8</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.complement"></a>
+<div class="method item">
+    Function <strong class="name"><code>transducers.complement</code></strong>( <code>a </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l74"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:74</code></a>
+    </span><br>
+    <p>Take a predicate function and return its complement.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>a</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>predicate function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Function&gt; <p>the complement predicate function</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var isEven = function(n) { return n % 2 == 0; };
+var isOdd = transducers.complement(isEven);</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.completing"></a>
+<div class="method item">
+    Transducer <strong class="name"><code>transducers.completing</code></strong>( <code>xf, cf </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l989"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:989</code></a>
+    </span><br>
+    <p>A completing transducer constructor. Useful to provide cleanup
+logic at the end of a reduction/transduction.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
+        
+        
+        <p>a transducer</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>cf</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a function to apply at the end of the reduction/transduction</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transducer&gt; <p>a transducer</p>
+</div>
+    
+    
+    
+</div>
+
+            
+                <a name="methods_transducers.drop"></a>
+<div class="method item">
+    transducers.Drop <strong class="name"><code>transducers.drop</code></strong>( <code>n </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l490"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:490</code></a>
+    </span><br>
+    <p>A dropping transducer constructor</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>n</code> <strong>&lt;Number&gt;</strong>
+        
+        
+        <p>an integer, the number of inputs to drop.</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Drop&gt; <p>a dropping transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.drop(3);
+t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.dropWhile"></a>
+<div class="method item">
+    transducers.DropWhile <strong class="name"><code>transducers.dropWhile</code></strong>( <code>pred </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l533"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:533</code></a>
+    </span><br>
+    <p>A dropping transducer that drop inputs as long as
+pred is true.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>pred</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a predicate function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.DropWhile&gt; <p>a dropWhile transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.dropWhile(function(n) { return n &lt; 3; });
+t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.ensureReduced"></a>
+<div class="method item">
+    transducers.Reduced <strong class="name"><code>transducers.ensureReduced</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l157"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:157</code></a>
+    </span><br>
+    <p>Ensure that a value is reduced. If already reduced will not re-wrap.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Reduced&gt; <p>a reduced value.</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var x = t.ensureReduced(1);
+var y = t.ensureReduced(x);
+x === y; // true</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.filter"></a>
+<div class="method item">
+    transducers.Filter <strong class="name"><code>transducers.filter</code></strong>( <code>pred </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l295"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:295</code></a>
+    </span><br>
+    <p>Filtering transducer constructor</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>pred</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a predicate function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Filter&gt; <p>returns a filtering transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var isEven = function(n) { return n % 2 == 0; };
+var xf = t.filter(isEven);
+t.into([], xf, [0,1,2,3,4]); // [0,2,4];</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.first"></a>
+<div class="method item">
+    Transducer <strong class="name"><code>transducers.first</code></strong>( <code>xf </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l1035"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1035</code></a>
+    </span><br>
+    <p>Return a transducer which simply returns the first input.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
+        
+        
+        <p>a transducer</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transducer&gt; <p>a transducer</p>
+</div>
+    
+    
+    
+</div>
+
+            
+                <a name="methods_transducers.identiy"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.identiy</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l195"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:195</code></a>
+    </span><br>
+    <p>Identity function.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a JavaScript value</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>transducers.identity(1); // 1</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.into"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.into</code></strong>( <code>empty, xf, coll </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l946"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:946</code></a>
+    </span><br>
+    <p>Reduce a value into the given empty value using a transducer.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>empty</code> <strong>&lt;String | Array | Object&gt;</strong>
+        
+        
+        <p>a JavaScript collection</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
+        
+        
+        <p>a transducer</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>coll</code> <strong>&lt;Iterable&gt;</strong>
+        
+        
+        <p>any iterable JavaScript value: array, string,
+  object, or iterable.</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a JavaScript value.</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var inc = function(n) { return n+1; };
+var isEven = function(n) { return n % 2 == 0; };
+var apush = function(arr,x) { arr.push(x); return arr; };
+var xf = t.comp(t.map(inc),t.filter(isEven));
+t.into([], xf, [1,2,3,4]); // [2,4]</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.isReduced"></a>
+<div class="method item">
+    Boolean <strong class="name"><code>transducers.isReduced</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l142"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:142</code></a>
+    </span><br>
+    <p>Check if a value is reduced.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Boolean&gt; <p>true if the value is an instance of transducers.Reduced
+  false otherwise</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+t.isReduced(1); // false
+t.isReduced(t.reduced(1)); // true</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.keep"></a>
+<div class="method item">
+    transducers.Keep <strong class="name"><code>transducers.keep</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l693"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:693</code></a>
+    </span><br>
+    <p>A keeping transducer. Keep inputs as long as the provided
+function does not return null or undefined.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Keep&gt; <p>a keep transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.keep(function(x) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
+t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&quot;bar&quot;]</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.keepIndexed"></a>
+<div class="method item">
+    transducers.KeepIndexed <strong class="name"><code>transducers.keepIndexed</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l739"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:739</code></a>
+    </span><br>
+    <p>Like keep but the provided function will be passed the
+index as the second argument.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.KeepIndexed&gt; <p>a keepIndexed transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.keepIndexed(function(x, i) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
+t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&quot;bar&quot;]</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.map"></a>
+<div class="method item">
+    transducers.Map <strong class="name"><code>transducers.map</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l253"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:253</code></a>
+    </span><br>
+    <p>Mapping transducer constructor</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>the mapping operation</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Map&gt; <p>returns a mapping transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var inc = function(n) { return n+1; };
+var xf = t.map(inc);
+t.into([], xf, [1,2,3]); // [2,3,4]</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.mapcat"></a>
+<div class="method item">
+    Transducer <strong class="name"><code>transducers.mapcat</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l810"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:810</code></a>
+    </span><br>
+    <p>A mapping concatenating transformer</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>the mapping function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transducer&gt; <p>a mapping concatenating transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var reverse = function(arr) { var arr = Array.prototype.slice.call(arr, 0); arr.reverse(); return arr; }
+var xf = t.mapcat(reverse);
+t.into([], xf, [[3,2,1],[6,5,4]]); // [1,2,3,4,5,6]</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.partitionAll"></a>
+<div class="method item">
+    transducers.PartitionAll <strong class="name"><code>transducers.partitionAll</code></strong>( <code>n </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l650"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:650</code></a>
+    </span><br>
+    <p>A partitioning transducer. Collects inputs into
+arrays of size N.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>n</code> <strong>&lt;Number&gt;</strong>
+        
+        
+        <p>an integer</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.PartitionAll&gt; <p>a partitionAll transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.partitionAll(3);
+t.into([], xf, [0,1,2,3,4,5]); // [[0,1,2],[3,4,5]]</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.partitionBy"></a>
+<div class="method item">
+    transducers.PartitionBy <strong class="name"><code>transducers.partitionBy</code></strong>( <code>f </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l597"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:597</code></a>
+    </span><br>
+    <p>A partitioning transducer. Collects inputs into
+arrays as long as predicate remains true for contiguous
+inputs.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a partition function. When the result
+  for an input changes from the previous result will create
+  a partition.</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.PartitionBy&gt; <p>a partitionBy transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.partitionBy(function(x) { return typeof x == &quot;string&quot;; });
+t.into([], xf, [0,1,&quot;foo&quot;,&quot;bar&quot;,2,3,&quot;bar&quot;,&quot;baz&quot;]); // [[0,1],[&quot;foo&quot;,&quot;bar&quot;],[2,3],[&quot;bar&quot;,&quot;baz&quot;]];</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.preservingReduced"></a>
+<div class="method item">
+    Transformer <strong class="name"><code>transducers.preservingReduced</code></strong>( <code>xf </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l763"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:763</code></a>
+    </span><br>
+    <p>Given a transformer returns a transformer which preserves
+reduced by wrapping one more time. See cat.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transformer&gt;</strong>
+        
+        
+        <p>a transformer</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transformer&gt; <p>a transformer which preserves reduced</p>
+</div>
+    
+    
+    
+</div>
+
+            
+                <a name="methods_transducers.reduce"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.reduce</code></strong>( <code>xf, init, coll </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l883"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:883</code></a>
+    </span><br>
+    <p>Given a transducer, an intial value and a 
+collection - returns the reduction.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer | Function&gt;</strong>
+        
+        
+        <p>a transducer or two-arity function</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>init</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>coll</code> <strong>&lt;String | Array | Object | Iterable&gt;</strong>
+        
+        
+        <p>any iterable JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a iterable JavaScript value: string, array
+  iterable, or object.</p>
+</div>
+    
+    
+    
+</div>
+
+            
+                <a name="methods_transducers.reduced"></a>
+<div class="method item">
+    transducers.Reduced <strong class="name"><code>transducers.reduced</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l130"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:130</code></a>
+    </span><br>
+    <p>Return a reduced value. Reduced values short circuit transduce.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Reduced&gt; <p>a reduced value</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var reduced = transducers.reduced(1);</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.remove"></a>
+<div class="method item">
+    transducers.Filter <strong class="name"><code>transducers.remove</code></strong>( <code>pred </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l316"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:316</code></a>
+    </span><br>
+    <p>Similar to filter except the predicate is used to
+eliminate values.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>pred</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a predicate function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Filter&gt; <p>returns a removing transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var isEven = function(n) { return n % 2 == 0; };
+var xf = t.remove(isEven);
+t.into([], xf, [0,1,2,3,4]); // [1,3];</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.take"></a>
+<div class="method item">
+    transducers.Take <strong class="name"><code>transducers.take</code></strong>( <code>n </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l359"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:359</code></a>
+    </span><br>
+    <p>A take transducer constructor. Will take n values before
+returning a reduced result.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>n</code> <strong>&lt;Number&gt;</strong>
+        
+        
+        <p>the number of inputs to receive.</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Take&gt; <p>a take transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.take(3);
+t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.takeNth"></a>
+<div class="method item">
+    transducers.TakeNth <strong class="name"><code>transducers.takeNth</code></strong>( <code>n </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l445"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:445</code></a>
+    </span><br>
+    <p>A transducer that takes every Nth input</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>n</code> <strong>&lt;Number&gt;</strong>
+        
+        
+        <p>an integer</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.TakeNth&gt; <p>a takeNth transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.takeNth(3);
+t.into([], xf, [0,1,2,3,4,5]); // [2,5];</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.takeWhile"></a>
+<div class="method item">
+    transducers.TakeWhile <strong class="name"><code>transducers.takeWhile</code></strong>( <code>pred </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l401"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:401</code></a>
+    </span><br>
+    <p>Like the take transducer except takes as long as the pred
+return true for inputs.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>pred</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a predicate function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.TakeWhile&gt; <p>a takeWhile transducer</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var xf = t.takeWhile(function(n) { return n &lt; 3; });
+t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.toFn"></a>
+<div class="method item">
+    Function <strong class="name"><code>transducers.toFn</code></strong>( <code>xf, builder </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l1007"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1007</code></a>
+    </span><br>
+    <p>Convert a tranducer transformer object into a function so
+that it can be used with existing reduce implementation i.e. native,
+Underscore, lodash</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
+        
+        
+        <p>a transducer</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>builder</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a function which take the accumulator and the
+  the next input and return a new accumulator value.</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Function&gt; <p>a two-arity function compatible with existing reduce
+  implementations</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var arr = [0,1,2,3,4,5],
+var apush = function(arr, x) { arr.push(x); return arr; },
+var xf = t.comp(t.map(inc),t.filter(isEven));
+arr.reduce(t.toFn(xf, apush), []); // [2,4,6]</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.transduce"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.transduce</code></strong>( <code>xf, f, init, coll </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l908"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:908</code></a>
+    </span><br>
+    <p>Given a transducer, a builder function, an initial value
+and a iterable collection - returns the reduction.
+collection - returns the reduction.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
+        
+        
+        <p>a transducer</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>f</code> <strong>&lt;Transducer | Function&gt;</strong>
+        
+        
+        <p>a transducer or two-arity function</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>init</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+        <li>
+        
+            <code>coll</code> <strong>&lt;String | Array | Object | Iterable&gt;</strong>
+        
+        
+        <p>any iterable JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a JavaScript value.</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var inc = function(n) { return n+1; };
+var isEven = function(n) { return n % 2 == 0; };
+var apush = function(arr,x) { arr.push(x); return arr; };
+var xf = t.comp(t.map(inc),t.filter(isEven));
+t.transduce(xf, apush, [], [1,2,3,4]); // [2,4]</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.unreduced"></a>
+<div class="method item">
+    Object <strong class="name"><code>transducers.unreduced</code></strong>( <code>x </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l176"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:176</code></a>
+    </span><br>
+    <p>Ensure a value is not reduced. Unwraps if reduced.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>x</code> <strong>&lt;Object&gt;</strong>
+        
+        
+        <p>any JavaScript value</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;Object&gt; <p>a JavaScript value</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var x = t.reduced(1);
+t.unreduced(x); // 1
+t.unreduced(t.unreduced(x)); // 1</code></pre>
+
+    
+</div>
+
+            
+                <a name="methods_transducers.wrap"></a>
+<div class="method item">
+    transducers.Wrap <strong class="name"><code>transducers.wrap</code></strong>( <code>stepFn </code> ) 
+    <br>
+    <span class="foundat">
+    
+        
+    
+        <a href="../../files/src_com_cognitect_transducers.js.html#l105"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:105</code></a>
+    </span><br>
+    <p>Take a two-arity reducing function where the first argument is the
+accumluation and the second argument is the next input and convert
+it into a transducer transformer object.</p>
+
+    
+    <strong>Parameters:</strong>
+    <ul class="params">
+    
+        <li>
+        
+            <code>stepFn</code> <strong>&lt;Function&gt;</strong>
+        
+        
+        <p>a two-arity reducing function</p>
+
+            
+        </li>
+    
+    </ul>
+    
+    
+    
+    <br><div class="returns"><strong>Returns:</strong> &lt;transducers.Wrap&gt; <p>a transducer transformer object</p>
+</div>
+    
+    
+    
+        <h5>Example</h5>
+        <pre class="code prettyprint"><code>var t = transducers;
+var arrayPush = t.wrap(function(arr, x) { arr.push(x); return arr; });</code></pre>
+
+    
+</div>
+
+            
+            </div>
+        
+        
+        
+        
+    </div>
+</div>
+</div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/js/tabs.js"></script>
+</body>
+</html>
