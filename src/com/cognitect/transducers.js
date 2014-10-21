@@ -753,7 +753,7 @@ transducers.KeepIndexed.prototype.step = function(result, input) {
  * @return {transducers.KeepIndexed} a keepIndexed transducer
  * @example
  *     var t = transducers;
- *     var xf = t.keepIndexed(function(x, i) { if(typeof x == "string") return "cool"; });
+ *     var xf = t.keepIndexed(function(i, x) { if(typeof x == "string") return "cool"; });
  *     t.into([], xf, [0,1,"foo",3,4,"bar"]); // ["foo","bar"]
  */
 transducers.keepIndexed = function(f) {
