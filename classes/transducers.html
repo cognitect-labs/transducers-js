@@ -16,7 +16,7 @@
             <h1><a href="../index.html"><img width="100" src="../assets/css/cognitect.jpg">transducers-js: transducers</a></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.4.101</em>
+            <em>API Docs for: 0.4.135</em>
         </div>
     </div>
     <div class="yui3-g">
@@ -168,7 +168,7 @@
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l789"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:789</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l798"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:798</code></a>
     </span><br>
     <p>Given a transformer return a concatenating transformer</p>
 
@@ -206,7 +206,7 @@
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l207"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:207</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l216"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:216</code></a>
     </span><br>
     <p>Function composition. Take N function and return their composition.</p>
 
@@ -290,7 +290,7 @@ var isOdd = transducers.complement(isEven);</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l989"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:989</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l1000"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1000</code></a>
     </span><br>
     <p>A completing transducer constructor. Useful to provide cleanup
 logic at the end of a reduction/transduction.</p>
@@ -339,7 +339,7 @@ logic at the end of a reduction/transduction.</p>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l490"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:490</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l499"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:499</code></a>
     </span><br>
     <p>A dropping transducer constructor</p>
 
@@ -383,7 +383,7 @@ t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l533"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:533</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l542"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:542</code></a>
     </span><br>
     <p>A dropping transducer that drop inputs as long as
 pred is true.</p>
@@ -428,7 +428,7 @@ t.into([], xf, [0,1,2,3,4,5]); // [3,4,5];</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l157"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:157</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l162"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:162</code></a>
     </span><br>
     <p>Ensure that a value is reduced. If already reduced will not re-wrap.</p>
 
@@ -473,7 +473,7 @@ x === y; // true</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l295"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:295</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l304"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:304</code></a>
     </span><br>
     <p>Filtering transducer constructor</p>
 
@@ -512,35 +512,20 @@ t.into([], xf, [0,1,2,3,4]); // [0,2,4];</code></pre>
             
                 <a name="methods_transducers.first"></a>
 <div class="method item">
-    Transducer <strong class="name"><code>transducers.first</code></strong>( <code>xf </code> ) 
+    Transducer <strong class="name"><code>transducers.first</code></strong>( <code>  </code> ) 
     <br>
     <span class="foundat">
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l1035"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1035</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l1046"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1046</code></a>
     </span><br>
-    <p>Return a transducer which simply returns the first input.</p>
+    <p>A transformer which simply returns the first input.</p>
 
     
-    <strong>Parameters:</strong>
-    <ul class="params">
-    
-        <li>
-        
-            <code>xf</code> <strong>&lt;Transducer&gt;</strong>
-        
-        
-        <p>a transducer</p>
-
-            
-        </li>
-    
-    </ul>
     
     
-    
-    <br><div class="returns"><strong>Returns:</strong> &lt;Transducer&gt; <p>a transducer</p>
+    <br><div class="returns"><strong>Returns:</strong> &lt;Transducer&gt; <p>a transducer transformer</p>
 </div>
     
     
@@ -556,7 +541,7 @@ t.into([], xf, [0,1,2,3,4]); // [0,2,4];</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l195"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:195</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l204"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:204</code></a>
     </span><br>
     <p>Identity function.</p>
 
@@ -598,7 +583,7 @@ t.into([], xf, [0,1,2,3,4]); // [0,2,4];</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l946"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:946</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l957"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:957</code></a>
     </span><br>
     <p>Reduce a value into the given empty value using a transducer.</p>
 
@@ -666,7 +651,7 @@ t.into([], xf, [1,2,3,4]); // [2,4]</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l142"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:142</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l147"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:147</code></a>
     </span><br>
     <p>Check if a value is reduced.</p>
 
@@ -711,7 +696,7 @@ t.isReduced(t.reduced(1)); // true</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l693"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:693</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l702"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:702</code></a>
     </span><br>
     <p>A keeping transducer. Keep inputs as long as the provided
 function does not return null or undefined.</p>
@@ -756,7 +741,7 @@ t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l739"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:739</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l748"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:748</code></a>
     </span><br>
     <p>Like keep but the provided function will be passed the
 index as the second argument.</p>
@@ -786,7 +771,7 @@ index as the second argument.</p>
     
         <h5>Example</h5>
         <pre class="code prettyprint"><code>var t = transducers;
-var xf = t.keepIndexed(function(x, i) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
+var xf = t.keepIndexed(function(i, x) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
 t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&quot;bar&quot;]</code></pre>
 
     
@@ -801,7 +786,7 @@ t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l253"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:253</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l262"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:262</code></a>
     </span><br>
     <p>Mapping transducer constructor</p>
 
@@ -846,7 +831,7 @@ t.into([], xf, [1,2,3]); // [2,3,4]</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l810"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:810</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l819"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:819</code></a>
     </span><br>
     <p>A mapping concatenating transformer</p>
 
@@ -891,7 +876,7 @@ t.into([], xf, [[3,2,1],[6,5,4]]); // [1,2,3,4,5,6]</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l650"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:650</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l659"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:659</code></a>
     </span><br>
     <p>A partitioning transducer. Collects inputs into
 arrays of size N.</p>
@@ -936,7 +921,7 @@ t.into([], xf, [0,1,2,3,4,5]); // [[0,1,2],[3,4,5]]</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l597"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:597</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l606"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:606</code></a>
     </span><br>
     <p>A partitioning transducer. Collects inputs into
 arrays as long as predicate remains true for contiguous
@@ -984,7 +969,7 @@ t.into([], xf, [0,1,&quot;foo&quot;,&quot;bar&quot;,2,3,&quot;bar&quot;,&quot;ba
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l763"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:763</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l772"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:772</code></a>
     </span><br>
     <p>Given a transformer returns a transformer which preserves
 reduced by wrapping one more time. See cat.</p>
@@ -1023,7 +1008,7 @@ reduced by wrapping one more time. See cat.</p>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l883"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:883</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l892"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:892</code></a>
     </span><br>
     <p>Given a transducer, an intial value and a 
 collection - returns the reduction.</p>
@@ -1083,7 +1068,7 @@ collection - returns the reduction.</p>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l130"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:130</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l135"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:135</code></a>
     </span><br>
     <p>Return a reduced value. Reduced values short circuit transduce.</p>
 
@@ -1125,7 +1110,7 @@ collection - returns the reduction.</p>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l316"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:316</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l325"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:325</code></a>
     </span><br>
     <p>Similar to filter except the predicate is used to
 eliminate values.</p>
@@ -1171,7 +1156,7 @@ t.into([], xf, [0,1,2,3,4]); // [1,3];</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l359"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:359</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l368"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:368</code></a>
     </span><br>
     <p>A take transducer constructor. Will take n values before
 returning a reduced result.</p>
@@ -1216,7 +1201,7 @@ t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l445"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:445</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l454"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:454</code></a>
     </span><br>
     <p>A transducer that takes every Nth input</p>
 
@@ -1260,7 +1245,7 @@ t.into([], xf, [0,1,2,3,4,5]); // [2,5];</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l401"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:401</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l410"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:410</code></a>
     </span><br>
     <p>Like the take transducer except takes as long as the pred
 return true for inputs.</p>
@@ -1305,9 +1290,9 @@ t.into([], xf, [0,1,2,3,4,5]); // [0,1,2];</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l1007"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1007</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l1018"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:1018</code></a>
     </span><br>
-    <p>Convert a tranducer transformer object into a function so
+    <p>Convert a transducer transformer object into a function so
 that it can be used with existing reduce implementation i.e. native,
 Underscore, lodash</p>
 
@@ -1365,7 +1350,7 @@ arr.reduce(t.toFn(xf, apush), []); // [2,4,6]</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l908"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:908</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l919"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:919</code></a>
     </span><br>
     <p>Given a transducer, a builder function, an initial value
 and a iterable collection - returns the reduction.
@@ -1444,7 +1429,7 @@ t.transduce(xf, apush, [], [1,2,3,4]); // [2,4]</code></pre>
     
         
     
-        <a href="../../files/src_com_cognitect_transducers.js.html#l176"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:176</code></a>
+        <a href="../../files/src_com_cognitect_transducers.js.html#l185"><code>src&#x2F;com&#x2F;cognitect&#x2F;transducers.js:185</code></a>
     </span><br>
     <p>Ensure a value is not reduced. Unwraps if reduced.</p>
 

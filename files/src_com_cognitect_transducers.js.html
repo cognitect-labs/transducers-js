@@ -16,7 +16,7 @@
             <h1><a href="../index.html"><img width="100" src="../assets/css/cognitect.jpg">transducers-js: src/com/cognitect/transducers.js</a></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.4.101</em>
+            <em>API Docs for: 0.4.135</em>
         </div>
     </div>
     <div class="yui3-g">
@@ -188,7 +188,11 @@ transducers.Wrap.prototype.step = function(result, input) {
  *     var arrayPush = t.wrap(function(arr, x) { arr.push(x); return arr; });
  */
 transducers.wrap = function(stepFn) {
-    return new transducers.Wrap(stepFn);
+    if(typeof stepFn == &quot;function&quot;) {
+        return new transducers.Wrap(stepFn);
+    } else {
+        return stepFn;
+    }
 };
 
 // =============================================================================
@@ -198,6 +202,7 @@ transducers.wrap = function(stepFn) {
  * @constructor
  */
 transducers.Reduced = function(value) {
+    this.__transducers_reduced__ = true;
     this.value = value;
 };
 
@@ -225,7 +230,7 @@ transducers.reduced = function(x) {
  *     t.isReduced(t.reduced(1)); // true
  */
 transducers.isReduced = function(x) {
-    return x instanceof transducers.Reduced;
+    return (x instanceof transducers.Reduced) || (x &amp;&amp; x.__transducers_reduced__);
 };
 
 /**
@@ -247,6 +252,10 @@ transducers.ensureReduced = function(x) {
     }
 };
 
+transducers.deref = function(x) {
+    return x.value;
+};
+
 /**
  * Ensure a value is not reduced. Unwraps if reduced.
  * @method transducers.unreduced
@@ -260,7 +269,7 @@ transducers.ensureReduced = function(x) {
  */
 transducers.unreduced = function(x) {
     if(transducers.isReduced(x)) {
-        return x.value;
+        return transducers.deref(x);
     } else {
         return x;
     }
@@ -640,8 +649,8 @@ transducers.PartitionBy.prototype.init = function() {
     return this.xf.init()
 };
 transducers.PartitionBy.prototype.result = function(result) {
-    if(this.a.length != 0) {
-        result = this.xf.step(result, this.a);
+    if(this.a.length &gt; 0) {
+        result = transducers.unreduced(this.xf.step(result, this.a));
         this.a = [];
     }
     return this.xf.result(result);
@@ -659,7 +668,7 @@ transducers.PartitionBy.prototype.step = function(result, input) {
         this.a.push(input);
         return result;
     } else {
-        var ret = transducers.unreduced(this.xf.step(result, this.a));
+        var ret = this.xf.step(result, this.a);
         this.a = [];
         if(!transducers.isReduced(ret)) {
             this.a.push(input);
@@ -705,7 +714,7 @@ transducers.PartitionAll.prototype.init = function() {
 };
 transducers.PartitionAll.prototype.result = function(result) {
     if(this.a.length &gt; 0) {
-        result = this.xf.step(result, this.a);
+        result = transducers.unreduced(this.xf.step(result, this.a));
         this.a = [];
     }
     return this.xf.result(result);
@@ -715,7 +724,7 @@ transducers.PartitionAll.prototype.step = function(result, input) {
     if(this.n == this.a.length) {
         var a = this.a;
         this.a = [];
-        return transducers.unreduced(this.xf.step(result, a));
+        return this.xf.step(result, a);
     } else {
         return result;
     }
@@ -818,7 +827,7 @@ transducers.KeepIndexed.prototype.step = function(result, input) {
  * @return {transducers.KeepIndexed} a keepIndexed transducer
  * @example
  *     var t = transducers;
- *     var xf = t.keepIndexed(function(x, i) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
+ *     var xf = t.keepIndexed(function(i, x) { if(typeof x == &quot;string&quot;) return &quot;cool&quot;; });
  *     t.into([], xf, [0,1,&quot;foo&quot;,3,4,&quot;bar&quot;]); // [&quot;foo&quot;,&quot;bar&quot;]
  */
 transducers.keepIndexed = function(f) {
@@ -901,7 +910,7 @@ transducers.stringReduce = function(xf, init, string) {
     for(var i = 0; i &lt; string.length; i++) {
         acc = xf.step(acc, string.charAt(i));
         if(transducers.isReduced(acc)) {
-            acc = acc.value;
+            acc = transducers.deref(acc);
             break;
         }
     }
@@ -913,7 +922,7 @@ transducers.arrayReduce = function(xf, init, array) {
     for(var i = 0; i &lt; array.length; i++) {
         acc = xf.step(acc, array[i]);
         if(transducers.isReduced(acc)) {
-            acc = acc.value;
+            acc = transducers.deref(acc);
             break;
         }
     }
@@ -926,7 +935,7 @@ transducers.objectReduce = function(xf, init, obj) {
         if(obj.hasOwnProperty(p)) {
             acc = xf.step(acc, [p, obj[p]]);
             if(transducers.isReduced(acc)) {
-                acc = acc.value;
+                acc = transducers.deref(acc);
                 break;
             }
         }
@@ -945,7 +954,7 @@ transducers.iterableReduce = function(xf, init, iter) {
     while(!step.done) {
         acc = xf.step(acc, step.value);
         if(transducers.isReduced(acc)) {
-            acc = acc.value;
+            acc = transducers.deref(acc);
             break;
         }
         step = iter.next();
@@ -965,17 +974,19 @@ transducers.iterableReduce = function(xf, init, iter) {
  *   iterable, or object.
  */
 transducers.reduce = function(xf, init, coll) {
-    xf = typeof xf == &quot;function&quot; ? transducers.wrap(xf) : xf;
-    if(transducers.isString(coll)) {
-        return transducers.stringReduce(xf, init, coll);
-    } else if(transducers.isArray(coll)) {
-        return transducers.arrayReduce(xf, init, coll);
-    } else if(transducers.isIterable(coll)) {
-        return transducers.iterableReduce(xf, init, coll);
-    } else if(transducers.isObject(coll)) {
-        return transducers.objectReduce(xf, init, coll);
-    } else {
-        throw new Error(&quot;Cannot reduce instance of &quot; + coll.constructor.name);
+    if(coll) {
+        xf = typeof xf == &quot;function&quot; ? transducers.wrap(xf) : xf;
+        if(transducers.isString(coll)) {
+            return transducers.stringReduce(xf, init, coll);
+        } else if(transducers.isArray(coll)) {
+            return transducers.arrayReduce(xf, init, coll);
+        } else if(transducers.isIterable(coll)) {
+            return transducers.iterableReduce(xf, init, coll);
+        } else if(transducers.isObject(coll)) {
+            return transducers.objectReduce(xf, init, coll);
+        } else {
+            throw new Error(&quot;Cannot reduce instance of &quot; + coll.constructor.name);
+        }
     }
 };
 
@@ -1079,7 +1090,7 @@ transducers.completing = function(xf, cf) {
 };
 
 /**
- * Convert a tranducer transformer object into a function so
+ * Convert a transducer transformer object into a function so
  * that it can be used with existing reduce implementation i.e. native,
  * Underscore, lodash
  * @method transducers.toFn
@@ -1107,16 +1118,13 @@ transducers.toFn = function(xf, builder) {
 // Utilities
 
 /**
- * Return a transducer which simply returns the first input.
+ * A transformer which simply returns the first input.
  * @method transducers.first
- * @param {Transducer} xf a transducer
- * @return {Transducer} a transducer
+ * @return {Transducer} a transducer transformer
  */
-transducers.first = function(xf) {
-    return new transducers.wrap(function(result, input) {
-        return transducers.reduced(input);
-    });
-};
+transducers.first = transducers.wrap(function(result, input) {
+    return transducers.reduced(input);
+});
 
 // =============================================================================
 // Exporting
@@ -1126,29 +1134,60 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol(&quot;transducers.isReduced&quot;, transducers.isReduced);
     goog.exportSymbol(&quot;transducers.comp&quot;, transducers.comp);
     goog.exportSymbol(&quot;transducers.complement&quot;, transducers.complement);
-    goog.exportSymbol(&quot;transducers.map&quot;, transducers.map);
-    goog.exportSymbol(&quot;transducers.filter&quot;, transducers.filter);
-    goog.exportSymbol(&quot;transducers.remove&quot;, transducers.remove);
-    goog.exportSymbol(&quot;transducers.keep&quot;, transducers.keep);
-    goog.exportSymbol(&quot;transducers.keepIndexed&quot;, transducers.keepIndexed);
-    goog.exportSymbol(&quot;transducers.cat&quot;, transducers.cat);
-    goog.exportSymbol(&quot;transducers.mapcat&quot;, transducers.mapcat);
     goog.exportSymbol(&quot;transducers.transduce&quot;, transducers.transduce);
     goog.exportSymbol(&quot;transducers.reduce&quot;, transducers.reduce);
+
+    goog.exportSymbol(&quot;transducers.map&quot;, transducers.map);
+    goog.exportSymbol(&quot;transducers.Map&quot;, transducers.Map);
+
+    goog.exportSymbol(&quot;transducers.filter&quot;, transducers.filter);
+    goog.exportSymbol(&quot;transducers.Filter&quot;, transducers.Filter);
+
+    goog.exportSymbol(&quot;transducers.remove&quot;, transducers.remove);
+    goog.exportSymbol(&quot;transducers.Remove&quot;, transducers.Remove);
+
+    goog.exportSymbol(&quot;transducers.keep&quot;, transducers.keep);
+    goog.exportSymbol(&quot;transducers.Keep&quot;, transducers.Keep);
+
+    goog.exportSymbol(&quot;transducers.keepIndexed&quot;, transducers.keepIndexed);
+    goog.exportSymbol(&quot;transducers.KeepIndexed&quot;, transducers.KeepIndexed);
+
     goog.exportSymbol(&quot;transducers.take&quot;, transducers.take);
+    goog.exportSymbol(&quot;transducers.Take&quot;, transducers.Take);
+
     goog.exportSymbol(&quot;transducers.takeWhile&quot;, transducers.takeWhile);
+    goog.exportSymbol(&quot;transducers.TakeWhile&quot;, transducers.TakeWhile);
+
     goog.exportSymbol(&quot;transducers.takeNth&quot;, transducers.takeNth);
+    goog.exportSymbol(&quot;transducers.TakeNth&quot;, transducers.TakeNth);
+
     goog.exportSymbol(&quot;transducers.drop&quot;, transducers.drop);
+    goog.exportSymbol(&quot;transducers.Drop&quot;, transducers.Drop);
+
     goog.exportSymbol(&quot;transducers.dropWhile&quot;, transducers.dropWhile);
+    goog.exportSymbol(&quot;transducers.DropWhile&quot;, transducers.DropWhile);
+
     goog.exportSymbol(&quot;transducers.partitionBy&quot;, transducers.partitionBy);
+    goog.exportSymbol(&quot;transducers.PartitionBy&quot;, transducers.PartitionBy);
+
     goog.exportSymbol(&quot;transducers.partitionAll&quot;, transducers.partitionAll);
+    goog.exportSymbol(&quot;transducers.PartitionAll&quot;, transducers.PartitionAll);
+
+    goog.exportSymbol(&quot;transducers.completing&quot;, transducers.completing);
+    goog.exportSymbol(&quot;transducers.Completing&quot;, transducers.Completing);
+
+    goog.exportSymbol(&quot;transducers.wrap&quot;, transducers.wrap);
+    goog.exportSymbol(&quot;transducers.Wrap&quot;, transducers.Wrap);
+
+    goog.exportSymbol(&quot;transducers.cat&quot;, transducers.cat);
+    goog.exportSymbol(&quot;transducers.mapcat&quot;, transducers.mapcat);
+
     goog.exportSymbol(&quot;transducers.into&quot;, transducers.into);
     goog.exportSymbol(&quot;transducers.toFn&quot;, transducers.toFn);
-    goog.exportSymbol(&quot;transducers.wrap&quot;, transducers.wrap);
-    goog.exportSymbol(&quot;transducers.completing&quot;, transducers.completing);
     goog.exportSymbol(&quot;transducers.first&quot;, transducers.first);
     goog.exportSymbol(&quot;transducers.ensureReduced&quot;, transducers.first);
     goog.exportSymbol(&quot;transducers.unreduced&quot;, transducers.first);
+    goog.exportSymbol(&quot;transducers.deref&quot;, transducers.deref);
 }
 
 if(TRANSDUCERS_NODE_TARGET) {
@@ -1157,29 +1196,61 @@ if(TRANSDUCERS_NODE_TARGET) {
         isReduced: transducers.isReduced,
         comp: transducers.comp,
         complement: transducers.complement,
+
         map: transducers.map,
+        Map: transducers.Map,
+
         filter: transducers.filter,
+        Filter: transducers.Filter,
+
         remove: transducers.remove,
+        Remove: transducers.Remove,
+
         keep: transducers.keep,
+        Kemove: transducers.Keep,
+
         keepIndexed: transducers.keepIndexed,
+        KeepIndexed: transducers.KeepIndexed,
+
+        take: transducers.take,
+        Take: transducers.Take,
+
+        takeWhile: transducers.takeWhile,
+        TakeWhile: transducers.TakeWhile,
+
+        takeNth: transducers.takeNth,
+        TakeNth: transducers.TakeNth,
+
+        drop: transducers.drop,
+        Drop: transducers.Drop,
+
+        dropWhile: transducers.dropWhile,
+        DropWhile: transducers.DropWhile,
+
+        partitionBy: transducers.partitionBy,
+        PartitionBy: transducers.PartitionBy,
+
+        partitionAll: transducers.partitionAll,
+        PartitionAll: transducers.PartitionAll,
+
+        completing: transducers.completing,
+        Completing: transducers.Completing,
+        
+        wrap: transducers.wrap,
+        Wrap: transducers.Wrap,
+        
         cat: transducers.cat,
         mapcat: transducers.mapcat,
+
         transduce: transducers.transduce,
         reduce: transducers.reduce,
-        take: transducers.take,
-        takeWhile: transducers.takeWhile,
-        takeNth: transducers.takeNth,
-        drop: transducers.drop,
-        dropWhile: transducers.dropWhile,
-        partitionBy: transducers.partitionBy,
-        partitionAll: transducers.partitionAll,
         into: transducers.into,
         toFn: transducers.toFn,
-        wrap: transducers.wrap,
-        completing: transducers.completing,
         first: transducers.first,
+
         ensureReduced: transducers.ensureReduced,
-        unreduced: transducers.unreduced
+        unreduced: transducers.unreduced,
+        deref: transducers.deref
     };
 }
 
