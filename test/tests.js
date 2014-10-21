@@ -162,14 +162,23 @@ exports.testDropWhile = function(test) {
 };
 
 exports.testPartitionBy = function(test) {
-    var res = transduce(partitionBy(lessThanFive), arrayPush, [], smallArray);
-    test.deepEqual(res, [[0,1,2,3,4],[5,6,7,8,9]]);
+    var res0 = transduce(partitionBy(lessThanFive), arrayPush, [], smallArray);
+    test.deepEqual(res0, [[0,1,2,3,4],[5,6,7,8,9]]);
+
+    var arr = [1, 1, 1, 2, 2, 3, 3, 3, 3];
+    var res1 = into([], comp(partitionBy(function(x) { return x; }), take(2)), arr);
+    test.deepEqual(res1, [[1,1,1],[2,2]]);
+    
     test.done();
 };
 
 exports.testPartitionAll = function(test) {
-    var res = transduce(partitionAll(2), arrayPush, [], smallArray);
-    test.deepEqual(res, [[0,1],[2,3],[4,5],[6,7],[8,9]]);
+    var res0 = transduce(partitionAll(2), arrayPush, [], smallArray);
+    test.deepEqual(res0, [[0,1],[2,3],[4,5],[6,7],[8,9]]);
+
+    var res1 = into([], comp(partitionAll(2), take(2)), smallArray);
+    test.deepEqual(res1, [[0,1],[2,3]]);
+
     test.done();
 };
 

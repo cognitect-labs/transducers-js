@@ -575,8 +575,8 @@ transducers.PartitionBy.prototype.init = function() {
     return this.xf.init()
 };
 transducers.PartitionBy.prototype.result = function(result) {
-    if(this.a.length != 0) {
-        result = this.xf.step(result, this.a);
+    if(this.a.length > 0) {
+        result = transducers.unreduced(this.xf.step(result, this.a));
         this.a = [];
     }
     return this.xf.result(result);
@@ -594,7 +594,7 @@ transducers.PartitionBy.prototype.step = function(result, input) {
         this.a.push(input);
         return result;
     } else {
-        var ret = transducers.unreduced(this.xf.step(result, this.a));
+        var ret = this.xf.step(result, this.a);
         this.a = [];
         if(!transducers.isReduced(ret)) {
             this.a.push(input);
@@ -640,7 +640,7 @@ transducers.PartitionAll.prototype.init = function() {
 };
 transducers.PartitionAll.prototype.result = function(result) {
     if(this.a.length > 0) {
-        result = this.xf.step(result, this.a);
+        result = transducers.unreduced(this.xf.step(result, this.a));
         this.a = [];
     }
     return this.xf.result(result);
@@ -650,7 +650,7 @@ transducers.PartitionAll.prototype.step = function(result, input) {
     if(this.n == this.a.length) {
         var a = this.a;
         this.a = [];
-        return transducers.unreduced(this.xf.step(result, a));
+        return this.xf.step(result, a);
     } else {
         return result;
     }
