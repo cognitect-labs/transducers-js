@@ -41,7 +41,7 @@ var transducers = com.cognitect.transducers;
 // =============================================================================
 // Utilities
 
-transducers.isString = function(s) {
+transducers.isString = function(x) {
     return typeof x == "string";
 };
 
