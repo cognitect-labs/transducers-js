@@ -212,7 +212,7 @@ following:
 var Map = function(f, xf) {
     return {
        init: function() { return xf.init(); },
-       result: function(result) { return xf.result() },
+       result: function(result) { return xf.result(result); },
        step: function(result, input) { return xf.step(result, f(input)); }
     };
 };
