@@ -115,7 +115,8 @@ two-arity function via `toFn`.
 ```js
 var arr   = [0,1,2,3,4,5,6,7,8,9,10],
     apush = function(arr, x) { arr.push(x); return arr; },
-    xf    = comp(map(inc), filter(isEven));
+    xf    = comp(map(inc), filter(isEven)),
+    toFn  = t.toFn;
 
 arr.reduce(toFn(xf, apush), []); // native
 _(arr).reduce(toFn(xf, apush), []); // underscore or lodash
