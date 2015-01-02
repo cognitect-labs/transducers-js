@@ -203,7 +203,7 @@ transducers.unreduced = function(x) {
 
 /**
  * Identity function.
- * @method transducers.identiy
+ * @method transducers.identity
  * @param {Object} x any JavaScript value
  * @return {Object} a JavaScript value
  * @example
