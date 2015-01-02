@@ -1111,8 +1111,8 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.into", transducers.into);
     goog.exportSymbol("transducers.toFn", transducers.toFn);
     goog.exportSymbol("transducers.first", transducers.first);
-    goog.exportSymbol("transducers.ensureReduced", transducers.first);
-    goog.exportSymbol("transducers.unreduced", transducers.first);
+    goog.exportSymbol("transducers.ensureReduced", transducers.ensureReduced);
+    goog.exportSymbol("transducers.unreduced", transducers.unreduced);
     goog.exportSymbol("transducers.deref", transducers.deref);
 }
 
