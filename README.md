@@ -139,7 +139,7 @@ var inc = function(n) { return n + 1; };
 var isEven = function(n) { return n % 2 == 0; };
 var sum = function(a,b) { return a+b; };
 
-var largeVector = Immutable.Vector();
+var largeVector = Immutable.List();
 
 for(var i = 0; i < 1000000; i++) {
     largeVector = largeVector.push(i);
