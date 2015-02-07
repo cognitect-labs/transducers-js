@@ -1108,6 +1108,7 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.cat", transducers.cat);
     goog.exportSymbol("transducers.mapcat", transducers.mapcat);
 
+    goog.exportSymbol("transducers.identity", transducers.identity);
     goog.exportSymbol("transducers.into", transducers.into);
     goog.exportSymbol("transducers.toFn", transducers.toFn);
     goog.exportSymbol("transducers.first", transducers.first);
@@ -1170,6 +1171,7 @@ if(TRANSDUCERS_NODE_TARGET) {
 
         transduce: transducers.transduce,
         reduce: transducers.reduce,
+        identity: transducers.identity,
         into: transducers.into,
         toFn: transducers.toFn,
         first: transducers.first,

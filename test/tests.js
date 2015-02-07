@@ -21,6 +21,7 @@ var t            = require("../target/transducers.js"),
     reduce       = t.reduce,
     map          = t.map,
     filter       = t.filter,
+    identity     = t.identity,
     remove       = t.remove,
     keep         = t.keep,
     keepIndexed  = t.keepIndexed,
@@ -99,6 +100,12 @@ exports.testFilter = function(test) {
     test.deepEqual(res, smallArray.filter(isEven));
     test.done();
 };
+
+exports.testIdentity = function(test) {
+    var res = transduce(identity, arrayPush, [], smallArray);
+    test.deepEqual(res, smallArray);
+    test.done();
+}
 
 exports.testRemove = function(test) {
     var res = transduce(remove(isEven), arrayPush, [], smallArray);
