@@ -582,7 +582,7 @@ transducers.PartitionBy.prototype.result = function(result) {
     return this.xf.result(result);
 };
 transducers.PartitionBy.prototype.step = function(result, input) {
-    var pval = this.pval;
+    var pval = this.pval,
         val  = this.f(input);
 
     this.pval = val;
