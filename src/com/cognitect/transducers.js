@@ -737,7 +737,7 @@ transducers.KeepIndexed.prototype.result = function(result) {
 };
 transducers.KeepIndexed.prototype.step = function(result, input) {
     this.i++;
-    var v = this.f(this.i, input);
+    var v = this.f(input, this.i);
     if(v == null) {
         return result;
     } else {
@@ -747,7 +747,8 @@ transducers.KeepIndexed.prototype.step = function(result, input) {
 
 /**
  * Like keep but the provided function will be passed the
- * index as the first argument.
+ * index as the second argument as customary with native
+ * JavaScript array.prototype.map and underscore.js.
  * @method transducers.keepIndexed
  * @param {Function} f a function
  * @return {transducers.KeepIndexed} a keepIndexed transducer
@@ -783,13 +784,13 @@ transducers.MapIndexed.prototype.result = function(result) {
 };
 transducers.MapIndexed.prototype.step = function(result, input) {
     this.i++;
-    var v = this.f(this.i, input);
+    var v = this.f(input, this.i);
     return this.xf.step(result, v);
 };
 
 /**
  * Like map but the provided function will be passed the
- * index as the first argument.
+ * index as the second argument.
  * @method transducers.mapIndexed
  * @param {Function} f a function
  * @return {transducers.MapIndexed} a mapIndexed transducer
