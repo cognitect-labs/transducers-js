@@ -582,7 +582,7 @@ transducers.PartitionBy.prototype.result = function(result) {
     return this.xf.result(result);
 };
 transducers.PartitionBy.prototype.step = function(result, input) {
-    var pval = this.pval;
+    var pval = this.pval,
         val  = this.f(input);
 
     this.pval = val;
@@ -737,7 +737,7 @@ transducers.KeepIndexed.prototype.result = function(result) {
 };
 transducers.KeepIndexed.prototype.step = function(result, input) {
     this.i++;
-    var v = this.f(this.i, input);
+    var v = this.f(input, this.i);
     if(v == null) {
         return result;
     } else {
@@ -747,7 +747,8 @@ transducers.KeepIndexed.prototype.step = function(result, input) {
 
 /**
  * Like keep but the provided function will be passed the
- * index as the second argument.
+ * index as the second argument as customary with native
+ * JavaScript array.prototype.map and underscore.js.
  * @method transducers.keepIndexed
  * @param {Function} f a function
  * @return {transducers.KeepIndexed} a keepIndexed transducer
@@ -762,6 +763,48 @@ transducers.keepIndexed = function(f) {
     } else {
         return function(xf) {
             return new transducers.KeepIndexed(f, xf);
+        };
+    }
+};
+
+// mapIndexed
+/**
+ * @constructor
+ */
+transducers.MapIndexed = function(f, xf) {
+    this.i = -1;
+    this.f = f;
+    this.xf = xf;
+};
+transducers.MapIndexed.prototype.init = function() {
+    return this.xf.init();
+};
+transducers.MapIndexed.prototype.result = function(result) {
+    return this.xf.result(result);
+};
+transducers.MapIndexed.prototype.step = function(result, input) {
+    this.i++;
+    var v = this.f(input, this.i);
+    return this.xf.step(result, v);
+};
+
+/**
+ * Like map but the provided function will be passed the
+ * index as the second argument.
+ * @method transducers.mapIndexed
+ * @param {Function} f a function
+ * @return {transducers.MapIndexed} a mapIndexed transducer
+ * @example
+ *     var t = transducers;
+ *     var xf = t.mapIndexed(function(i, x) { return i * 10 + x; });
+ *     t.into([], xf, [5,9,7,6]); // [5, 19, 27, 36]
+ */
+transducers.mapIndexed = function(f) {
+    if(TRANSDUCERS_DEV && (typeof f != "function")) {
+        throw new Error("mapIndexed must be given a function");
+    } else {
+        return function(xf) {
+            return new transducers.MapIndexed(f, xf);
         };
     }
 };
@@ -1078,6 +1121,9 @@ if(TRANSDUCERS_BROWSER_TARGET) {
     goog.exportSymbol("transducers.keepIndexed", transducers.keepIndexed);
     goog.exportSymbol("transducers.KeepIndexed", transducers.KeepIndexed);
 
+    goog.exportSymbol("transducers.mapIndexed", transducers.mapIndexed);
+    goog.exportSymbol("transducers.MapIndexed", transducers.MapIndexed);
+
     goog.exportSymbol("transducers.take", transducers.take);
     goog.exportSymbol("transducers.Take", transducers.Take);
 
@@ -1137,6 +1183,9 @@ if(TRANSDUCERS_NODE_TARGET) {
 
         keepIndexed: transducers.keepIndexed,
         KeepIndexed: transducers.KeepIndexed,
+
+        mapIndexed: transducers.mapIndexed,
+        MapIndexed: transducers.MapIndexed,
 
         take: transducers.take,
         Take: transducers.Take,
