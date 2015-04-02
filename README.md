@@ -201,10 +201,10 @@ pipelines. Note that transducers return transformers when invoked.
 
 ### Transformer protocol
 
-Transformers are objects. They must implement 3 methods, `init`,
-`result` and `step`. If a transformer is intended to be composed with
-other transformers they should either close over the next transformer
-or store it in a field.
+Transformers are objects. They must implement 3 methods, `@@transducer/init`,
+`@@transducer/result` and `@@transducer/step`. If a transformer is intended to 
+be composed with other transformers they should either close over the next 
+transformer or store it in a field.
 
 For example the `Map` transformer could look something like the
 following:
@@ -212,9 +212,9 @@ following:
 ```
 var Map = function(f, xf) {
     return {
-       init: function() { return xf.init(); },
-       result: function(result) { return xf.result(result); },
-       step: function(result, input) { return xf.step(result, f(input)); }
+       "@@transducer/init": function() { return xf["@@transducer/init"](); },
+       "@@transducer/result": function(result) { return xf["@@transducer/result"](result); },
+       "@@transducer/step": function(result, input) { return xf["@@transducer/step"](result, f(input)); }
     };
 };
 ```
@@ -227,8 +227,9 @@ prototype methods - this is in fact how it is done in transducers-js.
 
 Detecting the reduced state is critical to short circuiting a
 reduction/transduction. A reduced value is denoted by any JavaScript
-object that has the property `__transducers_reduced__` set to `true`.
-The reduced value should be stored in the `value` property of this object.
+object that has the property `@@transducer/reduced` set to `true`.
+The reduced value should be stored in the `@@transducer/value` property of this 
+object.
 
 ### Iteration
 

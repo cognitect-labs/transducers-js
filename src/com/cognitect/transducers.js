@@ -45,22 +45,22 @@ goog.scope(function() {
      * The Transducer protocol
      * @interface
      */
-    transducers.ITransducer = function() {};
+    transducers.ITransformer = function() {};
     /**
      * @returns {Object}
      */
-    transducers.ITransducer.prototype["@@transducer/init"] = function() {};
+    transducers.ITransformer.prototype["@@transducer/init"] = function() {};
     /**
      * @param {Object} result
      * @returns {Object}
      */
-    transducers.ITransducer.prototype["@@transducer/result"] = function(result) {};
+    transducers.ITransformer.prototype["@@transducer/result"] = function(result) {};
     /**
      * @param {Object} result
      * @param {Object} input
      * @returns {Object}
      */
-    transducers.ITransducer.prototype["@@transducer/step"] = function(result, input) {};
+    transducers.ITransformer.prototype["@@transducer/step"] = function(result, input) {};
 
     /**
      * The IReduced interface
@@ -118,7 +118,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.Wrap = function(stepFn) {
         this.stepFn = stepFn;
@@ -276,7 +276,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.Map = function(f, xf) {
         this.f = f;
@@ -315,7 +315,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.Filter = function(pred, xf) {
         this.pred = pred;
@@ -378,7 +378,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.Take = function(n, xf) {
         this.n = n;
@@ -423,7 +423,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.TakeWhile = function(pred, xf) {
         this.pred = pred;
@@ -466,7 +466,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.TakeNth = function(n, xf) {
         this.i = -1;
@@ -510,7 +510,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.Drop = function(n, xf) {
         this.n = n;
@@ -553,7 +553,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.DropWhile = function(pred, xf) {
         this.drop = true;
@@ -600,7 +600,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.PartitionBy = function(f, xf) {
         this.f = f;
@@ -666,7 +666,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.PartitionAll = function(n, xf) {
         this.n = n;
@@ -717,7 +717,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.Keep = function(f, xf) {
         this.f = f;
@@ -761,7 +761,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.KeepIndexed = function(f, xf) {
         this.i = -1;
@@ -809,8 +809,8 @@ goog.scope(function() {
      * Given a transformer returns a transformer which preserves
      * reduced by wrapping one more time. See cat.
      * @method transducers.preservingReduced
-     * @param {com.cognitect.transducers.ITransducer} xf a transformer
-     * @return {com.cognitect.transducers.ITransducer} a transformer which preserves reduced
+     * @param {com.cognitect.transducers.ITransformer} xf a transformer
+     * @return {com.cognitect.transducers.ITransformer} a transformer which preserves reduced
      */
     transducers.preservingReduced = function(xf) {
         return {
@@ -834,8 +834,8 @@ goog.scope(function() {
     /**
      * Given a transformer return a concatenating transformer
      * @method transducers.cat
-     * @param {com.cognitect.transducers.ITransducer} xf a transformer
-     * @return {com.cognitect.transducers.ITransducer} a concatenating transformer
+     * @param {com.cognitect.transducers.ITransformer} xf a transformer
+     * @return {com.cognitect.transducers.ITransformer} a concatenating transformer
      */
     transducers.cat = function(xf) {
         var rxf = transducers.preservingReduced(xf);
@@ -856,7 +856,7 @@ goog.scope(function() {
      * A mapping concatenating transformer
      * @method transducers.mapcat
      * @param {Function} f the mapping function
-     * @return {com.cognitect.transducers.ITransducer} a mapping concatenating transducer
+     * @return {com.cognitect.transducers.ITransformer} a mapping concatenating transducer
      * @example
      *     var t = transducers;
      *     var reverse = function(arr) { var arr = Array.prototype.slice.call(arr, 0); arr.reverse(); return arr; }
@@ -868,7 +868,7 @@ goog.scope(function() {
     };
 
     /**
-     * @param {com.cognitect.transducers.ITransducer} xf
+     * @param {com.cognitect.transducers.ITransformer} xf
      * @param {Object} init
      * @param {String} string
      * @returns {*}
@@ -886,7 +886,7 @@ goog.scope(function() {
     };
 
     /**
-     * @param {com.cognitect.transducers.ITransducer} xf
+     * @param {com.cognitect.transducers.ITransformer} xf
      * @param {Object} init
      * @param {Array} array
      * @returns {*}
@@ -904,7 +904,7 @@ goog.scope(function() {
     };
 
     /**
-     * @param {com.cognitect.transducers.ITransducer} xf
+     * @param {com.cognitect.transducers.ITransformer} xf
      * @param {Object} init
      * @param {Object} obj
      * @returns {*}
@@ -924,7 +924,7 @@ goog.scope(function() {
     };
 
     /**
-     * @param {com.cognitect.transducers.ITransducer} xf
+     * @param {com.cognitect.transducers.ITransformer} xf
      * @param {Object} init
      * @param {Object} iter
      * @returns {*}
@@ -953,7 +953,7 @@ goog.scope(function() {
      * Given a transducer, an intial value and a
      * collection - returns the reduction.
      * @method transducers.reduce
-     * @param {com.cognitect.transducers.ITransducer|Function} xf a transducer or two-arity function
+     * @param {com.cognitect.transducers.ITransformer|Function} xf a transducer or two-arity function
      * @param {Object} init any JavaScript value
      * @param {String|Array|Object} coll any iterable JavaScript value
      * @return {Object} an iterable JavaScript value: string, array
@@ -981,8 +981,8 @@ goog.scope(function() {
      * and a iterable collection - returns the reduction.
      * collection - returns the reduction.
      * @method transducers.transduce
-     * @param {com.cognitect.transducers.ITransducer} xf a transducer
-     * @param {com.cognitect.transducers.ITransducer|Function} f a transducer or two-arity function
+     * @param {com.cognitect.transducers.ITransformer} xf a transducer
+     * @param {com.cognitect.transducers.ITransformer|Function} f a transducer or two-arity function
      * @param {Object} init any JavaScript value
      * @param {String|Array|Object} coll any iterable JavaScript value
      * @return {Object} a JavaScript value.
@@ -1018,7 +1018,7 @@ goog.scope(function() {
      * Reduce a value into the given empty value using a transducer.
      * @method transducers.into
      * @param {String|Array|Object} empty a JavaScript collection
-     * @param {com.cognitect.transducers.ITransducer} xf a transducer
+     * @param {com.cognitect.transducers.ITransformer} xf a transducer
      * @param {Object} coll any iterable JavaScript value: array, string,
      *   object, or iterable.
      * @return {Object} a JavaScript value.
@@ -1042,7 +1042,7 @@ goog.scope(function() {
 
     /**
      * @constructor
-     * @implements {com.cognitect.transducers.ITransducer}
+     * @implements {com.cognitect.transducers.ITransformer}
      */
     transducers.Completing = function(cf, xf) {
         this.cf = cf;
@@ -1062,9 +1062,9 @@ goog.scope(function() {
      * A completing transducer constructor. Useful to provide cleanup
      * logic at the end of a reduction/transduction.
      * @method transducers.completing
-     * @param {com.cognitect.transducers.ITransducer} xf a transducer
+     * @param {com.cognitect.transducers.ITransformer} xf a transducer
      * @param {Function} cf a function to apply at the end of the reduction/transduction
-     * @return {com.cognitect.transducers.ITransducer} a transducer
+     * @return {com.cognitect.transducers.ITransformer} a transducer
      */
     transducers.completing = function(xf, cf) {
         xf = typeof xf == "function" ? transducers.wrap(xf) : xf;
@@ -1081,7 +1081,7 @@ goog.scope(function() {
      * that it can be used with existing reduce implementation i.e. native,
      * Underscore, lodash
      * @method transducers.toFn
-     * @param {com.cognitect.transducers.ITransducer} xf a transducer
+     * @param {com.cognitect.transducers.ITransformer} xf a transducer
      * @param {Function} builder a function which take the accumulator and the
      *   the next input and return a new accumulator value.
      * @return {Function} a two-arity function compatible with existing reduce
@@ -1107,7 +1107,7 @@ goog.scope(function() {
     /**
      * A transformer which simply returns the first input.
      * @method transducers.first
-     * @return {com.cognitect.transducers.ITransducer} a transducer transformer
+     * @return {com.cognitect.transducers.ITransformer} a transducer transformer
      */
     transducers.first = transducers.wrap(function(result, input) {
         return transducers.reduced(input);
