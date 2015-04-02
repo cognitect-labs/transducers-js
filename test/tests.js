@@ -14,7 +14,12 @@
 
 "use strict";
 
-var t            = require("../target/transducers.js"),
+require("../deps/closure-library/closure/goog/bootstrap/nodejs.js");
+require("../deps/closure-library/closure/goog/transducers_deps.js");
+
+goog.require("com.cognitect.transducers");
+
+var t            = com.cognitect.transducers,
     comp         = t.comp,
     complement   = t.complement,
     transduce    = t.transduce,

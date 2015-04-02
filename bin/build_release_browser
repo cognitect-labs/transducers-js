@@ -12,13 +12,10 @@ version=$prefix.$suffix
 prelude=`bin/prelude`
 preludenl=$prelude.$'\n'
 
-java -jar deps/closure-compiler/compiler.jar -O ADVANCED --generate_exports --output_wrapper "$preludenl;(function(){%output%})();" -D TRANSDUCERS_BROWSER_TARGET=true -D TRANSDUCERS_DEV=false \
---externs=resources/externs.js \
---js deps/closure-library/closure/goog/base.js \
---js deps/closure-library/closure/goog/debug/error.js \
---js deps/closure-library/closure/goog/dom/nodetype.js \
---js deps/closure-library/closure/goog/string/string.js \
---js deps/closure-library/closure/goog/asserts/asserts.js \
---js deps/closure-library/closure/goog/array/array.js \
---js deps/closure-library/closure/goog/object/object.js \
---js src/com/cognitect/transducers.js > target/transducers-$version-min.js
+java -jar deps/closure-compiler/compiler.jar -O ADVANCED --generate_exports \
+--output_wrapper "$preludenl;(function(){%output%})();" \
+-D TRANSDUCERS_BROWSER_TARGET=true -D TRANSDUCERS_DEV=false \
+--externs=resources/externs.js --manage_closure_dependencies \
+--only_closure_dependencies --closure_entry_point=com.cognitect.transducers \
+--js_output_file=target/transducers-$version-min.js \
+'deps/closure-library/closure/**.js' 'src/**.js'

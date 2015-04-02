@@ -4,5 +4,5 @@ set -e
 
 cd `dirname $0`/..
 
-bin/build_dev_node
+bin/make_deps_js
 node_modules/.bin/grunt nodeunit

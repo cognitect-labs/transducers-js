@@ -1,4 +1,4 @@
-(ns closure-dep-graph
+(ns closure-deps-graph
   (:require [clojure.java.io :as io])
   (:import [java.io File]
            [com.google.javascript.jscomp SourceFile BasicErrorManager]
@@ -13,7 +13,7 @@
             (not= \. (first name))))
     (file-seq dir)))
 
-(spit (io/file "deps/closure-library/closure/goog/transducers_dep_graph.js")
+(spit (io/file "deps/closure-library/closure/goog/transducers_deps.js")
   (.computeDependencyCalls
     (DepsGenerator. (map #(SourceFile/fromFile (io/file %)) '("deps/closure-library/closure/goog/deps.js"))
       (map #(SourceFile/fromFile %)
