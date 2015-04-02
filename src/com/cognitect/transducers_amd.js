@@ -14,6 +14,7 @@
 
 "use strict";
 
+goog.require("com.cognitect.transducers.amd");
 goog.require("com.cognitect.transducers");
 
 if(TRANSDUCERS_BROWSER_AMD_TARGET) {
