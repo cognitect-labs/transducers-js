@@ -4,10 +4,15 @@ set -e
 
 cd `dirname $0`/..
 
-rm -rf deps
+echo "Installing Nodej.s dependencies"
 
 npm install
 npm install grunt-cli
+
+echo "Installing JVM dependencies"
+
+rm -rf deps
+
 mkdir -p deps/closure-compiler
 cd deps/closure-compiler
 curl -O -s http://dl.google.com/closure-compiler/compiler-latest.zip
@@ -16,3 +21,9 @@ rm compiler-latest.zip
 cd ../..
 
 git clone https://github.com/google/closure-library.git deps/closure-library
+
+mkdir -p deps/clojure
+curl -O http://repo1.maven.org/maven2/org/clojure/clojure/1.6.0/clojure-1.6.0.zip
+unzip -qu clojure-1.6.0.zip
+mv clojure-1.6.0/clojure-1.6.0.jar deps/clojure
+rm -rf clojure-1.6.0 clojure-1.6.0.zip
