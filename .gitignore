@@ -1,3 +1,6 @@
 npm-debug.log
 deps
 node_modules
+docs
+target
+.idea
