@@ -209,12 +209,18 @@ transformer or store it in a field.
 For example the `Map` transformer could look something like the
 following:
 
-```
+```js
 var Map = function(f, xf) {
     return {
-       "@@transducer/init": function() { return xf["@@transducer/init"](); },
-       "@@transducer/result": function(result) { return xf["@@transducer/result"](result); },
-       "@@transducer/step": function(result, input) { return xf["@@transducer/step"](result, f(input)); }
+       "@@transducer/init": function() { 
+           return xf["@@transducer/init"](); 
+       },
+       "@@transducer/result": function(result) { 
+           return xf["@@transducer/result"](result); 
+       },
+       "@@transducer/step": function(result, input) {
+           return xf["@@transducer/step"](result, f(input)); 
+       }
     };
 };
 ```
