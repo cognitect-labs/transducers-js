@@ -4,6 +4,8 @@ set -e
 
 cd `dirname $0`/..
 
+rm -rf deps
+
 npm install
 npm install grunt-cli
 mkdir -p deps/closure-compiler
