@@ -1,6 +1,6 @@
 {
     "name": "transducers-js",
-    "version": "0.4.158",
+    "version": "0.4.161",
     "homepage": "https://github.com/cognitect/tranducers-js",
     "description": "A high performance transducer implementation for JavaScript",
     "keywords": [
