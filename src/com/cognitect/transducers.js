@@ -998,7 +998,7 @@ goog.scope(function() {
         if(arguments.length == 3) {
             coll = init;
             if(typeof f == "function") {
-                throw new Error("If given only three arguments f must satisfy"+
+                throw new Error("If given only three arguments f must satisfy "+
                                 "the ITransformer interface.");
             } else {
                 init = f["@@transducer/init"]();
