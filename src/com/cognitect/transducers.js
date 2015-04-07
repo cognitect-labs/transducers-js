@@ -983,7 +983,7 @@ goog.scope(function() {
      * @method transducers.transduce
      * @param {com.cognitect.transducers.ITransformer} xf a transducer
      * @param {com.cognitect.transducers.ITransformer|Function} f a transducer or two-arity function
-     * @param {Object} init any JavaScript value
+     * @param {Object=} init any JavaScript value
      * @param {String|Array|Object} coll any iterable JavaScript value
      * @return {Object} a JavaScript value.
      * @example
@@ -995,6 +995,15 @@ goog.scope(function() {
      *     t.transduce(xf, apush, [], [1,2,3,4]); // [2,4]
      */
     transducers.transduce = function(xf, f, init, coll) {
+        if(arguments.length == 3) {
+            coll = init;
+            if(typeof f == "function") {
+                throw new Error("If given only three arguments f must satisfy"+
+                                "the ITransformer interface.");
+            } else {
+                init = f["@@transducer/init"]();
+            }
+        }
         f = typeof f == "function" ? transducers.wrap(f) : f;
         xf = xf(f);
         return transducers.reduce(xf, init, coll);
@@ -1101,8 +1110,8 @@ goog.scope(function() {
         return rxf["@@transducer/step"].bind(rxf);
     };
 
-// =============================================================================
-// Utilities
+    // =============================================================================
+    // Utilities
 
     /**
      * A transformer which simply returns the first input.
@@ -1113,8 +1122,8 @@ goog.scope(function() {
         return transducers.reduced(input);
     });
 
-// =============================================================================
-// Exporting
+    // =============================================================================
+    // Exporting
 
     if(TRANSDUCERS_BROWSER_TARGET) {
         goog.exportSymbol("transducers.reduced", transducers.reduced);

@@ -245,3 +245,23 @@ exports.testFirstTakeWhile = function(test) {
     test.equal(transduce(dropWhile(lessThanFive), first, null, range(10)), 5);
     test.done();
 };
+
+exports.testTransduceNoInit = function(test) {
+    var arrayBuilder = {
+        "@@transducer/init": function() { return []; },
+        "@@transducer/result": function(result) {
+            return result;
+        },
+        "@@transducer/step": function(result,input) {
+            result.push(input);
+            return result;
+        }
+    };
+
+    var ints = range(10),
+        res  = transduce(map(inc), arrayBuilder, ints);
+
+    test.deepEqual(res, [1,2,3,4,5,6,7,8,9,10]);
+
+    test.done();
+};
