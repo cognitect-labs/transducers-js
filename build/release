@@ -67,6 +67,7 @@ rm -rf npm-transducers-js
 git clone --quiet git@github.com:cognitect-labs/npm-transducers-js.git npm-transducers-js > /dev/null
 cd npm-transducers-js
 cp ../target/transducers.js ./transducers.js
+cp -R ../src/* ./src/
 git add -f transducers.js
 sed -e "s/\"version\": \"[[:digit:]]\{1,2\}\.[[:digit:]]\{1,2\}\.[[:digit:]]\{2,4\}/\"version\": \"${version}/g" package.json > package.json.tmp
 rm package.json
