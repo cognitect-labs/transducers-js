@@ -13,6 +13,11 @@ echo $version
 
 target_name=transducers-js-${version}
 
+echo "Releasing..."
+mvn versions:set -DnewVersion=${version}
+mvn clean deploy
+mvn versions:revert
+
 echo "Tagging..."
 git tag -a v${version} -m "Release ${version}"
 git push origin v${version}
