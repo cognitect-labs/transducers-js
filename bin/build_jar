@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd src
+
+jar cf transducers-js.jar .
+
+mkdir -p ../target
+
+mv transducers-js.jar ../target/
