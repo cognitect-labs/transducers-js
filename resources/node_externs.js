@@ -11,6 +11,7 @@ module.exports.reduced = function() {};
 module.exports.isReduced = function() {};
 module.exports.comp = function() {};
 module.exports.complement = function() {};
+module.exports.identity = function() {};
 
 module.exports.map = function() {};
 /**

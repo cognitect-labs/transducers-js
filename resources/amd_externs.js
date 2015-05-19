@@ -11,6 +11,7 @@ transducers.reduced = function() {};
 transducers.isReduced = function() {};
 transducers.comp = function() {};
 transducers.complement = function() {};
+transducers.identity = function() {};
 
 transducers.map = function() {};
 /**

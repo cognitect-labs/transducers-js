@@ -1130,6 +1130,7 @@ goog.scope(function() {
         goog.exportSymbol("transducers.isReduced", transducers.isReduced);
         goog.exportSymbol("transducers.comp", transducers.comp);
         goog.exportSymbol("transducers.complement", transducers.complement);
+        goog.exportSymbol("transducers.identity", transducers.identity);
         goog.exportSymbol("transducers.transduce", transducers.transduce);
         goog.exportSymbol("transducers.reduce", transducers.reduce);
 
@@ -1192,6 +1193,7 @@ goog.scope(function() {
             isReduced: transducers.isReduced,
             comp: transducers.comp,
             complement: transducers.complement,
+            identity: transducers.identity,
 
             map: transducers.map,
             Map: transducers.Map,

@@ -21,6 +21,7 @@ goog.require("com.cognitect.transducers");
 
 var t            = com.cognitect.transducers,
     comp         = t.comp,
+    identity     = t.identity,
     complement   = t.complement,
     transduce    = t.transduce,
     reduce       = t.reduce,
@@ -91,6 +92,11 @@ var reverse = function(arr) {
 var arrayPush = function(arr, x) {
     arr.push(x);
     return arr;
+};
+
+exports.testIdentity = function(test) {
+    test.ok(identity(1) === 1);
+    test.done();
 };
 
 exports.testMap = function(test) {
