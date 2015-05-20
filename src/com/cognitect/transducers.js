@@ -41,6 +41,8 @@ goog.scope(function() {
     // =========================================================================
     // Definitions
 
+    transducers.ITER_SYMBOL = typeof Symbol != "undefined" ? Symbol.iterator : transducers.ITER_SYMBOL;
+
     /**
      * The Transducer protocol
      * @interface
@@ -90,7 +92,7 @@ goog.scope(function() {
     };
 
     transducers.isIterable = function(x) {
-        return x["@@iterator"] || x["next"];
+        return x[transducers.ITER_SYMBOL] || x["next"];
     };
 
     transducers.slice = function(arrayLike, start, n) {
@@ -930,8 +932,8 @@ goog.scope(function() {
      * @returns {*}
      */
     transducers.iterableReduce = function(xf, init, iter) {
-        if(iter["@@iterator"]) {
-            iter = iter["@@iterator"]();
+        if(iter[transducers.ITER_SYMBOL]) {
+            iter = iter[transducers.ITER_SYMBOL]();
         }
 
         var acc  = init,
