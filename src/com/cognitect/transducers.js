@@ -41,7 +41,7 @@ goog.scope(function() {
     // =========================================================================
     // Definitions
 
-    transducers.ITER_SYMBOL = typeof Symbol != "undefined" ? Symbol.iterator : transducers.ITER_SYMBOL;
+    transducers.ITER_SYMBOL = typeof Symbol != "undefined" ? Symbol.iterator : "@@iterator";
 
     /**
      * The Transducer protocol
