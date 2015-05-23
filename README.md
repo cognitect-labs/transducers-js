@@ -133,7 +133,7 @@ var Immutable  = require("immutable"),
     comp       = t.comp,
     map        = t.map,
     filter     = t.filter,
-    transduce  = t.transduce,
+    transduce  = t.transduce;
 
 var inc = function(n) { return n + 1; };
 var isEven = function(n) { return n % 2 == 0; };
