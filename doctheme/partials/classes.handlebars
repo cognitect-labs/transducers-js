@@ -16,12 +16,12 @@
 {{#if extends}}
     Extends: {{#crossLink extends}}{{/crossLink}}<br>
 {{/if}}
-<span class="foundat">Class defined in: <a href="../{{foundAt}}">`{{file}}:{{line}}`</a></span>
+<span class="foundat">Class defined in: <a href="{{foundAt}}">`{{file}}:{{line}}`</a></span>
 <div class="intro">{{{classDescription}}}</div>
 
 {{#if is_constructor}}
     {{#is_constructor}}
-    {{>method}}
+{{>method}}
     {{/is_constructor}}
 {{/if}}
 
@@ -44,14 +44,14 @@
         {{#if methods}}
             <div id="methods">
             {{#methods}}
-                {{>method}}
+{{>method}}
             {{/methods}}
             </div>
         {{/if}}
         {{#if properties}}
             <div id="props">
             {{#properties}}
-                {{>props}}
+{{>props}}
             {{/properties}}
             </div>
         {{/if}}

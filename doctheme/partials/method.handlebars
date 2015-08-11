@@ -8,7 +8,7 @@
     {{else}}
         {{#if extended_from}} Defined in <a href="{{extended_from}}.html#method_{{name}}">{{extended_from}}</a>: {{/if}}
     {{/if}}
-        <a href="../{{foundAt}}">`{{file}}:{{line}}`</a>
+        <a href="{{foundAt}}">`{{file}}:{{line}}`</a>
     </span><br>
     {{{methodDescription}}}
     {{#if params}}
@@ -48,6 +48,11 @@
     {{#return}}
     <br><div class="returns"><strong>Returns:</strong> {{#if type}}&lt;{{#crossLink type}}{{/crossLink}}&gt; {{/if}}{{{description}}}</div>
     {{/return}}
+    {{/if}}
+    {{#if throws}}
+    {{#throws}}
+    <br><div class="throws"><strong>Throws:</strong> {{#if type}}&lt;{{#crossLink type}}{{/crossLink}}&gt; {{/if}}{{{description}}}</div>
+    {{/throws}}
     {{/if}}
     {{#if example}}
         <h5>Example</h5>
