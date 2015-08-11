@@ -105,6 +105,8 @@ goog.scope(function() {
     // =========================================================================
     // Definitions
 
+    transducers.ITER_SYMBOL = typeof Symbol != &quot;undefined&quot; ? Symbol.iterator : &quot;@@iterator&quot;;
+
     /**
      * The Transducer protocol
      * @interface
@@ -154,7 +156,7 @@ goog.scope(function() {
     };
 
     transducers.isIterable = function(x) {
-        return x[&quot;@@iterator&quot;] || x[&quot;next&quot;];
+        return x[transducers.ITER_SYMBOL] || x[&quot;next&quot;];
     };
 
     transducers.slice = function(arrayLike, start, n) {
@@ -994,8 +996,8 @@ goog.scope(function() {
      * @returns {*}
      */
     transducers.iterableReduce = function(xf, init, iter) {
-        if(iter[&quot;@@iterator&quot;]) {
-            iter = iter[&quot;@@iterator&quot;]();
+        if(iter[transducers.ITER_SYMBOL]) {
+            iter = iter[transducers.ITER_SYMBOL]();
         }
 
         var acc  = init,
@@ -1047,7 +1049,7 @@ goog.scope(function() {
      * @method transducers.transduce
      * @param {com.cognitect.transducers.ITransformer} xf a transducer
      * @param {com.cognitect.transducers.ITransformer|Function} f a transducer or two-arity function
-     * @param {Object} init any JavaScript value
+     * @param {Object=} init any JavaScript value
      * @param {String|Array|Object} coll any iterable JavaScript value
      * @return {Object} a JavaScript value.
      * @example
@@ -1059,6 +1061,15 @@ goog.scope(function() {
      *     t.transduce(xf, apush, [], [1,2,3,4]); // [2,4]
      */
     transducers.transduce = function(xf, f, init, coll) {
+        if(arguments.length == 3) {
+            coll = init;
+            if(typeof f == &quot;function&quot;) {
+                throw new Error(&quot;If given only three arguments f must satisfy &quot;+
+                                &quot;the ITransformer interface.&quot;);
+            } else {
+                init = f[&quot;@@transducer/init&quot;]();
+            }
+        }
         f = typeof f == &quot;function&quot; ? transducers.wrap(f) : f;
         xf = xf(f);
         return transducers.reduce(xf, init, coll);
@@ -1165,8 +1176,8 @@ goog.scope(function() {
         return rxf[&quot;@@transducer/step&quot;].bind(rxf);
     };
 
-// =============================================================================
-// Utilities
+    // =============================================================================
+    // Utilities
 
     /**
      * A transformer which simply returns the first input.
@@ -1177,14 +1188,15 @@ goog.scope(function() {
         return transducers.reduced(input);
     });
 
-// =============================================================================
-// Exporting
+    // =============================================================================
+    // Exporting
 
     if(TRANSDUCERS_BROWSER_TARGET) {
         goog.exportSymbol(&quot;transducers.reduced&quot;, transducers.reduced);
         goog.exportSymbol(&quot;transducers.isReduced&quot;, transducers.isReduced);
         goog.exportSymbol(&quot;transducers.comp&quot;, transducers.comp);
         goog.exportSymbol(&quot;transducers.complement&quot;, transducers.complement);
+        goog.exportSymbol(&quot;transducers.identity&quot;, transducers.identity);
         goog.exportSymbol(&quot;transducers.transduce&quot;, transducers.transduce);
         goog.exportSymbol(&quot;transducers.reduce&quot;, transducers.reduce);
 
@@ -1247,6 +1259,7 @@ goog.scope(function() {
             isReduced: transducers.isReduced,
             comp: transducers.comp,
             complement: transducers.complement,
+            identity: transducers.identity,
 
             map: transducers.map,
             Map: transducers.Map,
