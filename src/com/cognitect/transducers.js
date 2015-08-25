@@ -788,7 +788,7 @@ goog.scope(function() {
 
     /**
      * Like keep but the provided function will be passed the
-     * index as the second argument.
+     * index as the first argument and the value as the second.
      * @method transducers.keepIndexed
      * @param {Function} f a function
      * @return {com.cognitect.transducers.KeepIndexed} a keepIndexed transducer
