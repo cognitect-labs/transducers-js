@@ -127,22 +127,20 @@ time(function() {
 }, 10);
 
 if(ld != null) {
-
-log("lodash map/filter large array, 2 ops")
-time(function() {
-    return ld.chain(largeArray).map(inc).filter(isEven).value().length;
-}, 10);
-
+    log("lodash map/filter large array, 2 ops")
+    time(function() {
+        return ld.chain(largeArray).map(inc).filter(isEven).value().length;
+    }, 10);
 }
 
-/*
 log("transduce map/filter large array, 5 ops")
 time(function() {
-    return _.transduce(_.comp(_.map(inc),_.map(doubleN),_.map(inc),_.map(doubleN)), apush, [], largeArray).length;
+    return transduce(comp(map(inc),map(doubleN),map(inc),map(doubleN)), apush, [], largeArray).length;
 },10);
 
-log("lodash map/filter large array, 5 ops")
-time(function() {
-    return ld.chain(largeArray).map(inc).filter(doubleN).map(inc).map(doubleN).value().length;
-},10);
-*/
+if(ld != null) {
+    log("lodash map/filter large array, 5 ops")
+    time(function () {
+        return ld.chain(largeArray).map(inc).filter(doubleN).map(inc).map(doubleN).value().length;
+    }, 10);
+}
