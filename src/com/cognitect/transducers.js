@@ -1207,7 +1207,7 @@ goog.scope(function() {
             Remove: transducers.Remove,
 
             keep: transducers.keep,
-            Kemove: transducers.Keep,
+            Keep: transducers.Keep,
 
             keepIndexed: transducers.keepIndexed,
             KeepIndexed: transducers.KeepIndexed,
