@@ -19,7 +19,8 @@ require("../deps/closure-library/closure/goog/transducers_deps.js");
 
 goog.require("com.cognitect.transducers");
 
-var t            = com.cognitect.transducers,
+var Immutable    = require("immutable"),
+    t            = com.cognitect.transducers,
     comp         = t.comp,
     identity     = t.identity,
     complement   = t.complement,
@@ -268,6 +269,23 @@ exports.testTransduceNoInit = function(test) {
         res  = transduce(map(inc), arrayBuilder, ints);
 
     test.deepEqual(res, [1,2,3,4,5,6,7,8,9,10]);
+
+    test.done();
+};
+
+exports.testImmutableList = function(test) {
+    var inc    = function(n) { return n + 1;},
+        isEven = function(n) { return n % 2 == 0; },
+        sum    = function(a,b) { return a+b;},
+        bigVec = Immutable.List();
+
+    for(var i = 0; i < 1000000; i++) {
+        bigVec = bigVec.push(i);
+    }
+
+    // faster with transducers
+    var xf = comp(map(inc),filter(isEven));
+    test.equal(bigVec.map(inc).filter(isEven).reduce(sum), transduce(xf, sum, 0, bigVec));
 
     test.done();
 };

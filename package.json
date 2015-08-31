@@ -30,6 +30,7 @@
     "devDependencies": {
         "underscore": "1.7.0",
         "lodash": "2.4.1",
+        "immutable": "3.7.4",
         "nodeunit": "0.9.1",
         "yuidocjs": "0.8.1",
         "source-map-support": "0.3.2"
