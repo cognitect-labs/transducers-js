@@ -28,8 +28,8 @@
     "dependencies": {
     },
     "devDependencies": {
-        "underscore": "1.7.0",
-        "lodash": "2.4.1",
+        "underscore": "1.8.3",
+        "lodash": "3.10.1",
         "immutable": "3.7.4",
         "nodeunit": "0.9.1",
         "yuidocjs": "0.8.1",
