@@ -108,7 +108,7 @@ transducers-js can also easily be used in combination with *existing*
 reduce implementations, whether native or the shims provided by
 [Underscore](http://underscorejs.org) and
 [Lodash](http://lodash.com). Doing so with native and Underscore can
-deliver significant performance benefits. transducers may be easily
+deliver significant performance benefits. Transducers may be easily
 converted from their object representation into the necessary
 two-arity function via `toFn`.
 
