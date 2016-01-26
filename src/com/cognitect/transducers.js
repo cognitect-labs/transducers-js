@@ -248,10 +248,10 @@ goog.scope(function() {
     };
 
     /**
-     * Function composition. Take N function and return their composition.
+     * Function composition. Take N functions and return their composition.
      * @method transducers.comp
      * @param {Function} varArgs N functions
-     * @result {Function} a function that represent the composition of the arguments.
+     * @result {Function} a function that represents the composition of the arguments.
      * @example
      *     var t = transducers;
      *     var inc = function(n) { return n + 1 };
