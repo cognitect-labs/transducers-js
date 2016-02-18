@@ -244,7 +244,7 @@ iterator is reducible/transducible. An ES6 iterator may also just be given direc
 
 ## Building
 
-Fetch the dependecies:
+Fetch the dependencies:
 
 ```
 bin/deps
