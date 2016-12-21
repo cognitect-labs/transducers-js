@@ -1037,7 +1037,6 @@ goog.scope(function() {
      *     var t = transducers;
      *     var inc = function(n) { return n+1; };
      *     var isEven = function(n) { return n % 2 == 0; };
-     *     var apush = function(arr,x) { arr.push(x); return arr; };
      *     var xf = t.comp(t.map(inc),t.filter(isEven));
      *     t.into([], xf, [1,2,3,4]); // [2,4]
      */
