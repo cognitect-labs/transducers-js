@@ -60,7 +60,7 @@ var square = function(n) {
 };
 
 var keepEven = function(n) {
-    return (n % 2 == 0) ? true : null;
+    return (n % 2 == 0) ? n*2 : null;
 };
 
 var keepIdxFn = function(i, x) {
@@ -70,7 +70,7 @@ var keepIdxFn = function(i, x) {
         case 3:
         case 6:
         case 7:
-        return true;
+        return i*2;
         break;
         default:
         return null;
@@ -120,13 +120,13 @@ exports.testRemove = function(test) {
 
 exports.testKeep = function(test) {
     var res = transduce(keep(keepEven), arrayPush, [], smallArray);
-    test.deepEqual(res, smallArray.filter(isEven));
+    test.deepEqual(res, smallArray.filter(isEven).map(function (x) { return x*2; }));
     test.done();
 };
 
 exports.testKeepIndexed = function(test) {
     var res = transduce(keepIndexed(keepIdxFn), arrayPush, [], smallArray);
-    test.deepEqual(res, [0, 2, 3, 6, 7]);
+    test.deepEqual(res, [0, 4, 6, 12, 14]);
     test.done();
 };
 
