@@ -1,3 +1,5 @@
+# This library is no longer maintained, feel free to fork and update as per the license
+
 # transducers-js
 
 A high performance
