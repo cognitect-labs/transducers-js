@@ -1,7 +1,7 @@
 {
     "name": "transducers-js",
     "version": "0.4.180",
-    "homepage": "https://github.com/cognitect/tranducers-js",
+    "homepage": "https://github.com/cognitect-labs/tranducers-js",
     "description": "A high performance transducer implementation for JavaScript",
     "keywords": [
         "functional",
@@ -13,11 +13,11 @@
     "license": "APL",
     "repository": {
         "type": "git",
-        "url": "git://github.com/cognitect/transducers-js.git"
+        "url": "git://github.com/cognitect-labs/transducers-js.git"
     },
     "main": "target/transducers.js",
     "bugs": {
-        "url": "https://github.com/cognitect/transducers-js/issues"
+        "url": "https://github.com/cognitect-labs/transducers-js/issues"
     },
     "contributors": [
         "David Nolen (https://github.com/swannodette)"
