@@ -736,7 +736,7 @@ goog.scope(function() {
         if(v == null) {
             return result;
         } else {
-            return this.xf["@@transducer/step"](result, input);
+            return this.xf["@@transducer/step"](result, v);
         }
     };
 
@@ -782,7 +782,7 @@ goog.scope(function() {
         if(v == null) {
             return result;
         } else {
-            return this.xf["@@transducer/step"](result, input);
+            return this.xf["@@transducer/step"](result, v);
         }
     };
 
